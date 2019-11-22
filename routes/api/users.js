@@ -1,13 +1,19 @@
 // User routes
 
 const express = require('express');
-const router = express.Router();
+const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator/check');
+
+const router = express.Router();
+const User = require('../../models/User'); // User model
+
 // @rout    POST api/users
 // @desc    Register user
 // @access  Public
 router.post(
 	'/',
+	// Middleware
 	[
 		check('name', 'Name is required!') // check name & set error msg
 			.not()
@@ -17,16 +23,54 @@ router.post(
 		check('password', 'Required 6 or more characters') // check if password is long enough
 			.isLength({ min: 6 })
 	],
-	(req, res) => {
+
+	async (req, res) => {
 		// get errors
 		const errors = validationResult(req);
 
 		// if there are errors
 		if (!errors.isEmpty()) {
-			// Set status to 400 and send errors array
+			// Send status to 400 and send errors array
 			return res.status(400).json({ errors: errors.array() });
 		}
-		res.send('User route');
+
+		// Pull out required info from the reqests body
+		const { name, email, password } = req.body;
+
+		try {
+			// Check if user exists
+			let user = await User.findOne({ email });
+
+			// If there is a user BAD
+			if (user) {
+				// send status 400 and errors array with error msg
+				res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+			}
+
+			// Get users gravatar from email
+			const avatar = gravatar.url(email, {
+				s: '200', // size: "200"
+				r: 'pg', // rating: "pg" ( no 18+ avatars )
+				d: 'mm' // Default: "mm" ( placeholder icon )
+			});
+
+			// Create new instance of User model with current values
+			user = new User({
+				name,
+				email,
+				avatar,
+				password
+			});
+
+			// Encrypt the password
+			const salt = await bcrypt.genSalt(10); // Generate salt with 10 rounds
+			user.password = await bcrypt.hash(password, salt); // Hash the password
+			await user.save(); // Save user to database
+
+			// Return the json web token
+
+			res.send('Success'); // For testing
+		} catch (err) {}
 	}
 );
 
