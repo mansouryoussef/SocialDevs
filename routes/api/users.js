@@ -73,7 +73,7 @@ router.post(
 
 			// Return the json web token
 
-			// Get oayload with user id
+			// Get payload with user id
 			const payload = {
 				user: {
 					id: user.id // _id
