@@ -7,10 +7,10 @@ const { check, validationResult } = require('express-validator/check');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const auth = require('../../middleware/auth');
-const User = require('../../models/User');
+const auth = require('../../middleware/auth'); // auth middleware
+const User = require('../../models/User'); // User model
 
-// @rout    GET api/auth
+// @route   GET api/auth
 // @desc    Get authenticated user's data
 // @access  Public
 router.get('/', auth, async (req, res) => {
@@ -28,7 +28,7 @@ router.get('/', auth, async (req, res) => {
 	}
 });
 
-// @rout    POST api/auth
+// @route    POST api/auth
 // @desc    Login user and get token
 // @access  Public
 router.post(

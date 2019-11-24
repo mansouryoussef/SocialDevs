@@ -10,7 +10,7 @@ const config = require('config');
 const router = express.Router();
 const User = require('../../models/User'); // User model
 
-// @rout    POST api/users
+// @route   POST api/users
 // @desc    Register user
 // @access  Public
 router.post(
