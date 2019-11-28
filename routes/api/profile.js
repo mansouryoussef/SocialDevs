@@ -287,4 +287,101 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
 		res.status(500).send('Server error!');
 	}
 });
+
+// @route   PUT api/profile/education
+// @desc    Add profile education
+// @access  Private
+router.put(
+	'/education',
+	[
+		auth,
+		[
+			check('school', 'School is requirded')
+				.not()
+				.isEmpty(),
+			check('degree', 'Degree is requirded')
+				.not()
+				.isEmpty(),
+			check('fieldofstudy', 'Field of study is requirded')
+				.not()
+				.isEmpty(),
+			check('from', 'From date is requirded')
+				.not()
+				.isEmpty()
+		]
+	],
+	async (req, res) => {
+		const errors = validationResult(req);
+
+		// Check for validation errors
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+
+		// Pull out data
+		const {
+			school,
+			degree,
+			fieldofstudy,
+			from,
+			to,
+			current,
+			description
+		} = req.body;
+
+		// Create an onj with the data that the user submits.
+		const newEdu = {
+			school,
+			degree,
+			fieldofstudy,
+			from,
+			to,
+			current,
+			description
+		};
+
+		try {
+			// Find profile
+			const profile = await Profile.findOne({ user: req.user.id });
+
+			// Add to the beginning of the arr
+			profile.education.unshift(newEdu);
+
+			// Save
+			await profile.save();
+
+			// Send back the profile
+			res.json(profile);
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Server error!');
+		}
+	}
+);
+
+// @route   PUT api/profile/education/:edu_id
+// @desc    Delete education from profile
+// @access  Private
+router.delete('/education/:edu_id', auth, async (req, res) => {
+	try {
+		const profile = await Profile.findOne({ user: req.user.id });
+
+		// Get remove index and match it with the edu_id param
+		const removeIndex = profile.education
+			.map(item => item.id)
+			.indexOf(req.params.edu_id);
+
+		// Splice one with the removeIndex from the arr
+		profile.education.splice(removeIndex, 1);
+
+		// Save
+		await profile.save();
+
+		// Send back the profile
+		res.json(profile);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server error!');
+	}
+});
 module.exports = router;
