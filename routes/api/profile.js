@@ -115,7 +115,7 @@ router.post(
 				return res.json(profile);
 			}
 
-			// Create
+			// Create profile from Profile model
 			profile = new Profile(profileFields);
 
 			await profile.save(); // save profile
