@@ -1,0 +1,40 @@
+// global parent element
+:root {
+	// custom properties
+	--color-primary: #6c63ff;
+	--color-danger: #ff6c63;
+	--color-black: #090809;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%; // 1rem = 10px, 62.5% of 16px = 10px
+	height: 100vh;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 500;
+	line-height: 1.6;
+	min-height: 100vh;
+	min-width: 100vw;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--color-black);
+}
+
+.Link {
+	text-decoration: none;
+	color: inherit;
+}

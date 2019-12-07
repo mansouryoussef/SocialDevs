@@ -1,0 +1,91 @@
+@import '../../assets/sass/breakpoints';
+
+.formcard-container {
+	display: flex;
+	flex-direction: column;
+	padding: 3rem 5.75rem 4.5rem 5.75rem;
+	border: 1px solid var(--color-primary);
+	border-radius: 1.25rem;
+	box-shadow: 0px 0px 20px 0px rgb(207, 207, 207);
+	margin: 0 1rem;
+	@include sm {
+		padding: 2rem 3.75rem 2.5rem 3.75rem;
+	}
+
+	h1,
+	div,
+	p {
+		width: 100%;
+	}
+
+	&__title {
+		text-align: center;
+		font-size: 3.25rem;
+		@include md {
+			font-size: 3rem;
+		}
+		@include xs {
+			font-size: 2.5rem;
+		}
+	}
+
+	&__input-fields {
+		margin: 2.25rem 0;
+		@include md {
+			margin: 1.5rem 0;
+		}
+		&__field {
+			display: flex;
+			flex-direction: column;
+			margin: 1.25rem 0;
+
+			@include md {
+				margin: 1rem 0;
+			}
+			input {
+				min-height: 3.25rem;
+				min-width: 22rem;
+				border-radius: 0.75rem;
+				border: 1px solid var(--color-primary);
+				font-size: 1.5rem;
+				margin-top: 0.25rem;
+				padding: 0.75rem 1rem;
+				color: rgb(54, 54, 54);
+				@include md {
+					padding: 0.25rem 0.75rem;
+					min-height: 3rem;
+				}
+				&:focus {
+					outline: 0;
+				}
+				&::placeholder {
+					font-size: 1rem;
+					margin-left: 1rem;
+					transform: translate3d(0, -3px, 0);
+					color: rgb(116, 116, 116);
+				}
+			}
+
+			label {
+				font-size: 1.25rem;
+				margin-left: 0.5rem;
+			}
+		}
+	}
+
+	&__btn-container {
+		display: flex;
+		margin: 1rem 0;
+	}
+
+	&__note {
+		display: flex;
+		font-weight: 500;
+
+		a {
+			color: var(--color-primary);
+			text-decoration: none;
+			margin-left: 0.5rem;
+		}
+	}
+}

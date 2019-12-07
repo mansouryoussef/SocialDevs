@@ -1,0 +1,19 @@
+@import '../../assets/sass/breakpoints';
+
+.signup-page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	.formcard-container {
+		margin-top: -10vh;
+		@include custom(360) {
+			margin-top: 0;
+		}
+		@include custom(350) {
+			margin-top: -8vh;
+			transform: scale(0.8);
+		}
+	}
+}
