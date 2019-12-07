@@ -1,10 +1,20 @@
-import React from 'react'
-import "./UsersStyles.scss"
+import React from 'react';
+import './UsersStyles.scss';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
+import UserCard from '../../components/UserCard/UserCard';
 export default function Users() {
-    return (
-        <div className="users-page">
-            <h1>users</h1>             
-        </div>
-        )
-    }
-                    
+	return (
+		<div className='users-page'>
+			<Nav />
+			<h1 className='users-page__title'>Users</h1>
+
+			<div className='users-page__users-container'>
+				<UserCard />
+				<UserCard />
+				<UserCard />
+			</div>
+			<Footer />
+		</div>
+	);
+}

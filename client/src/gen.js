@@ -49,10 +49,11 @@ const generate = argsArr => {
 import "./${name}Styles.scss"
 export default function ${name}() {
     return (
-        <div className="${name.toLowerCase()}-${folder.substring(
-					0,
-					folder.length - 1
-				)}">
+        <div className="${name.toLowerCase()}-${
+					folder === 'components'
+						? 'container'
+						: folder.substring(0, folder.length - 1)
+				}">
             <h1>${name.toLowerCase()}</h1>             
         </div>
         )
