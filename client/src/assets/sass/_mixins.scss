@@ -1,0 +1,29 @@
+@import './breakpoints';
+
+@mixin circleImg($size: 14rem) {
+	min-width: $size;
+	max-width: $size;
+	height: $size;
+	position: relative;
+	overflow: hidden;
+	border-radius: 50%;
+
+	@include md {
+		min-width: $size - 3;
+		max-width: $size - 3;
+		height: $size - 3;
+	}
+
+	@include sm {
+		min-width: $size - 4;
+		max-width: $size - 4;
+		height: $size - 4;
+	}
+
+	img {
+		display: inline;
+		margin: 0 auto;
+		margin-top: -25%;
+		width: 100%;
+	}
+}

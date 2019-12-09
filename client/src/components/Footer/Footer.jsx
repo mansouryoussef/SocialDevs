@@ -1,6 +1,6 @@
 import React from 'react';
 import './FooterStyles.scss';
-export default function Footer() {
+export default function Footer({ match }) {
 	return (
 		<div className='footer-container'>
 			<div className='footer-container__item'>

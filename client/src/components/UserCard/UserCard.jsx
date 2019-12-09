@@ -7,11 +7,7 @@ export default function UserCard() {
 	return (
 		<div className='usercard-container'>
 			<div className='usercard-container__img-cropper'>
-				<img
-					className='usercard-container__img'
-					src={person}
-					alt="User's img"
-				/>
+				<img src={person} alt="User's img" />
 			</div>
 			<div className='usercard-container__user-info'>
 				<h2 className='usercard-container__user-info__name'>John</h2>
@@ -19,7 +15,7 @@ export default function UserCard() {
 				<p className='usercard-container__user-info__location'>
 					Baixa, Mozambique
 				</p>
-				<Button text='View' highlight sm />
+				<Button text='View' to='/user' highlight sm />
 			</div>
 			<div className='usercard-container__skills'>
 				<div className='usercard-container__skills__skill'>
