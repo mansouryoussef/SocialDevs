@@ -10,12 +10,21 @@
 	width: fit-content;
 	height: fit-content;
 	cursor: pointer;
+
+	@include sm {
+		font-size: 1.25rem !important;
+		padding: 0.25rem 0.75rem;
+	}
+
 	p {
 		font-size: 2rem;
 		text-align: center;
 
 		@include md {
 			font-size: 1.75rem;
+		}
+		@include sm {
+			font-size: 1.25rem !important;
 		}
 	}
 
@@ -30,6 +39,12 @@
 		@extend .btn;
 		border-color: white;
 		background-color: transparent;
+		color: white;
+	}
+	&--danger {
+		@extend .btn;
+		border-color: var(--color-danger);
+		background-color: var(--color-danger);
 		color: white;
 	}
 	&__icon {

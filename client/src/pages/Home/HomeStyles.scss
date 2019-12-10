@@ -94,19 +94,23 @@
 					}
 				}
 			}
+
 			h2 {
 				font-weight: 300;
 			}
+
 			&__btns {
 				max-width: 23rem;
 				display: flex;
 				justify-content: space-between;
 				margin-top: 3rem;
+
 				@include lg {
 					margin: 2rem auto;
 				}
+
 				@include md {
-					justify-content: space-around;
+					justify-content: center;
 				}
 			}
 		}

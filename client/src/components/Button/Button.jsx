@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Button({
 	highlight,
 	white,
+	danger,
 	text,
 	icon,
 	to,
@@ -15,8 +16,8 @@ export default function Button({
 			<div
 				onClick={onClick}
 				className={`btn${highlight ? '--highlight' : ''}${
-					white ? '--white' : ''
-				}`}>
+					danger ? '--danger' : ''
+				}${white ? '--white' : ''}`}>
 				{icon && <img src={icon} alt='icon' className='btn__icon' />}
 				<p style={{ fontSize: sm ? '1.5rem' : '' }}>{text}</p>
 			</div>

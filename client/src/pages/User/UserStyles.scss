@@ -126,7 +126,7 @@
 
 			&__card {
 				padding: 2rem;
-				border: 1px solid rgb(224, 224, 224);
+				border: 1px solid var(--color-light-gray);
 				width: 49%;
 				border-radius: 0.5rem;
 
@@ -140,7 +140,7 @@
 					width: 100%;
 					margin: 2.5rem 0;
 					height: 1px;
-					background-color: rgb(224, 224, 224);
+					background-color: var(--color-light-gray);
 				}
 
 				&__title {

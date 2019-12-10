@@ -5,6 +5,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Users from './pages/Users/Users';
 import User from './pages/User/User';
+import Profile from './pages/Profile/Profile';
 import Footer from './components/Footer/Footer';
 import { Route } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ const App = ({ location }) => {
 			<Route path='/signup' exact component={Signup} />
 			<Route path='/users' exact component={Users} />
 			<Route path='/user' exact component={User} />
+			<Route path='/profile' exact component={Profile} />
 			{location.pathname !== '/' && <Footer />}
 		</main>
 	);

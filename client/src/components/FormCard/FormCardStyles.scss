@@ -12,6 +12,8 @@
 
 	@include sm {
 		padding: 2rem 3.75rem 2.5rem 3.75rem;
+		margin-top: 6vh;
+		max-width: 88vw;
 	}
 
 	h1,
@@ -36,6 +38,7 @@
 		@include md {
 			margin: 1.5rem 0;
 		}
+
 		&__field {
 			display: flex;
 			flex-direction: column;
@@ -53,10 +56,16 @@
 				margin-top: 0.25rem;
 				padding: 0.75rem 1rem;
 				color: rgb(54, 54, 54);
+
 				@include md {
 					padding: 0.25rem 0.75rem;
 					min-height: 3rem;
 				}
+
+				@include sm {
+					min-width: 100%;
+				}
+
 				&:focus {
 					outline: 0;
 				}
@@ -83,6 +92,10 @@
 	&__note {
 		display: flex;
 		font-weight: 500;
+
+		@include sm {
+			font-size: 1.25rem;
+		}
 
 		a {
 			color: var(--color-primary);

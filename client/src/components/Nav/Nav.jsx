@@ -30,7 +30,7 @@ export default function Nav({ loggedin }) {
 				<img src={profile} alt='Profile icon' />
 				<span>Profile</span>
 			</span>
-			<Button text='Sign out' icon={signout} />
+			<Button text='Sign out' sm icon={signout} />
 		</div>
 	);
 
