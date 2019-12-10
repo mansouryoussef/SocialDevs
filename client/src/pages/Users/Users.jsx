@@ -1,8 +1,8 @@
 import React from 'react';
 import './UsersStyles.scss';
 import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
 import UserCard from '../../components/UserCard/UserCard';
+
 export default function Users() {
 	return (
 		<div className='users-page'>
@@ -14,7 +14,6 @@ export default function Users() {
 				<UserCard />
 				<UserCard />
 			</div>
-			<Footer />
 		</div>
 	);
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import './SignupStyles.scss';
 import Nav from '../../components/Nav/Nav';
 import FormCard from '../../components/FormCard/FormCard';
-import Footer from '../../components/Footer/Footer';
+
 export default function Signup() {
 	return (
 		<div className='signup-page'>
@@ -28,7 +28,6 @@ export default function Signup() {
 					<input id='confirm password' type='password' />
 				</div>
 			</FormCard>
-			<Footer />
 		</div>
 	);
 }

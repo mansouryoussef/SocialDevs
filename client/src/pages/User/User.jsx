@@ -1,7 +1,6 @@
 import React from 'react';
 import './UserStyles.scss';
 import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
 import person from '../../assets/img/person.jpg';
 import git from '../../assets/img/icons/git.png';
 import youtube from '../../assets/img/icons/youtube.png';
@@ -159,7 +158,7 @@ export default function User() {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			x
 		</div>
 	);
 }

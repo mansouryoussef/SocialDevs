@@ -5,18 +5,19 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Users from './pages/Users/Users';
 import User from './pages/User/User';
+import Footer from './components/Footer/Footer';
 import { Route } from 'react-router-dom';
 
-const App = ({ match }) => {
-	console.log(match.url);
+const App = ({ location }) => {
 	return (
-		<Fragment>
+		<main className='app-container'>
 			<Route path='/' exact component={Home} />
 			<Route path='/login' exact component={Login} />
 			<Route path='/signup' exact component={Signup} />
 			<Route path='/users' exact component={Users} />
 			<Route path='/user' exact component={User} />
-		</Fragment>
+			{location.pathname !== '/' && <Footer />}
+		</main>
 	);
 };
 

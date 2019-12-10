@@ -2,7 +2,6 @@ import React from 'react';
 import './LoginStyles.scss';
 import Nav from '../../components/Nav/Nav';
 import FormCard from '../../components/FormCard/FormCard';
-import Footer from '../../components/Footer/Footer';
 
 export default function Login() {
 	return (
@@ -22,7 +21,6 @@ export default function Login() {
 					<input id='password' type='password' />
 				</div>
 			</FormCard>
-			<Footer />
 		</div>
 	);
 }
