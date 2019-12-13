@@ -64,7 +64,11 @@ export default function ${name}() {
 			// Create a sass file
 			fs.writeFileSync(
 				`./${folder}/${name}/${name}Styles.scss`,
-				`.${name.toLowerCase()}-${folder.substring(0, folder.length - 1)} {}`
+				`.${name.toLowerCase()}-${
+					folder === 'components'
+						? 'container'
+						: folder.substring(0, folder.length - 1)
+				} {}`
 			);
 		} else if (fs.existsSync(`./${folder}/${name}`)) {
 			console.log(`${name} already exists!`);

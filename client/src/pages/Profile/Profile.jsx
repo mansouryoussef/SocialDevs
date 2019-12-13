@@ -67,7 +67,7 @@ export default function Profile() {
 
 				<div className='profile-page__content__table'>
 					<div className='profile-page__content__table__title-container'>
-						<h2>Experience</h2>
+						<h2>Education</h2>
 						<span className='profile-page__content__table__title-container__btn'>
 							<Button sm text='Add' />
 						</span>
@@ -75,10 +75,10 @@ export default function Profile() {
 
 					<div className='profile-page__content__table__header-row'>
 						<h3 className='profile-page__content__table__header-row__item'>
-							Company
+							School
 						</h3>
 						<h3 className='profile-page__content__table__header-row__item'>
-							Title
+							Degree
 						</h3>
 						<h3 className='profile-page__content__table__header-row__item'>
 							Years

@@ -1,0 +1,35 @@
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+
+.postcard-container {
+	@include wideCard;
+	// padding: 1rem 5rem;
+	&__img-name {
+		margin-right: 5rem;
+
+		&__cropper {
+			@include circleImg(11rem);
+		}
+
+		&__name {
+			text-align: center;
+		}
+	}
+	&__body {
+		display: flex;
+		flex-direction: column;
+
+		&__text {
+			font-size: 1.4rem;
+			// margin-top: 2rem;
+		}
+		&__date {
+			margin: 0.25rem 0 2rem 0;
+			color: gray;
+			font-size: 1.15rem;
+		}
+		&__btns {
+			display: flex;
+		}
+	}
+}

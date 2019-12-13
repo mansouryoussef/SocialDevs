@@ -45,13 +45,15 @@
 			max-width: 170rem;
 			margin: 0 auto;
 			margin-top: 14vh;
+
 			@include lg {
 				text-align: center;
 				margin-top: 11vh;
 			}
+
 			@include md {
-				margin-top: 15vh;
 			}
+
 			img {
 				position: absolute;
 				right: 4vw;

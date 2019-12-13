@@ -49,3 +49,13 @@
 	width: 24%;
 	padding: $pad;
 }
+@mixin wideCard {
+	display: flex;
+	max-width: 80rem;
+	width: 100%;
+	margin-bottom: 3rem;
+	padding: 3rem 5rem;
+	border-radius: 1.25rem;
+	box-shadow: var(--shadow-light);
+	align-items: center;
+}

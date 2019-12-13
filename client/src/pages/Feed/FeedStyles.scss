@@ -1,1 +1,48 @@
-.feed-page {}
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+.feed-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__title {
+		@include titleUnderline;
+	}
+	&__content {
+		max-width: 80rem;
+		width: 100%;
+		margin: 0 2rem;
+
+		&__action-container {
+			margin-top: 3rem;
+
+			&__title {
+				font-weight: 500;
+				color: rgb(93, 93, 93);
+				margin-bottom: 0.5rem;
+			}
+			&__textArea {
+				width: 100%;
+				min-height: 10rem;
+				border-radius: 0.4rem;
+				padding: 1rem;
+				font-size: 1.75rem;
+				margin-bottom: 0.5rem;
+				border-color: rgb(93, 93, 93);
+				resize: none;
+
+				&::placeholder {
+					font-size: 1.5rem;
+				}
+
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+
+		&__posts-container {
+			margin: 8rem 0;
+		}
+	}
+}
