@@ -88,10 +88,10 @@ export default function Profile() {
 
 					<div className='profile-page__content__table__info-row'>
 						<span className='profile-page__content__table__info-row__item'>
-							Nice company
+							Nice school
 						</span>
 						<span className='profile-page__content__table__info-row__item'>
-							Nice title
+							Nice degree
 						</span>
 						<span className='profile-page__content__table__info-row__item'>
 							Lots of years
@@ -105,10 +105,10 @@ export default function Profile() {
 
 					<div className='profile-page__content__table__info-row'>
 						<span className='profile-page__content__table__info-row__item'>
-							Nice company
+							Nice school
 						</span>
 						<span className='profile-page__content__table__info-row__item'>
-							Nice title
+							Nice degree
 						</span>
 						<span className='profile-page__content__table__info-row__item'>
 							Lots of years

@@ -80,4 +80,4 @@ export default function ${name}() {
 generate(args);
 
 // Usage
-// node gen.js -folder your_comonents_name_here
+// node gen.js -<folder> your_comonents_name_here

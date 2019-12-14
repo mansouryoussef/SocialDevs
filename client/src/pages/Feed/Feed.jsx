@@ -16,11 +16,12 @@ export default function Feed() {
 					</p>
 					<textarea
 						placeholder="What's on your mind?"
-						className='feed-page__content__action-container__textArea'></textarea>
+						className='feed-page__content__action-container__textArea'
+					/>
 					<Button text='Post it!' sm highlight />
 				</div>
 				<div className='feed-page__content__posts-container'>
-					<PostCard />
+					<PostCard deletable />
 					<PostCard />
 					<PostCard />
 				</div>

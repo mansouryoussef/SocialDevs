@@ -8,16 +8,24 @@
 	overflow: hidden;
 	border-radius: 50%;
 
-	@include md {
-		min-width: $size - 3;
-		max-width: $size - 3;
-		height: $size - 3;
-	}
+	@if $size >= 8 {
+		@include md {
+			min-width: $size - 3;
+			max-width: $size - 3;
+			height: $size - 3;
+		}
 
-	@include sm {
-		min-width: $size - 4;
-		max-width: $size - 4;
-		height: $size - 4;
+		@include sm {
+			min-width: $size - 4;
+			max-width: $size - 4;
+			height: $size - 4;
+		}
+	} @else {
+		@include sm {
+			min-width: $size - 1;
+			max-width: $size - 1;
+			height: $size - 1;
+		}
 	}
 
 	img {
