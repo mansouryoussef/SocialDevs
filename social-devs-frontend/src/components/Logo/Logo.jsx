@@ -9,6 +9,7 @@ export default function Logo() {
 			<Link to='/' className='Link'>
 				<img src={logo} alt='Website logo' />
 			</Link>
+
 			<p>Social Devs</p>
 		</div>
 	);

@@ -8,7 +8,9 @@ export default function FormCard({ handleSubmit, login, children, errorMsg }) {
 			<h1 className='formcard-container__title'>
 				{login ? 'Log in' : 'Sign up'}
 			</h1>
+
 			<div className='formcard-container__input-fields'>{children}</div>
+
 			<span className='formcard-container__error'>{errorMsg}</span>
 
 			<div className='formcard-container__btn-container'>
@@ -20,10 +22,12 @@ export default function FormCard({ handleSubmit, login, children, errorMsg }) {
 					highlight
 				/>
 			</div>
+
 			{/* @TODO consider moving this to an own component. e.g. Note */}
 			<p className='formcard-container__note'>
 				{login ? 'Don’t have an account?' : 'Already have an account?'}
 				{/* @TODO use anchor only for outside urls otherwise always use <Link> */}
+
 				<a href={login ? '/signup' : '/login'}>
 					{login ? 'Sign up' : 'Log in'}
 				</a>

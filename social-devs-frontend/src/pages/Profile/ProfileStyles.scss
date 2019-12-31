@@ -81,6 +81,10 @@
 				align-items: center;
 				margin: 0.5rem 0;
 
+				@include xs {
+					justify-content: flex-start;
+				}
+
 				input {
 					min-height: 3.5rem;
 					min-width: 26rem;
@@ -98,6 +102,10 @@
 					@include md {
 						padding: 0.25rem 0.75rem;
 						min-height: 3rem;
+					}
+
+					@include xs {
+						min-width: auto;
 					}
 
 					&:focus {

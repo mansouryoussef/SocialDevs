@@ -1,13 +1,12 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import './PostCardStyles.scss';
-import person from '../../assets/img/person.jpg';
-import notLiked from '../../assets/img/icons/emptyheart.svg';
-import like from '../../assets/img/icons/filledheart.svg';
-import Button from '../Button/Button';
-import { DataContext } from '../../contexts/DataContext';
+import person from '../../../../assets/img/person.jpg';
+import notLiked from '../../../../assets/img/icons/emptyheart.svg';
+import like from '../../../..//assets/img/icons/filledheart.svg';
+import { DataContext } from '../../../../contexts/DataContext';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { format } from 'date-fns';
+import Button from '../../../Button/Button';
 
 export default function PostCard({
 	text,
@@ -20,7 +19,6 @@ export default function PostCard({
 }) {
 	let history = useHistory();
 	const { user, posts, setPosts } = useContext(DataContext);
-
 	const [liked, setLiked] = useState(false);
 	const [likesCount, setLikesCount] = useState(likes.length);
 
@@ -34,7 +32,7 @@ export default function PostCard({
 		if (likedByUser) {
 			setLiked(true);
 		}
-	});
+	}, []);
 
 	const handleLike = async () => {
 		try {
@@ -45,13 +43,13 @@ export default function PostCard({
 				}
 			};
 
-			await Axios.put(`/api/posts/like/${id}`, null, config);
+			const res = await Axios.put(`/api/posts/like/${id}`, null, config);
+			likes.push(res.data[0]);
+			setLiked(true);
+			setLikesCount(likesCount + 1);
 		} catch (error) {
 			console.log(error);
 		}
-
-		setLiked(true);
-		setLikesCount(likesCount + 1);
 	};
 
 	const handleUnlike = async () => {
@@ -63,13 +61,11 @@ export default function PostCard({
 			};
 
 			await Axios.put(`/api/posts/unlike/${id}`, null, config);
+			setLiked(false);
+			setLikesCount(likesCount - 1);
 		} catch (error) {
 			console.log(error);
 		}
-
-		setLiked(false);
-		setLikesCount(likesCount - 1);
-		console.log(liked);
 	};
 
 	const handleDeletePost = async () => {
@@ -92,7 +88,7 @@ export default function PostCard({
 	};
 
 	return (
-		// @TODO separete view from other logic.e.g.create an own Post Component
+		// @TODO separete view from other logic.e.g. create an own Post Component
 		// Example: --> < Post onUnlike={handleUnlike} />
 		<div className='postcard-container'>
 			<div className='postcard-container__img-name'>
@@ -110,7 +106,7 @@ export default function PostCard({
 				<p className='postcard-container__body__text'>{text}</p>
 
 				<span className='postcard-container__body__date'>
-					Posted on: {format(new Date(date), 'yyyy-MM-dd')}
+					Posted on: {date}
 					{/* // @TODO consider creating a date service to format dates. */}
 				</span>
 

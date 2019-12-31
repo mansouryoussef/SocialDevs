@@ -1,11 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import './FeedStyles.scss';
 import Button from '../../components/Button/Button';
-import PostCard from '../../components/PostCard/PostCard';
 import { DataContext } from '../../contexts/DataContext';
 import Axios from 'axios';
+import { format } from 'date-fns';
+import PostCard from '../../components/Feed/CommentCard/PostCard/PostCard';
 
-export default function Feed({ match }) {
+export default function Feed() {
 	const { posts, getPosts } = useContext(DataContext);
 	const [postText, setPostText] = useState('');
 
@@ -45,17 +46,21 @@ export default function Feed({ match }) {
 					<p className='feed-page__content__action-container__title'>
 						Create a post
 					</p>
+
 					<textarea
 						onChange={e => handleOnChange(e)}
 						value={postText}
 						placeholder="What's on your mind?"
 						className='feed-page__content__action-container__textArea'
 					/>
+
 					<Button onClick={handleCreatePost} text='Post it!' sm highlight />
 				</div>
+
 				{/* @TODO consider moving this to an own component */}
 				{posts.map(post => {
 					const { text, name, avatar, user, likes, date, comments, _id } = post;
+
 					return (
 						<div key={_id} className='feed-page__content__posts-container'>
 							<PostCard
@@ -64,7 +69,7 @@ export default function Feed({ match }) {
 								avatar={avatar}
 								postUserId={user}
 								likes={likes}
-								date={date}
+								date={format(new Date(date), 'dd.MM.yyyy')}
 								comments={comments}
 								id={_id}
 							/>

@@ -1,10 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './UserStyles.scss';
 import person from '../../assets/img/person.jpg';
-import git from '../../assets/img/icons/git.png';
-import youtube from '../../assets/img/icons/youtube.png';
-import facebook from '../../assets/img/icons/facebook.png';
-import twitter from '../../assets/img/icons/twitter.jpg';
 import { DataContext } from '../../contexts/DataContext';
 
 export default function User({ match }) {
@@ -21,14 +17,9 @@ export default function User({ match }) {
 		}
 	}, [profiles]);
 
-	// console.log('profiles', profiles);
-	// console.log('Params:', match.params.user_id);
-	// console.log('user Profile:', userProfile);
-
 	const {
 		social,
 		skills,
-		website,
 		location,
 		bio,
 		title,
@@ -36,8 +27,6 @@ export default function User({ match }) {
 		experience,
 		education
 	} = profile;
-
-	console.log('Profile:', profile);
 
 	// @TODO the template here is abit too long, consider refactoring it into multiple smaller componenets. for example a generic component to display skills or bio.
 	return (

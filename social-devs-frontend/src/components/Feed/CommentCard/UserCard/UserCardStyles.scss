@@ -1,5 +1,5 @@
-@import '../../assets/sass/breakpoints';
-@import '../../assets/sass/mixins';
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/mixins';
 
 .usercard-container {
 	@include wideCard;
@@ -15,6 +15,7 @@
 	&__img-cropper {
 		@include circleImg;
 		margin-right: 2rem;
+
 		@include custom(400) {
 			min-width: 8rem;
 			max-width: 8rem;
@@ -28,6 +29,7 @@
 			@include md {
 				font-size: 2.5rem;
 			}
+
 			@include sm {
 				font-size: 2rem;
 			}
@@ -36,10 +38,12 @@
 		&__title,
 		&__location {
 			font-size: 1.55rem;
+
 			@include sm {
 				font-size: 1.25rem;
 			}
 		}
+
 		.btn--highlight {
 			margin-top: 1rem;
 		}
@@ -50,12 +54,13 @@
 		font-size: 1.75rem;
 		color: rgb(68, 68, 68);
 		font-weight: 300;
-		@include custom(359) {
-			display: none;
-		}
 
 		@include sm {
 			font-size: 1.25rem;
+		}
+
+		@include custom(359) {
+			display: none;
 		}
 
 		&__skill {

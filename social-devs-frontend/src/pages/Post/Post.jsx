@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './PostStyles.scss';
 import Button from '../../components/Button/Button';
-import PostCard from '../../components/PostCard/PostCard';
-import CommentCard from '../../components/CommentCard/CommentCard';
 import Axios from 'axios';
 import { DataContext } from '../../contexts/DataContext';
+import CommentCard from '../../components/Feed/CommentCard/CommentCard';
+import PostCard from '../../components/Feed/CommentCard/PostCard/PostCard';
+import { format } from 'date-fns';
 
 export default function Post({ match }) {
 	const { posts, getPosts } = useContext(DataContext);
@@ -37,6 +38,7 @@ export default function Post({ match }) {
 			console.error(error);
 		}
 	};
+
 	return (
 		<div className='post-page'>
 			<div className='post-page__content'>
@@ -101,13 +103,14 @@ export default function Post({ match }) {
 
 							return comments.map(comment => {
 								const { user, text, name, avatar, date, _id } = comment;
+
 								return (
 									<CommentCard
 										commentUserId={user}
 										text={text}
 										name={name.split(' ')[0]}
 										avatar={avatar}
-										date={date}
+										date={format(new Date(date), 'dd.MM.yyyy')}
 										commentId={_id}
 										postId={match.params.post_id}
 										comments={comments}

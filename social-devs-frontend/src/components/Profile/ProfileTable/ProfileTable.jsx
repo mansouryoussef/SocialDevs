@@ -6,6 +6,7 @@ import { DataContext } from '../../../contexts/DataContext';
 import TableList from './TableList';
 import { capitalize } from '../../../service/helpers';
 import AddEducationForm from './AddEducationForm/AddEducationForm';
+import { handleDeleteEdu,handleDeleteExp } from '../../../service/profile';
 
 export default function ProfileTable({ info }) {
 	const [addingExp, setAddingExp] = useState(false);
@@ -13,7 +14,6 @@ export default function ProfileTable({ info }) {
 
 	const { userProfile } = useContext(DataContext);
 	const { type, headerCells, itemList } = info;
-	console.log(headerCells);
 
 	return (
 		<>
@@ -52,7 +52,7 @@ export default function ProfileTable({ info }) {
 				)}
 
 				{userProfile[type] && (
-					<TableList arr={itemList} itemNamesArr={headerCells.slice(0, 2)} />
+					<TableList arr={itemList} itemNamesArr={headerCells.slice(0, 2)} handleDelete={type === 'education' ? handleDeleteEdu : handleDeleteExp}/>
 				)}
 			</table>
 		</>

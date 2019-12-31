@@ -31,9 +31,11 @@
 	&__title {
 		text-align: center;
 		font-size: 3.25rem;
+
 		@include md {
 			font-size: 3rem; // @TODO create variables for font sizes. e.g. font-large font-small font-xsmall.
 		}
+
 		@include xs {
 			font-size: 2.5rem;
 		}
@@ -54,6 +56,7 @@
 			@include md {
 				margin: 1rem 0;
 			}
+
 			input {
 				min-height: 3.25rem;
 				min-width: 22rem;
@@ -76,6 +79,7 @@
 				&:focus {
 					outline: 0;
 				}
+
 				&::placeholder {
 					font-size: 1rem;
 					margin-left: 1rem;

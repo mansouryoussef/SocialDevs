@@ -79,6 +79,7 @@ export default function Signup() {
 				errorMsg={errorMsg}>
 				<div className='formcard-container__input-fields__field'>
 					<label htmlFor='name'>Name</label>
+
 					<input
 						id='name'
 						value={name}
@@ -89,6 +90,7 @@ export default function Signup() {
 				</div>
 				<div className='formcard-container__input-fields__field'>
 					<label htmlFor='email'>Email</label>
+
 					<input
 						id='email'
 						type='email'
@@ -99,6 +101,7 @@ export default function Signup() {
 				</div>
 				<div className='formcard-container__input-fields__field'>
 					<label htmlFor='password'>Password</label>
+
 					<input
 						id='password'
 						type='password'
@@ -109,6 +112,7 @@ export default function Signup() {
 				</div>
 				<div className='formcard-container__input-fields__field'>
 					<label htmlFor='confirm password'>Confirm password</label>
+
 					<input
 						id='confirm password'
 						type='password'

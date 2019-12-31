@@ -47,7 +47,6 @@ export function DataContextProvider(props) {
 		} catch (error) {
 			console.log(error);
 		}
-		// console.log('User:', res.data);
 	};
 
 	// @TODO consider refactoring this:
@@ -71,8 +70,6 @@ export function DataContextProvider(props) {
 			setPosts(res.data);
 
 			setIsLoading(false);
-
-			// console.log('Posts:', res.data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -145,10 +142,7 @@ export function DataContextProvider(props) {
 			setUserProfile(res.data);
 
 			setHasProfile(true);
-			// setUserExperience(res.data.experience);
 			setIsLoading(false);
-
-			console.log('User Profile:', res.data.experience);
 		} catch (error) {
 			setIsLoading(false);
 			console.log(error);

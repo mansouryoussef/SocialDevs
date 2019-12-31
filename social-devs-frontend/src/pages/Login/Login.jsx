@@ -66,6 +66,7 @@ export default function Login() {
 				errorMsg={errorMsg}>
 				<div className='formcard-container__input-fields__field'>
 					<label htmlFor='email'>Email</label>
+
 					<input
 						id='email'
 						type='email'
@@ -74,8 +75,10 @@ export default function Login() {
 						name='email'
 					/>
 				</div>
+
 				<div className='formcard-container__input-fields__field'>
 					<label htmlFor='password'>Password</label>
+
 					<input
 						id='password'
 						type='password'

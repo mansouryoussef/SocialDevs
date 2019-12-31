@@ -68,15 +68,15 @@ const ProfileSchema = new Schema({
 			}
 		}
 	],
-	social: {
-		twitter: {
-			type: String
-		},
 
-		linkedin: {
-			type: String
-		}
+	twitter: {
+		type: String
 	},
+
+	linkedin: {
+		type: String
+	},
+
 	date: {
 		type: Date,
 		default: Date.now

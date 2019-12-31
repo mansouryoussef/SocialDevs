@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './UsersStyles.scss';
-import UserCard from '../../components/UserCard/UserCard';
 import { DataContext } from '../../contexts/DataContext';
+import UserCard from '../../components/Feed/CommentCard/UserCard/UserCard';
 
 // Great example!
 export default function Users() {
@@ -13,7 +13,8 @@ export default function Users() {
 
 			<div className='users-page__users-container'>
 				{profiles.map(profile => {
-					const { user, skills, experience, location, title } = profile;
+					const { user, skills, location, title } = profile;
+
 					return (
 						<UserCard
 							key={user._id}

@@ -82,19 +82,14 @@ router.post(
 		if (bio) profileFields.bio = bio;
 		if (title) profileFields.title = title;
 		if (githubusername) profileFields.githubusername = githubusername;
+		if (twitter) profileFields.twitter = twitter;
+		if (linkedin) profileFields.linkedin = linkedin;
 
 		if (skills) {
 			// Split string input by ','
 			// Map through the created arr and trim each value
 			profileFields.skills = skills.split(',').map(skill => skill.trim());
 		}
-
-		// Build social
-		profileFields.social = {};
-
-		if (twitter) profileFields.social.twitter = twitter;
-
-		if (linkedin) profileFields.social.linkedin = linkedin;
 
 		try {
 			let profile = await Profile.findOne({ user: req.user.id });

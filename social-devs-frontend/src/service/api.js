@@ -1,11 +1,6 @@
-import Axios from 'axios';
-
+// Creates a header object
 export const createAuthHeader = token => ({
 	'x-auth-token': token,
-	'Content-Type': 'application/json'
+	'Content-Type': 'application/json',
+	'Access-Control-Allow-Origin': true
 });
-
-export const deleteProfileExperience = async (expId, headers) =>
-	Axios.delete(`/api/profile/experience/${expId}`, {
-		headers
-	});

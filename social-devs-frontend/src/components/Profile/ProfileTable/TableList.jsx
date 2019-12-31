@@ -4,13 +4,13 @@ import { handleDeleteExp } from '../../../service/profile';
 import { DataContext } from '../../../contexts/DataContext';
 import Button from '../../Button/Button';
 
-export default function TableList({ arr, itemNamesArr }) {
+export default function TableList({ arr, itemNamesArr, handleDelete }) {
 	const { setUserProfile } = useContext(DataContext);
 
 	return arr.map(item => {
 		const to =
 			item.to === null ? 'Present' : format(new Date(item.to), 'dd-MM-yyyy');
-		const from = format(new Date(item.from), 'dd-MM-yyyy');
+		const from = format(new Date(item.from), 'dd.MM.yyyy');
 
 		return (
 			<tr className='profile-table__info-row'>
@@ -22,7 +22,7 @@ export default function TableList({ arr, itemNamesArr }) {
 				<td>
 					<Button
 						danger
-						onClick={() => handleDeleteExp(item._id, setUserProfile)}
+						onClick={() => handleDelete(item._id, setUserProfile)}
 						text='Delete'
 						sm
 					/>

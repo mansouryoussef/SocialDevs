@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import './AddEducationFormStyles.scss';
 import Button from '../../../Button/Button';
 import { DataContext } from '../../../../contexts/DataContext';
-import Axios from 'axios';
 import { handleAddEdu } from '../../../../service/profile';
 
 export default function AddEducationForm({ setAddingEdu }) {

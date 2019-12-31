@@ -43,6 +43,7 @@
 					font-size: 2.25rem;
 				}
 			}
+
 			&__title,
 			&__location {
 				@include sm() {
@@ -123,6 +124,7 @@
 				width: 49%;
 				border-radius: 0.5rem;
 				height: fit-content;
+
 				@include sm {
 					width: 100%;
 					padding: 8vw;
@@ -139,6 +141,7 @@
 				&__title {
 					margin-bottom: 1rem;
 					color: var(--color-primary);
+
 					@include sm {
 						margin-bottom: 2rem;
 					}

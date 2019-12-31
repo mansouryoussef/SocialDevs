@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import './CommentCardStyles.scss';
-import person from '../../assets/img/person.jpg'; // @TODO add absolute path not relative path. e.g. @assets/
-import Button from '../Button/Button';
-import { DataContext } from '../../contexts/DataContext';
+import person from '../../../assets/img/person.jpg'; // @TODO add absolute path not relative path. e.g. @assets/
 import Axios from 'axios';
+import { DataContext } from '../../../contexts/DataContext';
+import Button from '../../Button/Button';
 
 export default function CommentCard({
 	commentUserId,

@@ -10,6 +10,7 @@
 	&__title {
 		@include titleUnderline;
 	}
+
 	&__users-container {
 		display: flex;
 		flex-direction: column;
