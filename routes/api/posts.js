@@ -57,7 +57,7 @@ router.post(
 	}
 );
 
-// @route   POST api/posts
+// @route   GET api/posts
 // @desc    Get all posts
 // @access  Private
 router.get('/', auth, async (req, res) => {
@@ -72,7 +72,7 @@ router.get('/', auth, async (req, res) => {
 	}
 });
 
-// @route   POST api/posts/:post_id
+// @route   GET api/posts/:post_id
 // @desc    Get post by id
 // @access  Private
 router.get('/:post_id', auth, async (req, res) => {
@@ -252,7 +252,9 @@ router.delete('/comment/:post_id/:comment_id/', auth, async (req, res) => {
 		await post.save();
 
 		// Send back the comments arr
-		res.json({ msg: 'Comment deleted!' });
+		res.json({
+			msg: 'Comment deleted!'
+		});
 	} catch (err) {
 		console.error(err);
 		res.status(500).send('Server error');

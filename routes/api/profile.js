@@ -41,7 +41,7 @@ router.post(
 	[
 		auth,
 		[
-			check('status', 'Status is required')
+			check('title', 'Title is required')
 				.not()
 				.isEmpty(),
 			check('skills', 'Skills are required')
@@ -64,13 +64,10 @@ router.post(
 			website,
 			location,
 			bio,
-			status,
+			title,
 			githubusername,
 			skills,
-			youtube,
-			facebook,
 			twitter,
-			instagram,
 			linkedin
 		} = req.body;
 
@@ -83,7 +80,7 @@ router.post(
 		if (website) profileFields.website = website;
 		if (location) profileFields.location = location;
 		if (bio) profileFields.bio = bio;
-		if (status) profileFields.status = status;
+		if (title) profileFields.title = title;
 		if (githubusername) profileFields.githubusername = githubusername;
 
 		if (skills) {
@@ -95,11 +92,9 @@ router.post(
 		// Build social
 		profileFields.social = {};
 
-		if (youtube) profileFields.social.youtube = youtube;
 		if (twitter) profileFields.social.twitter = twitter;
-		if (facebook) profileFields.social.facebook = facebook;
+
 		if (linkedin) profileFields.social.linkedin = linkedin;
-		if (instagram) profileFields.social.instagram = instagram;
 
 		try {
 			let profile = await Profile.findOne({ user: req.user.id });
@@ -224,25 +219,14 @@ router.put(
 		}
 
 		// Pull out data
-		const {
-			title,
-			company,
-			location,
-			from,
-			to,
-			current,
-			description
-		} = req.body;
+		const { title, company, from, to } = req.body;
 
 		// Create an onj with the data that the user submits.
 		const newExp = {
 			title,
 			company,
-			location,
 			from,
-			to,
-			current,
-			description
+			to
 		};
 
 		try {
@@ -302,9 +286,6 @@ router.put(
 				.not()
 				.isEmpty(),
 			check('degree', 'Degree is requirded')
-				.not()
-				.isEmpty(),
-			check('fieldofstudy', 'Field of study is requirded')
 				.not()
 				.isEmpty(),
 			check('from', 'From date is requirded')

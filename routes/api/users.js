@@ -20,9 +20,12 @@ router.post(
 		check('name', 'Name is required!') // check name & set error msg
 			.not()
 			.isEmpty(),
-		check('email', 'Please enter a valid email!') // check if email is valid & set error msg
+		check('email', 'Email is required!') // check if email is not empty
+			.not()
+			.isEmpty(),
+		check('email', 'Email is invalid!') // check if email is valid & set error msg
 			.isEmail(),
-		check('password', 'Required 6 or more characters') // check if password is long enough
+		check('password', 'Password 6+ characters') // check if password is long enough
 			.isLength({ min: 6 })
 	],
 

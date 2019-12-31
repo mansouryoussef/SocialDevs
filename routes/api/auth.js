@@ -35,8 +35,14 @@ router.post(
 	'/',
 	// Middleware
 	[
+		check('email', 'Email is required!') // check if email is not empty
+			.not()
+			.isEmpty(),
 		check('email', 'Please enter a valid email!') // check if email is valid & set error msg
 			.isEmail(),
+		check('password', 'Password is required!') // check if password is not empty
+			.not()
+			.isEmpty(),
 		check('password', 'Password is required').exists() // check if email exists,
 	],
 
@@ -62,7 +68,7 @@ router.post(
 				// send status 400 and errors array with error msg
 				return res
 					.status(400)
-					.json({ errors: [{ msg: 'Invalid credentials' }] });
+					.json({ errors: [{ msg: 'Wrong email or password!' }] });
 			}
 
 			// Compare passweords
@@ -74,7 +80,7 @@ router.post(
 				// send status 400 and errors array with error msg
 				return res
 					.status(400)
-					.json({ errors: [{ msg: 'Invalid credentials' }] }); // don't specify which is wrong
+					.json({ errors: [{ msg: 'Wrong email or password!' }] }); // don't specify which is wrong
 			}
 
 			// Return the json web token

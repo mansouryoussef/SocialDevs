@@ -17,6 +17,10 @@ const PostSchema = new Schema({
 	avatar: {
 		type: String
 	},
+	date: {
+		type: Date,
+		default: Date.now
+	},
 	likes: [
 		{
 			user: {
@@ -27,6 +31,7 @@ const PostSchema = new Schema({
 	],
 	comments: [
 		{
+			// @TODO consider making a new re-usable schema from this structure. To be used by comments & post itself.
 			user: {
 				type: Schema.Types.ObjectId,
 				ref: 'users'
