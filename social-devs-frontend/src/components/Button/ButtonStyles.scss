@@ -1,0 +1,61 @@
+@import '../../assets/sass/breakpoints';
+
+// $base-unit: 0.5rem;
+
+// $space-1: $base-unit * 0.5;
+// $space-2: $base-unit * 1;
+// $space-3: $base-unit * 2;
+// $space-4: $base-unit * 4;
+
+.btn {
+	padding: 0.3rem 1.5rem; // @TODO create variables for dimensions. e.g. base-dimenion * number.
+	border: 1px solid var(--color-primary);
+	border-radius: 0.4rem;
+	margin-right: 0.75rem; // @TODO scss dimensions.
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
+	cursor: pointer;
+
+	@include sm {
+		font-size: 1.25rem !important; // @TODO remove important, never use it, ever.
+		padding: 0.25rem 0.75rem; // @TODO scss dimensions.
+	}
+
+	p {
+		font-size: 2rem;
+		text-align: center;
+
+		@include md {
+			font-size: 1.75rem;
+		}
+		@include sm {
+			font-size: 1.25rem !important;
+		}
+	}
+
+	&--highlight {
+		@extend .btn;
+
+		border: none;
+		background-color: var(--color-primary);
+		color: white;
+	}
+	&--white {
+		@extend .btn;
+		border-color: white; // @TODO variable.
+		background-color: transparent;
+		color: white;
+	}
+	&--danger {
+		@extend .btn;
+		border-color: var(--color-danger);
+		background-color: var(--color-danger);
+		color: white;
+	}
+	&__icon {
+		height: 1.5rem;
+		margin-right: 0.75rem;
+	}
+}

@@ -1,0 +1,158 @@
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+
+.user-page {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		width: 65vw;
+		max-width: 80rem;
+		margin: 0 auto;
+		padding: 4rem 0;
+
+		@include lg {
+			width: 85vw;
+		}
+
+		@include sm {
+			width: 95vw;
+		}
+
+		&__header,
+		&__bio-skill {
+			margin-bottom: 1.25rem;
+			padding: 3rem;
+			border-radius: 0.5rem;
+		}
+
+		&__header {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			align-items: center;
+			background-color: var(--color-primary);
+			color: white;
+			box-shadow: var(--shadow);
+
+			&__name {
+				@include sm {
+					font-size: 2.25rem;
+				}
+			}
+			&__title,
+			&__location {
+				@include sm() {
+					font-size: 1.25rem;
+				}
+			}
+
+			&__img-cropper {
+				margin-bottom: 1.5rem;
+				@include circleImg(17rem);
+			}
+
+			&__socialLinks {
+				display: flex;
+				width: fit-content;
+				margin-top: 1.5rem;
+
+				&__link {
+					height: 2.75rem;
+					border-radius: 50%;
+					margin: 0 0.2rem;
+					cursor: pointer;
+					opacity: 0.7;
+					transition: opacity 0.3s;
+
+					&:hover {
+						opacity: 1;
+						transform: scale(1.08);
+					}
+				}
+			}
+		}
+
+		&__bio-skill {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			align-items: center;
+			background-color: var(--color-primary-transparent);
+
+			&__bio-title,
+			&__skills-title {
+				color: var(--color-primary);
+				margin-bottom: 0.75rem;
+			}
+
+			&__skills {
+				display: flex;
+				flex-wrap: wrap;
+				font-size: 1.75rem;
+				font-weight: 300;
+
+				&__skill {
+					display: flex;
+					align-items: center;
+					margin: 0 1rem;
+
+					span {
+						font-size: 1rem;
+						margin-right: 0.25rem;
+						color: var(--color-primary);
+					}
+				}
+			}
+		}
+
+		&__exp-edu-container {
+			display: flex;
+			justify-content: space-between;
+			@include sm {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			&__card {
+				padding: 2rem;
+				border: 1px solid var(--color-light-gray);
+				width: 49%;
+				border-radius: 0.5rem;
+				height: fit-content;
+				@include sm {
+					width: 100%;
+					padding: 8vw;
+					margin-bottom: 1.25rem;
+				}
+
+				.divider {
+					width: 100%;
+					margin: 2.5rem 0;
+					height: 1px;
+					background-color: var(--color-light-gray);
+				}
+
+				&__title {
+					margin-bottom: 1rem;
+					color: var(--color-primary);
+					@include sm {
+						margin-bottom: 2rem;
+					}
+				}
+
+				&__profession,
+				&__school {
+					font-weight: 500;
+				}
+
+				&__text {
+					margin-top: 1rem;
+				}
+			}
+		}
+	}
+}

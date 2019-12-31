@@ -1,0 +1,114 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/mixins';
+
+.profile-table {
+	width: 90vw;
+	max-width: 85rem;
+	font-size: 1.75rem;
+	text-align: center;
+	margin-bottom: 6rem;
+	border-spacing: 1rem;
+	border-collapse: separate;
+
+	&__title-container {
+		display: flex;
+		align-items: center;
+		margin-bottom: 1.75rem;
+
+		&__title {
+			font-weight: 300;
+
+			@include custom(500) {
+				font-size: 2.5rem;
+			}
+		}
+
+		&__btn {
+			margin-left: 1rem;
+		}
+	}
+
+	@include md {
+		width: 100vw;
+	}
+
+	td {
+		width: 25%;
+		height: 6rem;
+		padding: 0 1rem;
+		word-wrap: break-word;
+
+		@include sm {
+			height: 4rem;
+		}
+	}
+
+	&__header-row {
+		td {
+			background-color: var(--color-primary-transparent);
+
+			@include sm {
+				font-size: 1.5rem;
+			}
+			@include xs {
+				font-size: 1.25rem;
+			}
+		}
+		td:last-child {
+			background-color: transparent;
+		}
+	}
+
+	&__info-row {
+		td {
+			border: 1px solid var(--color-light-gray);
+			font-weight: 300;
+			font-size: 1.5rem;
+			padding: 1rem 0.5rem;
+
+			span {
+				@include sm {
+					display: block;
+				}
+			}
+
+			@include xs {
+				font-size: 0.85rem;
+			}
+		}
+		td:last-child {
+			border: none;
+			text-align: start;
+			padding: 0;
+		}
+	}
+
+	&__edit-row {
+		td {
+			padding: 0;
+		}
+
+		input {
+			height: 100%;
+			width: 100%;
+			outline: none;
+			font-size: 1.5rem;
+			text-align: center;
+			&::placeholder {
+				text-align: center;
+				font-size: 1.25rem;
+			}
+			&:focus {
+				border: 1px solid var(--color-primary);
+			}
+		}
+
+		table {
+			width: 100%;
+			input {
+				padding: 0.5rem;
+				text-align: center;
+			}
+		}
+	}
+}

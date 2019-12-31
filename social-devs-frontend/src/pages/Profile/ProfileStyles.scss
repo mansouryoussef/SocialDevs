@@ -1,0 +1,211 @@
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+
+.profile-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__title {
+		@include titleUnderline;
+	}
+
+	&__content {
+		width: 100%;
+		padding: 0 10vw;
+		margin: 8rem;
+
+		@include lg {
+			padding: 0 6vw;
+		}
+		@include md {
+			padding: 0 4vw;
+			margin: 8vh;
+		}
+
+		&__form-title {
+			font-weight: 300;
+			margin-bottom: 1.75rem;
+
+			@include md {
+				font-size: 2rem;
+			}
+		}
+
+		&__create-profile-form {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			width: fit-content;
+			margin-bottom: 5rem;
+
+			@include md {
+				margin: 2rem 0;
+			}
+
+			&__textarea-container {
+				display: flex;
+				width: 100%;
+				justify-content: flex-end;
+				margin: 0.5rem 0;
+
+				textarea {
+					min-height: 3.25rem;
+					min-width: 26rem;
+					min-height: 10rem;
+					border-radius: 0.4rem;
+					padding: 1rem;
+					font-size: 1.75rem;
+					margin-bottom: 0.5rem;
+					border-color: rgb(200, 200, 200);
+					resize: none;
+					color: rgb(73, 73, 73);
+					outline: none;
+					font-size: 1.35rem;
+
+					&::placeholder {
+						font-size: 1.35rem;
+					}
+				}
+
+				label {
+					font-size: 1.5rem;
+					margin-right: 1rem;
+				}
+			}
+
+			&__input-container {
+				display: flex;
+				width: 100%;
+				justify-content: flex-end;
+				align-items: center;
+				margin: 0.5rem 0;
+
+				input {
+					min-height: 3.5rem;
+					min-width: 26rem;
+					border-radius: 0.75rem;
+					border: 1px solid var(--color-primary-light);
+					font-size: 1.5rem;
+					margin-top: 0.25rem;
+					padding: 0.75rem 1rem;
+					color: rgb(
+						54,
+						54,
+						54
+					); // @TODO try to avoid colors without variables.
+
+					@include md {
+						padding: 0.25rem 0.75rem;
+						min-height: 3rem;
+					}
+
+					&:focus {
+						outline: 0;
+					}
+
+					&::placeholder {
+						font-size: 1rem;
+						margin-left: 1rem;
+						transform: translate3d(0, -2px, 0);
+						color: rgb(116, 116, 116);
+						font-size: 1.35rem;
+					}
+				}
+				label {
+					font-size: 1.5rem;
+					margin-right: 1rem;
+				}
+			}
+
+			.btn--highlight {
+				margin: 1rem 0 0 0;
+			}
+		}
+
+		&__table {
+			display: flex;
+			flex-direction: column;
+			max-width: 90rem;
+			margin: 6rem 0;
+
+			&__title-container {
+				display: flex;
+				align-items: center;
+				margin-bottom: 1.75rem;
+
+				h2 {
+					font-weight: 300;
+					@include custom(500) {
+						font-size: 2.5rem;
+					}
+				}
+
+				&__btn {
+					margin-left: 1rem;
+				}
+			}
+
+			&__header-row {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 1rem;
+				margin-left: 5rem;
+
+				@include lg {
+					margin-left: 2rem;
+				}
+
+				&__item {
+					@include tableCell;
+
+					background-color: var(--color-primary-transparent);
+					font-weight: 500;
+
+					@include sm {
+						@include tableCell(0.5rem 1rem);
+					}
+
+					@include custom(500) {
+						font-size: 1.25rem;
+					}
+
+					&:last-child {
+						background-color: transparent;
+						justify-content: flex-start;
+					}
+				}
+			}
+
+			&__info-row {
+				display: flex;
+				justify-content: space-between;
+				margin-left: 5rem;
+
+				@include lg {
+					margin-left: 2rem;
+				}
+
+				&__item {
+					@include tableCell;
+					border: 1px solid var(--color-light-gray);
+					font-size: 1.3rem;
+					font-weight: 300;
+
+					@include sm {
+						@include tableCell(0.5rem 1rem);
+					}
+
+					@include custom(500) {
+						font-size: 1.15rem;
+					}
+				}
+
+				&__btn {
+					@include tableCell(0);
+					justify-content: flex-start;
+				}
+			}
+		}
+	}
+}
