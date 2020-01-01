@@ -19,20 +19,27 @@ export default function PostCard({
 }) {
 	let history = useHistory();
 	const { user, posts, setPosts } = useContext(DataContext);
+	// const likedByUser = likes.find(like => like.user === user._id);
+
 	const [liked, setLiked] = useState(false);
 	const [likesCount, setLikesCount] = useState(likes.length);
 
 	// @TODO consider using useMemo
 	// const isPostOwner = useMemo(() => user._id === postUserId, [user])
 
+	// const isLiked = async likesArr => {
+	// 	const isLikedByUser = await likesArr.find(like => like.user === user._id
+	// 	if (likesArr.find(like => like.user === user._id) !== undefined)
+	// 		return true;
+	// };
 	useEffect(() => {
 		// @TODO consider using usememo instead of useEffect + useState
 		const likedByUser = likes.find(like => like.user === user._id);
 
-		if (likedByUser) {
+		if (likedByUser !== undefined) {
 			setLiked(true);
 		}
-	}, []);
+	}, [likes]);
 
 	const handleLike = async () => {
 		try {

@@ -6,19 +6,18 @@ import { DataContext } from '../../../contexts/DataContext';
 
 export default function CreateProfileForm({ setShowEditForm }) {
 	const { userProfile, setUserProfile } = useContext(DataContext);
+	const [errMsg, setErrMsg] = useState();
 
 	const [profileFields, setProfileFields] = useState({
 		title: userProfile.title || '',
 		location: userProfile.location || '',
-		skills: userProfile.skills.join(',') || '',
+		skills: userProfile.skills ? userProfile.skills.join(',') : '',
 		website: userProfile.website || '',
 		githubusername: userProfile.githubusername || '',
 		twitter: userProfile.twitter || '',
 		linkedin: userProfile.linkedin || '',
 		bio: userProfile.bio || ''
 	});
-
-	console.log('userProfile:', userProfile);
 
 	const handleChange = e => {
 		setProfileFields({ ...profileFields, [e.target.name]: e.target.value });
@@ -45,13 +44,15 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				}
 			};
 
+			console.log(profileFields);
+
 			const body = JSON.stringify(profileFields);
 
 			const res = await Axios.post('/api/profile', body, config);
 			setUserProfile({ ...res.data });
 			setShowEditForm(false);
 		} catch (error) {
-			console.error(error);
+			setErrMsg(error.response.data.errors[0].msg);
 		}
 	};
 
@@ -153,7 +154,9 @@ export default function CreateProfileForm({ setShowEditForm }) {
 					placeholder='I run after rabbits...'
 				/>
 			</div>
-
+			<p className='profile-page__content__create-profile-form__msg'>
+				{errMsg}
+			</p>
 			<Button sm text='Save' onClick={handleCreateProfile} highlight />
 		</form>
 	);

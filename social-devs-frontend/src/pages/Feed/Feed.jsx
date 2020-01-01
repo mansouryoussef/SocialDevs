@@ -31,8 +31,8 @@ export default function Feed() {
 			// @TODO post request usually should return the new created post
 			// consider updating the posts to include the return new post instead of calling backend.
 			await Axios.post('/api/posts', body, config);
-
 			getPosts();
+			setPostText('');
 		} catch (error) {
 			console.error(error);
 		}

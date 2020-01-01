@@ -6,7 +6,7 @@ import { DataContext } from '../../../contexts/DataContext';
 import TableList from './TableList';
 import { capitalize } from '../../../service/helpers';
 import AddEducationForm from './AddEducationForm/AddEducationForm';
-import { handleDeleteEdu,handleDeleteExp } from '../../../service/profile';
+import { handleDeleteEdu, handleDeleteExp } from '../../../service/profile';
 
 export default function ProfileTable({ info }) {
 	const [addingExp, setAddingExp] = useState(false);
@@ -48,11 +48,17 @@ export default function ProfileTable({ info }) {
 				)}
 
 				{addingEdu && type === 'education' && (
-					<AddEducationForm setAddingExp={setAddingExp} />
+					<AddEducationForm setAddingEdu={setAddingEdu} />
 				)}
 
 				{userProfile[type] && (
-					<TableList arr={itemList} itemNamesArr={headerCells.slice(0, 2)} handleDelete={type === 'education' ? handleDeleteEdu : handleDeleteExp}/>
+					<TableList
+						arr={itemList}
+						itemNamesArr={headerCells.slice(0, 2)}
+						handleDelete={
+							type === 'education' ? handleDeleteEdu : handleDeleteExp
+						}
+					/>
 				)}
 			</table>
 		</>

@@ -129,6 +129,11 @@
 			.btn--highlight {
 				margin: 1rem 0 0 0;
 			}
+			&__msg {
+				font-size: 1.35rem;
+				color: var(--color-danger);
+				font-weight: 500;
+			}
 		}
 
 		&__table {

@@ -34,6 +34,7 @@ export default function Post({ match }) {
 				config
 			);
 			getPosts();
+			setCommentText('');
 		} catch (error) {
 			console.error(error);
 		}

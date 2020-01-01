@@ -7,11 +7,11 @@ import Axios from 'axios';
 export const DataContext = createContext();
 
 export function DataContextProvider(props) {
-	const [isLoading, setIsLoading] = useState(
+	const [isLoading, setIsLoading] = useState(true);
+
+	const [isLoggedin, setIsLoggedin] = useState(
 		window.localStorage.getItem('userToken') !== null
 	);
-
-	const [isLoggedin, setIsLoggedin] = useState(false);
 	// @TODO consider removing this when object/array bug is resolved.
 	const [hasProfile, setHasProfile] = useState(false);
 
@@ -29,8 +29,6 @@ export function DataContextProvider(props) {
 	// The logic is that functions should do only one thing
 	const getUserData = async () => {
 		try {
-			setIsLoading(true);
-
 			const config = {
 				headers: {
 					'x-auth-token': window.localStorage.getItem('userToken'),
@@ -38,11 +36,14 @@ export function DataContextProvider(props) {
 				}
 			};
 
-			const res = await Axios.get('/api/auth', config);
+			const userData = await Axios.get('/api/auth', config);
+			const posts = await Axios.get('/api/posts', config);
+			const userProfile = await Axios.get('/api/profile/me', config);
 
-			setUser(res.data);
+			setUser(userData.data);
+			setUserProfile(userProfile.data);
+			setPosts(posts.data);
 
-			setIsLoading(false);
 			setIsLoggedin(true);
 		} catch (error) {
 			console.log(error);
@@ -57,8 +58,6 @@ export function DataContextProvider(props) {
 	// The logic is that functions should do only one thing
 	const getPosts = async () => {
 		try {
-			setIsLoading(true);
-
 			const config = {
 				headers: {
 					'x-auth-token': window.localStorage.getItem('userToken')
@@ -68,8 +67,6 @@ export function DataContextProvider(props) {
 			const res = await Axios.get('/api/posts', config);
 
 			setPosts(res.data);
-
-			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
 		}
@@ -103,8 +100,6 @@ export function DataContextProvider(props) {
 	// The logic is that functions should do only one thing
 	const getProfiles = async () => {
 		try {
-			setIsLoading(true);
-
 			const config = {
 				headers: {
 					'x-auth-token': window.localStorage.getItem('userToken')
@@ -114,7 +109,6 @@ export function DataContextProvider(props) {
 			const res = await Axios.get('/api/profile', config);
 
 			setProfiles(res.data);
-
 			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
@@ -129,7 +123,6 @@ export function DataContextProvider(props) {
 	// The logic is that functions should do only one thing
 	const getUserProfile = async () => {
 		try {
-			setIsLoading(true);
 			const config = {
 				headers: {
 					'x-auth-token': window.localStorage.getItem('userToken'),
@@ -142,7 +135,6 @@ export function DataContextProvider(props) {
 			setUserProfile(res.data);
 
 			setHasProfile(true);
-			setIsLoading(false);
 		} catch (error) {
 			setIsLoading(false);
 			console.log(error);
@@ -150,13 +142,14 @@ export function DataContextProvider(props) {
 	};
 
 	useEffect(() => {
-		getProfiles();
+		setIsLoading(true);
 		if (window.localStorage.getItem('userToken') !== null) {
 			getUserData();
-			getPosts();
-			getUserProfile();
+			// getPosts();
+			// getUserProfile();
 		}
-	}, []);
+		getProfiles();
+	}, [isLoggedin]);
 
 	return (
 		<DataContext.Provider

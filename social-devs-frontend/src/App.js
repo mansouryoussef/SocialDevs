@@ -14,53 +14,44 @@ import { Redirect } from 'react-router-dom';
 import { DataContext } from './contexts/DataContext';
 import Spinner from './components/Spinner/Spinner';
 import Nav from './components/Layout/Nav/Nav';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 const App = ({ location }) => {
 	const { isLoggedin, isLoading } = useContext(DataContext);
 
 	return (
 		<>
-			{isLoading ? (
+			{!!isLoading ? (
 				<Spinner />
 			) : (
 				<main className='app-container'>
 					{location.pathname !== '/' && <Nav />}
+
 					<Route
 						path='/'
 						exact
 						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Home />)}
 					/>
+					<Route exact path='/login' component={Login} />
+					<Route exact path='/signup' component={Signup} />
+					<Route path='/users' exact component={Users} />
+					<Route path='/user/:user_id' exact component={User} />
+					<PrivateRoute path='/feed' component={Feed} />
+					<PrivateRoute path='/profile' component={Profile} />
+					<PrivateRoute path='/post/:post_id' component={Post} />
 
-					<Route
+					{/* <Route
 						path='/login'
 						exact
 						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Login />)}
-					/>
+					/> */}
 
-					<Route
+					{/* <Route
 						path='/signup'
 						exact
 						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Signup />)}
-					/>
+					/> */}
 
-					<Route path='/users' exact component={Users} />
-					<Route path='/user/:user_id' exact component={User} />
-
-					<Route
-						path='/profile'
-						exact
-						render={() =>
-							!isLoggedin ? <Redirect to='/login' /> : <Profile />
-						}
-					/>
-
-					<Route
-						path='/feed'
-						exact
-						render={() => (!isLoggedin ? <Redirect to='/login' /> : <Feed />)}
-					/>
-
-					<Route path='/post/:post_id' exact component={Post} />
 					{location.pathname !== '/' && <Footer />}
 				</main>
 			)}

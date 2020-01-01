@@ -115,7 +115,6 @@ router.post(
 			console.error(err);
 			res.send('Server error');
 		}
-		console.log(profileFields.skills);
 	}
 );
 

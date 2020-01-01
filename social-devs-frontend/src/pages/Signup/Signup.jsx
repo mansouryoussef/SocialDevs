@@ -58,8 +58,11 @@ export default function Signup() {
 
 				history.push('/profile');
 			} catch (error) {
-				setErrorMsg(error.response.data.errors[0].msg);
-				console.log(error.response.data.errors[0].msg);
+				// if (error.response.data !== undefined) {
+				// 	setErrorMsg(error.response.data.errors[0].msg);
+				// 	console.log(error.response.data.errors[0].msg);
+				// }
+				console.log(error);
 			}
 		}
 	};
