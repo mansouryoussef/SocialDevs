@@ -2,47 +2,45 @@
 // @TODO consider using useReducer() to update context. Ahmed has a great blog post about this => nordschool.com
 
 import React, { createContext, useState, useEffect } from 'react';
-import Axios from 'axios';
+import { getAllProfiles } from '../service/profile';
+import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
+import {
+	getUserDataReq,
+	getAllPostsReq,
+	createAuthHeader,
+	getUserProfileReq
+} from '../service/api';
 
 export const DataContext = createContext();
 
 export function DataContextProvider(props) {
 	const [isLoading, setIsLoading] = useState(true);
 
-	const [isLoggedin, setIsLoggedin] = useState(
-		window.localStorage.getItem('userToken') !== null
-	);
-	// @TODO consider removing this when object/array bug is resolved.
-	const [hasProfile, setHasProfile] = useState(false);
+	const [isLoggedin, setIsLoggedin] = useState(token !== null);
 
 	const [user, setUser] = useState({});
 	const [posts, setPosts] = useState([]);
 	const [profiles, setProfiles] = useState([]);
 	const [userProfile, setUserProfile] = useState([]);
-	// @TODO consider removing this when object/array bug is resolved.
-
 	// @TODO consider refactoring this:
 	// 1. add token as a variable
 	// 2. set loading state outside this function.
 	// 3. move setting posts outside of this function.
 
 	// The logic is that functions should do only one thing
-	const getUserData = async () => {
+	const getInitialData = async () => {
 		try {
-			const config = {
-				headers: {
-					'x-auth-token': window.localStorage.getItem('userToken'),
-					'Content-Type': 'application/json'
-				}
-			};
+			const token = window.localStorage.getItem('userToken');
+			const headers = createAuthHeader(token);
+			// console.log(getAllPostsReq(headers));
 
-			const userData = await Axios.get('/api/auth', config);
-			const posts = await Axios.get('/api/posts', config);
-			const userProfile = await Axios.get('/api/profile/me', config);
+			const userData = await getUserDataReq(headers);
+			const posts = await getAllPostsReq(headers);
+			const userProfile = await getUserProfileReq(headers);
 
-			setUser(userData.data);
-			setUserProfile(userProfile.data);
 			setPosts(posts.data);
+			setUserProfile(userProfile.data);
+			setUser(userData.data);
 
 			setIsLoggedin(true);
 		} catch (error) {
@@ -50,37 +48,7 @@ export function DataContextProvider(props) {
 		}
 	};
 
-	// @TODO consider refactoring this:
-	// 1. add token as a variable
-	// 2. set loading state outside this function.
-	// 3. move setting posts outside of this function.
-
 	// The logic is that functions should do only one thing
-	const getPosts = async () => {
-		try {
-			const config = {
-				headers: {
-					'x-auth-token': window.localStorage.getItem('userToken')
-				}
-			};
-
-			const res = await Axios.get('/api/posts', config);
-
-			setPosts(res.data);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	// const getPosts = async (token) => {
-	// 		const config = {
-	// 			headers: {
-	// 				'x-auth-token': token
-	// 			}
-	// 		};
-
-	// 		const res = await Axios.get('/api/posts', config);
-	// };
 
 	// You can use it like this:
 	// try {
@@ -92,63 +60,16 @@ export function DataContextProvider(props) {
 
 	// }
 
-	// @TODO consider refactoring this:
-	// 1. add token as a variable
-	// 2. set loading state outside this function.
-	// 3. move setting posts outside of this function.
-
 	// The logic is that functions should do only one thing
-	const getProfiles = async () => {
-		try {
-			const config = {
-				headers: {
-					'x-auth-token': window.localStorage.getItem('userToken')
-				}
-			};
-
-			const res = await Axios.get('/api/profile', config);
-
-			setProfiles(res.data);
-			setIsLoading(false);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	// @TODO consider refactoring this:
-	// 1. add token as a variable
-	// 2. set loading state outside this function.
-	// 3. move setting posts outside of this function.
-
-	// The logic is that functions should do only one thing
-	const getUserProfile = async () => {
-		try {
-			const config = {
-				headers: {
-					'x-auth-token': window.localStorage.getItem('userToken'),
-					'Access-Control-Allow-Origin': '*'
-				}
-			};
-
-			const res = await Axios.get('/api/profile/me', config);
-
-			setUserProfile(res.data);
-
-			setHasProfile(true);
-		} catch (error) {
-			setIsLoading(false);
-			console.log(error);
-		}
-	};
 
 	useEffect(() => {
 		setIsLoading(true);
-		if (window.localStorage.getItem('userToken') !== null) {
-			getUserData();
-			// getPosts();
-			// getUserProfile();
+
+		if (token !== null) {
+			getInitialData();
 		}
-		getProfiles();
+
+		getAllProfiles(setProfiles, setIsLoading);
 	}, [isLoggedin]);
 
 	return (
@@ -161,10 +82,8 @@ export function DataContextProvider(props) {
 				isLoggedin,
 				setIsLoggedin,
 				setPosts,
-				getPosts,
 				profiles,
 				userProfile,
-				getUserProfile,
 				setUserProfile
 			}}>
 			{props.children}

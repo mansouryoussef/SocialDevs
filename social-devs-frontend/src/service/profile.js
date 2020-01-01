@@ -4,13 +4,45 @@ import {
 	addProfileEducation,
 	deleteProfileExperience,
 	deleteProfileEducation,
+	getUserProfileReq,
+	getAllProfilesReq,
 	deleteAccount
 } from './api';
+
+// user token import with alias: 'token'
+import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
+
+//  Fetches: user profile data
+export const getAllProfiles = async (setProfiles, setIsLoading) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		const res = await getAllProfilesReq(headers);
+
+		setProfiles(res.data);
+		setIsLoading(false);
+	} catch (error) {
+		setIsLoading(false);
+		console.log(error);
+	}
+};
+
+//  Fetches: user profile data
+export const getUserProfile = async (setUserProfile, setIsLoading) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		const res = await getUserProfileReq(headers);
+
+		setUserProfile(res.data);
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 //  Handler: delete experience
 export const handleDeleteExp = async (expId, setUserProfile) => {
 	try {
-		const token = window.localStorage.getItem('userToken');
 		const headers = createAuthHeader(token);
 
 		const res = await deleteProfileExperience(expId, headers);
@@ -25,7 +57,6 @@ export const handleDeleteExp = async (expId, setUserProfile) => {
 //  Handler: delete education
 export const handleDeleteEdu = async (expId, setUserProfile) => {
 	try {
-		const token = window.localStorage.getItem('userToken');
 		const headers = createAuthHeader(token);
 
 		const res = await deleteProfileEducation(expId, headers);
@@ -40,7 +71,6 @@ export const handleDeleteEdu = async (expId, setUserProfile) => {
 // Handler: add experience
 export const handleAddExp = async (fields, getUserProfile, setAddingExp) => {
 	try {
-		const token = window.localStorage.getItem('userToken');
 		const headers = createAuthHeader(token);
 		const body = JSON.stringify(fields);
 		const res = await addProfileExperience(body, { headers });
@@ -56,7 +86,6 @@ export const handleAddExp = async (fields, getUserProfile, setAddingExp) => {
 // Handler: add education
 export const handleAddEdu = async (fields, getUserProfile, setAddingEdu) => {
 	try {
-		const token = window.localStorage.getItem('userToken');
 		const headers = createAuthHeader(token);
 		const body = JSON.stringify(fields);
 		const res = await addProfileEducation(body, { headers });
@@ -72,7 +101,6 @@ export const handleAddEdu = async (fields, getUserProfile, setAddingEdu) => {
 // Handler: delete account
 export const handleDeleteAccount = async (setIsLoggedin, history) => {
 	try {
-		const token = window.localStorage.getItem('userToken');
 		const headers = createAuthHeader(token);
 
 		const res = await deleteAccount({ headers });
