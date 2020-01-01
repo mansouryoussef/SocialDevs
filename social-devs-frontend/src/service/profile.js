@@ -1,33 +1,11 @@
-import Axios from 'axios';
-import { createAuthHeader } from './api';
-
-//-- Request functions --//
-
-// ADD: experience
-export const addProfileExperience = async (body, headers) =>
-	Axios.put('/api/profile/experience', body, headers);
-
-// ADD: education
-export const addProfileEducation = async (body, headers) =>
-	Axios.put('/api/profile/education', body, headers);
-
-// DELETE: experience
-export const deleteProfileExperience = async (expId, headers) =>
-	Axios.delete(`/api/profile/experience/${expId}`, {
-		headers
-	});
-
-// DELETE: education
-export const deleteProfileEducation = async (expId, headers) =>
-	Axios.delete(`/api/profile/education/${expId}`, {
-		headers
-	});
-
-//  DELETE: account
-export const deleteAccount = async headers =>
-	Axios.delete('/api/profile', headers);
-
-//-- Handler functions --//
+import {
+	createAuthHeader,
+	addProfileExperience,
+	addProfileEducation,
+	deleteProfileExperience,
+	deleteProfileEducation,
+	deleteAccount
+} from './api';
 
 //  Handler: delete experience
 export const handleDeleteExp = async (expId, setUserProfile) => {
