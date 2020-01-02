@@ -35,7 +35,8 @@ export default function User({ match }) {
 	const links = {
 		twitter,
 		website,
-		linkedin
+		linkedin,
+		githubusername
 	};
 	// @TODO the template here is abit too long, consider refactoring it into multiple smaller componenets. for example a generic component to display skills or bio.
 	return (
@@ -58,15 +59,18 @@ export default function User({ match }) {
 
 							<div className='user-page__content__header__socialLinks'>
 								{!!links &&
-									Object.entries(links).map(([icon, url]) => (
-										<a key={url} href={url} target='_blank'>
-											<img
-												src={require(`../../assets/img/icons/${icon}.png`)}
-												alt='Github'
-												className='user-page__content__header__socialLinks__link'
-											/>
-										</a>
-									))}
+									Object.entries(links).map(([icon, url]) => {
+										if (url !== undefined)
+											return (
+												<a key={url} href={url} target='_blank'>
+													<img
+														src={require(`../../assets/img/icons/${icon}.png`)}
+														alt='Github'
+														className='user-page__content__header__socialLinks__link'
+													/>
+												</a>
+											);
+									})}
 							</div>
 						</div>
 

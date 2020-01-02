@@ -27,13 +27,11 @@ export function DataContextProvider(props) {
 	// 1. add token as a variable
 	// 2. set loading state outside this function.
 	// 3. move setting posts outside of this function.
-	console.log(userProfile.experience);
 	// The logic is that functions should do only one thing
 	const getInitialData = async () => {
 		try {
 			const token = window.localStorage.getItem('userToken');
 			const headers = createAuthHeader(token);
-			// console.log(getAllPostsReq(headers));
 			try {
 				const userData = await getUserDataReq(headers);
 				setUser(userData.data);
@@ -94,6 +92,7 @@ export function DataContextProvider(props) {
 				setIsLoggedin,
 				setPosts,
 				profiles,
+				setProfiles,
 				userProfile,
 				setUserProfile,
 				getInitialData

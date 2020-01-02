@@ -48,7 +48,6 @@ export const handleDeleteExp = async (expId, setUserProfile) => {
 		const res = await deleteProfileExperience(expId, headers);
 
 		setUserProfile(res.data);
-		console.log(res);
 	} catch (error) {
 		console.error(error.response.data);
 	}
@@ -62,7 +61,6 @@ export const handleDeleteEdu = async (expId, setUserProfile) => {
 		const res = await deleteProfileEducation(expId, headers);
 
 		setUserProfile(res.data);
-		console.log(res);
 	} catch (error) {
 		console.error(error.response.data);
 	}
@@ -75,7 +73,6 @@ export const handleAddExp = async (fields, setUserProfile, setAddingExp) => {
 		const body = JSON.stringify(fields);
 		const res = await addProfileExperience(body, { ...headers });
 
-		console.log(res);
 		setUserProfile(res.data);
 
 		setAddingExp(false);
@@ -92,7 +89,6 @@ export const handleAddEdu = async (fields, setUserProfile, setAddingEdu) => {
 		const body = JSON.stringify(fields);
 		const res = await addProfileEducation(body, { ...headers });
 
-		console.log(res);
 		setUserProfile(res.data);
 		setAddingEdu(false);
 	} catch (error) {
@@ -111,7 +107,6 @@ export const handleDeleteAccount = async (setIsLoggedin, history) => {
 
 		setIsLoggedin(false);
 		window.location.reload();
-		console.log(res);
 	} catch (error) {
 		console.error(error);
 	}

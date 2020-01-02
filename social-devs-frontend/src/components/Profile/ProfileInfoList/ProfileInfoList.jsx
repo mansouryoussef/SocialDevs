@@ -4,7 +4,6 @@ import { DataContext } from '../../../contexts/DataContext';
 import Button from '../../Button/Button';
 export default function ProfileInfoList({ setShowEditForm }) {
 	const { userProfile } = useContext(DataContext);
-	console.log('user profile:', userProfile.linkedin);
 
 	const {
 		title,

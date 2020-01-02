@@ -6,7 +6,6 @@ import UserCard from '../../components/Feed/CommentCard/UserCard/UserCard';
 // Great example!
 export default function Users() {
 	const { profiles } = useContext(DataContext);
-	console.log(profiles);
 	return (
 		<div className='users-page'>
 			<h1 className='users-page__title'>Users</h1>

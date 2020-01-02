@@ -7,7 +7,8 @@
 		"start": "node server",
 		"server": "nodemon server",
 		"client": "npm start --prefix social-devs-frontend",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix social-devs-frontend && npm run build --prefix social-devs-frontend"
 	},
 	"repository": {
 		"type": "git",

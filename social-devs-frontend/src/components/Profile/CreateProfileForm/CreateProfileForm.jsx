@@ -6,7 +6,7 @@ import { DataContext } from '../../../contexts/DataContext';
 
 export default function CreateProfileForm({ setShowEditForm }) {
 	const { userProfile, setUserProfile } = useContext(DataContext);
-	const [errMsg, setErrMsg] = useState();
+	const [errMsg, setErrMsg] = useState('');
 
 	const [profileFields, setProfileFields] = useState({
 		title: userProfile.title || '',
@@ -44,12 +44,11 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				}
 			};
 
-			console.log(profileFields);
-
 			const body = JSON.stringify(profileFields);
 
 			const res = await Axios.post('/api/profile', body, config);
 			setUserProfile({ ...res.data });
+
 			setShowEditForm(false);
 		} catch (error) {
 			setErrMsg(error.response.data.errors[0].msg);
@@ -104,7 +103,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 					onChange={e => handleChange(e)}
 					name='website'
 					type='text'
-					placeholder='example.fi'
+					placeholder='https://example.com'
 				/>
 			</div>
 
@@ -116,7 +115,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 					onChange={e => handleChange(e)}
 					name='githubusername'
 					type='text'
-					placeholder='javasciptmaster'
+					placeholder='https://github.com/username'
 				/>
 			</div>
 
@@ -128,7 +127,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 					onChange={e => handleChange(e)}
 					name='linkedin'
 					type='text'
-					placeholder='linkedin.com/in/someone/'
+					placeholder='https://linkedin.com/in/someone/'
 				/>
 			</div>
 
