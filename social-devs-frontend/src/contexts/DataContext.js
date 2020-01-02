@@ -22,6 +22,7 @@ export function DataContextProvider(props) {
 	const [posts, setPosts] = useState([]);
 	const [profiles, setProfiles] = useState([]);
 	const [userProfile, setUserProfile] = useState([]);
+
 	// @TODO consider refactoring this:
 	// 1. add token as a variable
 	// 2. set loading state outside this function.
@@ -65,7 +66,7 @@ export function DataContextProvider(props) {
 	useEffect(() => {
 		setIsLoading(true);
 
-		if (token !== null) {
+		if (token) {
 			getInitialData();
 		}
 
@@ -84,7 +85,8 @@ export function DataContextProvider(props) {
 				setPosts,
 				profiles,
 				userProfile,
-				setUserProfile
+				setUserProfile,
+				getInitialData
 			}}>
 			{props.children}
 		</DataContext.Provider>

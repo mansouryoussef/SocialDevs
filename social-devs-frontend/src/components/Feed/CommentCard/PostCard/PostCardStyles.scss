@@ -6,8 +6,8 @@
 
 	@include md {
 		justify-content: flex-start;
-		align-items: flex-start;
-		padding: 3rem 2rem;
+		align-items: center;
+		padding: 2rem;
 	}
 
 	&__img-name {
@@ -34,6 +34,7 @@
 	&__body {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
 
 		&__text {
 			font-size: 1.4rem;
@@ -55,6 +56,11 @@
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
+			width: fit-content;
+
+			@include sm {
+				flex-flow: row-reverse wrap-reverse;
+			}
 
 			&__btns {
 				display: flex;
@@ -70,6 +76,10 @@
 				height: fit-content;
 				margin-right: 2.5rem;
 				cursor: pointer;
+
+				@include xs {
+					margin-top: 1rem;
+				}
 
 				img {
 					@include md {

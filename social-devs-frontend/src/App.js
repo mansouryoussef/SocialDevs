@@ -15,6 +15,7 @@ import { DataContext } from './contexts/DataContext';
 import Spinner from './components/Spinner/Spinner';
 import Nav from './components/Layout/Nav/Nav';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import HamburgerMenu from './components/HamburgerMenu/HamburgerMenu';
 
 const App = ({ location }) => {
 	const { isLoggedin, isLoading } = useContext(DataContext);
@@ -26,7 +27,7 @@ const App = ({ location }) => {
 			) : (
 				<main className='app-container'>
 					{location.pathname !== '/' && <Nav />}
-
+					{/* <HamburgerMenu /> */}
 					<Route
 						path='/'
 						exact

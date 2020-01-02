@@ -56,14 +56,23 @@ export default function Feed() {
 
 					<Button onClick={handleCreatePost} text='Post it!' sm highlight />
 				</div>
-
 				{/* @TODO consider moving this to an own component */}
-				{posts.map(post => {
-					const { text, name, avatar, user, likes, date, comments, _id } = post;
+				<div className='feed-page__content__posts-container'>
+					{posts.map(post => {
+						const {
+							text,
+							name,
+							avatar,
+							user,
+							likes,
+							date,
+							comments,
+							_id
+						} = post;
 
-					return (
-						<div key={_id} className='feed-page__content__posts-container'>
+						return (
 							<PostCard
+								key={_id}
 								text={text}
 								name={name}
 								avatar={avatar}
@@ -73,9 +82,10 @@ export default function Feed() {
 								comments={comments}
 								id={_id}
 							/>
-						</div>
-					);
-				})}
+						);
+					})}
+				</div>
+				;
 			</div>
 		</div>
 	);

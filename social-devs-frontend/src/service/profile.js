@@ -15,7 +15,7 @@ import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
 //  Fetches: user profile data
 export const getAllProfiles = async (setProfiles, setIsLoading) => {
 	try {
-		const headers = createAuthHeader(token);
+		const headers = createAuthHeader();
 
 		const res = await getAllProfilesReq(headers);
 

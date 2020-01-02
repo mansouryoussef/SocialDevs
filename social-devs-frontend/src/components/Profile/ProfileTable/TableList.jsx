@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { format } from 'date-fns';
-import { handleDeleteExp } from '../../../service/profile';
 import { DataContext } from '../../../contexts/DataContext';
+import uuid from 'uuid';
 import Button from '../../Button/Button';
 
 export default function TableList({ arr, itemNamesArr, handleDelete }) {
@@ -13,7 +13,7 @@ export default function TableList({ arr, itemNamesArr, handleDelete }) {
 		const from = format(new Date(item.from), 'dd.MM.yyyy');
 
 		return (
-			<tr className='profile-table__info-row'>
+			<tr key={uuid()} className='profile-table__info-row'>
 				<td>{item[itemNamesArr[0]]}</td>
 				<td>{item[itemNamesArr[1]]}</td>
 				<td>

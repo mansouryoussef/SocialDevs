@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 export default function Login() {
 	let history = useHistory();
 
-	const { setIsLoggedin, getPosts } = useContext(DataContext);
+	const { setIsLoggedin, getInitialData } = useContext(DataContext);
 
 	const [loginData, setLoginData] = useState({
 		email: '',
@@ -49,10 +49,11 @@ export default function Login() {
 			window.localStorage.setItem('userToken', res.data.token);
 
 			setIsLoggedin(true);
-			getPosts();
+			getInitialData();
 			history.push('/profile');
 		} catch (error) {
-			setErrorMsg(error.response.data.errors[0].msg);
+			console.log(error);
+			// setErrorMsg(error.response.data.errors[0].msg);
 		}
 	};
 

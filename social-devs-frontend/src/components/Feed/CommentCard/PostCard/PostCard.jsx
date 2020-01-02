@@ -21,7 +21,9 @@ export default function PostCard({
 	const { user, posts, setPosts } = useContext(DataContext);
 	// const likedByUser = likes.find(like => like.user === user._id);
 
-	const [liked, setLiked] = useState(false);
+	const [liked, setLiked] = useState(
+		likes.find(like => (like.user === user._id) !== undefined)
+	);
 	const [likesCount, setLikesCount] = useState(likes.length);
 
 	// @TODO consider using useMemo
@@ -51,7 +53,8 @@ export default function PostCard({
 			};
 
 			const res = await Axios.put(`/api/posts/like/${id}`, null, config);
-			likes.push(res.data[0]);
+			await likes.push(res.data[0]);
+
 			setLiked(true);
 			setLikesCount(likesCount + 1);
 		} catch (error) {

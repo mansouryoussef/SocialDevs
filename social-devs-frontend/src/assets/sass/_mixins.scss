@@ -68,4 +68,7 @@
 	border-radius: 1.25rem;
 	box-shadow: var(--shadow-light);
 	align-items: center;
+	@include sm {
+		padding: 1rem 3rem;
+	}
 }

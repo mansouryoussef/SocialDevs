@@ -3,7 +3,8 @@
 .logo-container {
 	display: flex;
 	flex-direction: column;
-	width: fit-content;
+	width: auto;
+	margin-right: 1rem;
 	align-items: center;
 	padding: 1rem 0;
 
@@ -13,5 +14,6 @@
 
 	p {
 		font-size: 1.25rem;
+		white-space: nowrap;
 	}
 }
