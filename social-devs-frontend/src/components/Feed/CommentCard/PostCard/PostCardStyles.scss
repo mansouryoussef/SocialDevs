@@ -14,11 +14,14 @@
 		margin-right: 5rem;
 
 		@include md {
-			margin-right: 2rem;
+			margin-right: 3rem;
 		}
 
-		&__cropper {
-			@include circleImg(11rem);
+		&__img {
+			height: 9rem;
+			@include md {
+				height: 7rem;
+			}
 		}
 
 		&__name {

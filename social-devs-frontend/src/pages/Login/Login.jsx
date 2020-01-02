@@ -48,12 +48,12 @@ export default function Login() {
 
 			window.localStorage.setItem('userToken', res.data.token);
 
-			setIsLoggedin(true);
 			getInitialData();
-			history.push('/profile');
+			setIsLoggedin(true);
+			history.push('/feed');
 		} catch (error) {
 			console.log(error);
-			// setErrorMsg(error.response.data.errors[0].msg);
+			setErrorMsg(error.response.data.errors[0].msg);
 		}
 	};
 

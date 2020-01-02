@@ -12,14 +12,18 @@
 		padding: 1rem 2rem;
 	}
 
-	&__img-cropper {
-		@include circleImg;
-		margin-right: 2rem;
+	&__img {
+		// @include circleImg;
+		margin-right: 3rem;
 
-		@include custom(400) {
-			min-width: 8rem;
-			max-width: 8rem;
+		height: 10rem;
+
+		@include md {
 			height: 8rem;
+		}
+
+		@include sm {
+			height: 7rem;
 		}
 	}
 

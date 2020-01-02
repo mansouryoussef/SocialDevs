@@ -13,11 +13,16 @@ export default function Profile() {
 	const { userProfile, setIsLoggedin } = useContext(DataContext);
 	// const [isCreatingProfile, setIsCreatingProfile] = useState(false)
 	// const [hasProfile, setHasProfile] = useState(false)
-	const [showEditForm, setShowEditForm] = useState(true);
+	console.log('User profile title:', userProfile.title);
+	const [showEditForm, setShowEditForm] = useState(
+		userProfile.title === undefined
+	);
 
 	useEffect(() => {
-		userProfile.title && setShowEditForm(false);
-	}, []);
+		userProfile.title === undefined
+			? setShowEditForm(true)
+			: setShowEditForm(false);
+	}, [userProfile]);
 
 	const history = useHistory();
 

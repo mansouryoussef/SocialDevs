@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserCardStyles.scss';
 import Button from '../../../Button/Button';
-import person from '../../../../assets/img/person.jpg';
+import user from '../../../../assets/img/icons/user.svg';
 
 export default function UserCard({
 	img,
@@ -13,9 +13,7 @@ export default function UserCard({
 }) {
 	return (
 		<div className='usercard-container'>
-			<div className='usercard-container__img-cropper'>
-				<img src={person} alt="User's img" />
-			</div>
+			<img src={user} className='usercard-container__img' alt="User's img" />
 
 			<div className='usercard-container__user-info'>
 				<h2 className='usercard-container__user-info__name'>{name}</h2>

@@ -5,7 +5,7 @@ import { DataContext } from '../../../../contexts/DataContext';
 import { handleAddExp } from '../../../../service/profile';
 
 export default function AddExperienceForm({ setAddingExp }) {
-	const { getUserProfile } = useContext(DataContext);
+	const { setUserProfile } = useContext(DataContext);
 
 	const [expFields, setExpFields] = useState({
 		company: '',
@@ -69,7 +69,7 @@ export default function AddExperienceForm({ setAddingExp }) {
 				<Button
 					text='Save it'
 					onClick={() =>
-						handleAddExp({ ...expFields }, getUserProfile, setAddingExp)
+						handleAddExp({ ...expFields }, setUserProfile, setAddingExp)
 					}
 					highlight
 					sm

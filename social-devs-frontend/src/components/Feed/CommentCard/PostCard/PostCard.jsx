@@ -1,13 +1,12 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import './PostCardStyles.scss';
-import person from '../../../../assets/img/person.jpg';
 import notLiked from '../../../../assets/img/icons/emptyheart.svg';
 import like from '../../../..//assets/img/icons/filledheart.svg';
 import { DataContext } from '../../../../contexts/DataContext';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Button from '../../../Button/Button';
-
+import defaultUserImg from '../../../../assets/img/icons/user.svg';
 export default function PostCard({
 	text,
 	name,
@@ -102,9 +101,11 @@ export default function PostCard({
 		// Example: --> < Post onUnlike={handleUnlike} />
 		<div className='postcard-container'>
 			<div className='postcard-container__img-name'>
-				<div className='postcard-container__img-name__cropper'>
-					<img src={person} alt={`${name}'s picture`} />
-				</div>
+				<img
+					src={defaultUserImg}
+					className='postcard-container__img-name__img'
+					alt={`${name}'s picture`}
+				/>
 
 				<h2 className='postcard-container__img-name__name'>
 					{name.split(' ')[0]}

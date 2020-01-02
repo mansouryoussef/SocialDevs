@@ -17,7 +17,7 @@ export const getAllProfiles = async (setProfiles, setIsLoading) => {
 	try {
 		const headers = createAuthHeader();
 
-		const res = await getAllProfilesReq(headers);
+		const res = await getAllProfilesReq({ ...headers });
 
 		setProfiles(res.data);
 		setIsLoading(false);
@@ -69,29 +69,31 @@ export const handleDeleteEdu = async (expId, setUserProfile) => {
 };
 
 // Handler: add experience
-export const handleAddExp = async (fields, getUserProfile, setAddingExp) => {
+export const handleAddExp = async (fields, setUserProfile, setAddingExp) => {
 	try {
 		const headers = createAuthHeader(token);
 		const body = JSON.stringify(fields);
-		const res = await addProfileExperience(body, { headers });
+		const res = await addProfileExperience(body, { ...headers });
 
 		console.log(res);
-		getUserProfile();
+		setUserProfile(res.data);
+
 		setAddingExp(false);
 	} catch (error) {
-		console.error(error.response.data);
+		console.error(error);
 	}
 };
 
 // Handler: add education
-export const handleAddEdu = async (fields, getUserProfile, setAddingEdu) => {
+export const handleAddEdu = async (fields, setUserProfile, setAddingEdu) => {
 	try {
 		const headers = createAuthHeader(token);
+		console.log(token);
 		const body = JSON.stringify(fields);
-		const res = await addProfileEducation(body, { headers });
+		const res = await addProfileEducation(body, { ...headers });
 
 		console.log(res);
-		getUserProfile();
+		setUserProfile(res.data);
 		setAddingEdu(false);
 	} catch (error) {
 		console.error(error);
@@ -103,12 +105,12 @@ export const handleDeleteAccount = async (setIsLoggedin, history) => {
 	try {
 		const headers = createAuthHeader(token);
 
-		const res = await deleteAccount({ headers });
+		const res = await deleteAccount({ ...headers });
 
 		window.localStorage.removeItem('userToken');
 
 		setIsLoggedin(false);
-		history.push('/');
+		window.location.reload();
 		console.log(res);
 	} catch (error) {
 		console.error(error);

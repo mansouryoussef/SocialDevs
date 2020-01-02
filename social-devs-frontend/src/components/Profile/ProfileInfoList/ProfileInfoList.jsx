@@ -17,12 +17,14 @@ export default function ProfileInfoList({ setShowEditForm }) {
 		bio
 	} = userProfile;
 
-	const skillsList = skills.map((skill, i, arr) => {
-		if (arr.length === 1 || arr.length === i + 1) return skill;
-		if (arr.length >= 1) {
-			return skill + ', ';
-		}
-	});
+	const skillsList =
+		skills &&
+		skills.map((skill, i, arr) => {
+			if (arr.length === 1 || arr.length === i + 1) return skill;
+			if (arr.length >= 1) {
+				return skill + ', ';
+			}
+		});
 
 	const isSet = str => (str === undefined || null || '' ? 'Not set!' : str);
 

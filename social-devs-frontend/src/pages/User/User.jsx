@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './UserStyles.scss';
 import person from '../../assets/img/person.jpg';
+import userDefaultImg from '../../assets/img/icons/user.svg';
 import { DataContext } from '../../contexts/DataContext';
 import { format } from 'date-fns';
 
@@ -44,7 +45,7 @@ export default function User({ match }) {
 					<div className='user-page__content'>
 						<div className='user-page__content__header'>
 							<div className='user-page__content__header__img-cropper'>
-								<img src={person} alt="User's img" />
+								<img src={userDefaultImg} alt="User's img" />
 							</div>
 
 							<h2 className='user-page__content__header__name'>

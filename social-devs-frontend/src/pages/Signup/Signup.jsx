@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 export default function Signup() {
 	let history = useHistory();
 
-	const { setIsLoggedin } = useContext(DataContext);
+	const { setIsLoggedin, getInitialData } = useContext(DataContext);
 
 	const [signupData, setSignupData] = useState({
 		name: '',
@@ -53,15 +53,15 @@ export default function Signup() {
 
 				// @TODO consider moving this to a service and create a login Fn.
 				window.localStorage.setItem('userToken', res.data.token);
-
+				getInitialData();
 				setIsLoggedin(true);
 
-				history.push('/profile');
+				history.push('/feed');
 			} catch (error) {
-				// if (error.response.data !== undefined) {
-				// 	setErrorMsg(error.response.data.errors[0].msg);
-				// 	console.log(error.response.data.errors[0].msg);
-				// }
+				if (error.response.data !== undefined) {
+					setErrorMsg(error.response.data.errors[0].msg);
+					console.log(error.response.data.errors[0].msg);
+				}
 				console.log(error);
 			}
 		}

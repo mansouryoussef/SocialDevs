@@ -5,7 +5,7 @@ import { DataContext } from '../../../../contexts/DataContext';
 import { handleAddEdu } from '../../../../service/profile';
 
 export default function AddEducationForm({ setAddingEdu }) {
-	const { getUserProfile } = useContext(DataContext);
+	const { setUserProfile } = useContext(DataContext);
 
 	const [eduFields, setEduFields] = useState({
 		school: '',
@@ -67,7 +67,7 @@ export default function AddEducationForm({ setAddingEdu }) {
 				<Button
 					text='Save it'
 					onClick={() =>
-						handleAddEdu({ ...eduFields }, getUserProfile, setAddingEdu)
+						handleAddEdu({ ...eduFields }, setUserProfile, setAddingEdu)
 					}
 					highlight
 					sm
