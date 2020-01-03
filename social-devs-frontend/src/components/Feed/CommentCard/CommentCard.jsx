@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import './CommentCardStyles.scss';
-import person from '../../../assets/img/person.jpg'; // @TODO add absolute path not relative path. e.g. @assets/
 import Axios from 'axios';
 import { DataContext } from '../../../contexts/DataContext';
 import Button from '../../Button/Button';
 import { getAllPosts } from '../../../service/post';
-
+import defaultUserImg from '../../../assets/img/icons/user.svg';
 export default function CommentCard({
 	commentUserId,
 	text,
@@ -35,9 +34,11 @@ export default function CommentCard({
 	return (
 		<div className='commentCard-container'>
 			<div className='commentCard-container__img-name'>
-				<div className='commentCard-container__img-name__cropper'>
-					<img src={person} alt='' />
-				</div>
+				<img
+					className='commentCard-container__img-name__img'
+					src={defaultUserImg}
+					alt='user default img'
+				/>
 
 				<h2 className='commentCard-container__img-name__name'>{name}</h2>
 			</div>
@@ -45,17 +46,16 @@ export default function CommentCard({
 			<div className='commentCard-container__body'>
 				<p className='commentCard-container__body__text'>{text}</p>
 
-				<span className='commentCard-container__body__date'>
-					Commented on: {date}
+				<span className='commentCard-container__body__date-btn'>
+					<span>Commented on: {date}</span>
+
+					{commentUserId === user._id && (
+						<Button onClick={handleDeletePost} text='Delete' danger sm />
+					)}
 				</span>
 
-				<div className='commentCard-container__body__btns-container'>
-					{commentUserId === user._id && (
-						<div className='commentCard-container__body__btns-container__btns'>
-							<Button onClick={handleDeletePost} text='Delete' danger sm />
-						</div>
-					)}
-				</div>
+				{/* <div className='commentCard-container__body__btns-container'>
+				</div> */}
 			</div>
 		</div>
 	);
