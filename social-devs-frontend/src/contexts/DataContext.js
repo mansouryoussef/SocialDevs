@@ -10,6 +10,7 @@ import {
 	createAuthHeader,
 	getUserProfileReq
 } from '../service/api';
+import { getAllPosts } from '../service/post';
 
 export const DataContext = createContext();
 
@@ -30,6 +31,7 @@ export function DataContextProvider(props) {
 	// The logic is that functions should do only one thing
 	const getInitialData = async () => {
 		try {
+			setIsLoading(true);
 			const token = window.localStorage.getItem('userToken');
 			const headers = createAuthHeader(token);
 			try {
@@ -44,6 +46,7 @@ export function DataContextProvider(props) {
 			} catch (error) {
 				console.log(error);
 			}
+
 			try {
 				const userProfile = await getUserProfileReq(headers);
 				setUserProfile(userProfile.data);
@@ -52,7 +55,9 @@ export function DataContextProvider(props) {
 			}
 
 			setIsLoggedin(true);
+			setIsLoading(false);
 		} catch (error) {
+			setIsLoading(false);
 			console.log(error);
 		}
 	};
@@ -81,6 +86,10 @@ export function DataContextProvider(props) {
 		getAllProfiles(setProfiles, setIsLoading);
 	}, [isLoggedin]);
 
+	useEffect(() => {
+		getAllProfiles(setProfiles, setIsLoading);
+	}, [userProfile]);
+
 	return (
 		<DataContext.Provider
 			value={{
@@ -95,7 +104,8 @@ export function DataContextProvider(props) {
 				setProfiles,
 				userProfile,
 				setUserProfile,
-				getInitialData
+				getInitialData,
+				getAllPosts
 			}}>
 			{props.children}
 		</DataContext.Provider>

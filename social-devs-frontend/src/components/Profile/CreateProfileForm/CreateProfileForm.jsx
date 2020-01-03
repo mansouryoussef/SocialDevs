@@ -3,6 +3,7 @@ import './CreateProfileFormStyles.scss';
 import Button from '../../Button/Button';
 import Axios from 'axios';
 import { DataContext } from '../../../contexts/DataContext';
+import { getUserProfile } from '../../../service/profile';
 
 export default function CreateProfileForm({ setShowEditForm }) {
 	const { userProfile, setUserProfile } = useContext(DataContext);
@@ -47,7 +48,8 @@ export default function CreateProfileForm({ setShowEditForm }) {
 			const body = JSON.stringify(profileFields);
 
 			const res = await Axios.post('/api/profile', body, config);
-			setUserProfile({ ...res.data });
+
+			getUserProfile(setUserProfile);
 
 			setShowEditForm(false);
 		} catch (error) {

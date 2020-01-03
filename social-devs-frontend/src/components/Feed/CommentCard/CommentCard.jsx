@@ -4,6 +4,7 @@ import person from '../../../assets/img/person.jpg'; // @TODO add absolute path 
 import Axios from 'axios';
 import { DataContext } from '../../../contexts/DataContext';
 import Button from '../../Button/Button';
+import { getAllPosts } from '../../../service/post';
 
 export default function CommentCard({
 	commentUserId,
@@ -14,7 +15,7 @@ export default function CommentCard({
 	commentId,
 	postId
 }) {
-	const { user, getPosts } = useContext(DataContext);
+	const { user, setPosts } = useContext(DataContext);
 
 	const handleDeletePost = async () => {
 		try {
@@ -26,7 +27,7 @@ export default function CommentCard({
 
 			await Axios.delete(`/api/posts/comment/${postId}/${commentId}`, config);
 
-			getPosts();
+			getAllPosts(setPosts);
 		} catch (error) {
 			console.error(error);
 		}

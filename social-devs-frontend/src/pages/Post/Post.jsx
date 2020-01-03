@@ -6,9 +6,12 @@ import { DataContext } from '../../contexts/DataContext';
 import CommentCard from '../../components/Feed/CommentCard/CommentCard';
 import PostCard from '../../components/Feed/CommentCard/PostCard/PostCard';
 import { format } from 'date-fns';
+import { firstName } from '../../service/helpers';
+import { getAllPosts } from '../../service/post';
+import uuid from 'uuid';
 
 export default function Post({ match }) {
-	const { posts, getPosts } = useContext(DataContext);
+	const { posts, setPosts } = useContext(DataContext);
 	const [commentText, setCommentText] = useState('');
 
 	const handleOnChange = e => {
@@ -28,12 +31,15 @@ export default function Post({ match }) {
 				}
 			};
 
-			await Axios.put(
+			const res = await Axios.put(
 				`/api/posts/comment/${match.params.post_id}`,
 				body,
 				config
 			);
-			getPosts();
+			console.log(res);
+
+			getAllPosts(setPosts);
+
 			setCommentText('');
 		} catch (error) {
 			console.error(error);
@@ -58,7 +64,7 @@ export default function Post({ match }) {
 								postUserId={user}
 								likes={likes}
 								date={date}
-								comments={comments}
+								inPost
 								id={_id}
 							/>
 						);
@@ -109,12 +115,13 @@ export default function Post({ match }) {
 									<CommentCard
 										commentUserId={user}
 										text={text}
-										name={name.split(' ')[0]}
+										name={firstName(name)}
 										avatar={avatar}
 										date={format(new Date(date), 'dd.MM.yyyy')}
 										commentId={_id}
 										postId={match.params.post_id}
 										comments={comments}
+										key={uuid()}
 									/>
 								);
 							});

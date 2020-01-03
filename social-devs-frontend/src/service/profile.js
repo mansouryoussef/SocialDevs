@@ -28,7 +28,7 @@ export const getAllProfiles = async (setProfiles, setIsLoading) => {
 };
 
 //  Fetches: user profile data
-export const getUserProfile = async (setUserProfile, setIsLoading) => {
+export const getUserProfile = async setUserProfile => {
 	try {
 		const headers = createAuthHeader(token);
 
@@ -67,14 +67,20 @@ export const handleDeleteEdu = async (expId, setUserProfile) => {
 };
 
 // Handler: add experience
-export const handleAddExp = async (fields, setUserProfile, setAddingExp) => {
+export const handleAddExp = async (
+	fields,
+	setUserProfile,
+	setAddingExp,
+	setError
+) => {
 	try {
 		const headers = createAuthHeader(token);
 		const body = JSON.stringify(fields);
+		console.log({ ...headers });
 		const res = await addProfileExperience(body, { ...headers });
 
 		setUserProfile(res.data);
-
+		setError('');
 		setAddingExp(false);
 	} catch (error) {
 		console.error(error);
@@ -82,7 +88,12 @@ export const handleAddExp = async (fields, setUserProfile, setAddingExp) => {
 };
 
 // Handler: add education
-export const handleAddEdu = async (fields, setUserProfile, setAddingEdu) => {
+export const handleAddEdu = async (
+	fields,
+	setUserProfile,
+	setAddingEdu,
+	setError
+) => {
 	try {
 		const headers = createAuthHeader(token);
 		console.log(token);
@@ -90,6 +101,7 @@ export const handleAddEdu = async (fields, setUserProfile, setAddingEdu) => {
 		const res = await addProfileEducation(body, { ...headers });
 
 		setUserProfile(res.data);
+		setError('');
 		setAddingEdu(false);
 	} catch (error) {
 		console.error(error);

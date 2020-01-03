@@ -79,7 +79,6 @@ export default function Feed() {
 								postUserId={user}
 								likes={likes}
 								date={format(new Date(date), 'dd.MM.yyyy')}
-								comments={comments}
 								id={_id}
 							/>
 						);

@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './UsersStyles.scss';
 import { DataContext } from '../../contexts/DataContext';
 import UserCard from '../../components/Feed/CommentCard/UserCard/UserCard';
+import Disclaimer from '../../components/Disclaimer/Disclaimer';
 
-// Great example!
 export default function Users() {
-	const { profiles } = useContext(DataContext);
+	const { profiles, userProfile, isLoggedin } = useContext(DataContext);
+
 	return (
 		<div className='users-page'>
 			<h1 className='users-page__title'>Users</h1>
@@ -25,6 +26,9 @@ export default function Users() {
 						/>
 					);
 				})}
+				{!userProfile.title && isLoggedin && (
+					<Disclaimer err='Your account will be added when you create a profile.' />
+				)}
 			</div>
 		</div>
 	);

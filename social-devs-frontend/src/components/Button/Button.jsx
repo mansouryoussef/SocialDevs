@@ -11,21 +11,23 @@ export default function Button({
 	icon,
 	to, // @TODO rename to linkToUrl
 	sm, // @TODO rename this, not clear.
+	disabled,
 	onClick
 }) {
 	return (
 		// @TODO Move Link fron button or rename button to be called Link
 		<Link to={to} className='Link'>
-			<div
+			<button
 				onClick={onClick}
 				className={`btn${highlight ? '--highlight' : ''}${
 					danger ? '--danger' : ''
-				}${white ? '--white' : ''}`}>
+				}${white ? '--white' : ''}`}
+				disabled={disabled}>
 				{/* @TODO move this class name logic to a function , e.g. getButtonClassNames */}
 				{icon && <img src={icon} alt='icon' className='btn__icon' />}
 				{/* @TODO Move styles (fontsize) to css and toggle class through jsx */}
 				<p style={{ fontSize: sm ? '1.5rem' : '' }}>{text}</p>
-			</div>
+			</button>
 			{/* @TODO Use <button> element */}
 		</Link>
 	);

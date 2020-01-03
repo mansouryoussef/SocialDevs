@@ -18,6 +18,7 @@ export default function Nav() {
 	const handleSignout = () => {
 		window.localStorage.removeItem('userToken');
 		setIsLoggedin(false);
+		history.push('/login');
 		window.location.reload();
 	};
 

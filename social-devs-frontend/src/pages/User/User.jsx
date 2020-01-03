@@ -4,6 +4,7 @@ import person from '../../assets/img/person.jpg';
 import userDefaultImg from '../../assets/img/icons/user.svg';
 import { DataContext } from '../../contexts/DataContext';
 import { format } from 'date-fns';
+import uuid from 'uuid';
 
 export default function User({ match }) {
 	const { profiles } = useContext(DataContext);
@@ -88,7 +89,9 @@ export default function User({ match }) {
 							<div className='user-page__content__bio-skill__skills'>
 								{skills.map(skill => {
 									return (
-										<span className='user-page__content__bio-skill__skills__skill'>
+										<span
+											className='user-page__content__bio-skill__skills__skill'
+											key={uuid()}>
 											<span>{'</> '}</span> {skill}
 										</span>
 									);
@@ -109,7 +112,7 @@ export default function User({ match }) {
 										const to = format(new Date(item.to), 'dd.MM.yyyy');
 
 										return (
-											<>
+											<div key={uuid()}>
 												<p className='user-page__content__exp-edu-container__card__profession'>
 													{item.title}
 												</p>
@@ -119,16 +122,11 @@ export default function User({ match }) {
 												<p className='user-page__content__exp-edu-container__card__time'>
 													{from} - {to ? to : 'Present'}
 												</p>
-												{/* <p className='user-page__content__exp-edu-container__card__location'>
-													{item.location}
-												</p>
-												<p className='user-page__content__exp-edu-container__card__text'>
-													{item.description}
-												</p> */}
+
 												{array.length - 1 !== i && (
 													<div className='divider'></div>
 												)}
-											</>
+											</div>
 										);
 									})}
 								</div>
@@ -141,7 +139,7 @@ export default function User({ match }) {
 										const from = format(new Date(item.from), 'dd.MM.yyyy');
 										const to = format(new Date(item.to), 'dd.MM.yyyy');
 										return (
-											<>
+											<div key={uuid()}>
 												<p className='user-page__content__exp-edu-container__card__school'>
 													{item.school}
 												</p>
@@ -157,7 +155,7 @@ export default function User({ match }) {
 												{array.length - 1 !== i && (
 													<div className='divider'></div>
 												)}
-											</>
+											</div>
 										);
 									})}
 								</div>

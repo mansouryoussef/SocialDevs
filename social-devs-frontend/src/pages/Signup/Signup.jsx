@@ -49,13 +49,9 @@ export default function Signup() {
 
 				const res = await axios.post('/api/users', body, config);
 
-				// @TODO move logging in logic to a service.
-
-				// @TODO consider moving this to a service and create a login Fn.
 				window.localStorage.setItem('userToken', res.data.token);
-				getInitialData();
 				setIsLoggedin(true);
-
+				getInitialData();
 				history.push('/feed');
 			} catch (error) {
 				if (error.response.data !== undefined) {

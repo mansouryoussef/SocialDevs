@@ -2,6 +2,7 @@ import React from 'react';
 import './UserCardStyles.scss';
 import Button from '../../../Button/Button';
 import user from '../../../../assets/img/icons/user.svg';
+import uuid from 'uuid';
 
 export default function UserCard({
 	img,
@@ -24,7 +25,7 @@ export default function UserCard({
 
 			<div className='usercard-container__skills'>
 				{skills.map(skill => (
-					<div className='usercard-container__skills__skill'>
+					<div key={uuid()} className='usercard-container__skills__skill'>
 						<span>{'</> '}</span>
 						{skill}
 					</div>

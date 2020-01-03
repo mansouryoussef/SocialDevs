@@ -5,8 +5,8 @@
 	width: 90vw;
 	max-width: 85rem;
 	font-size: 1.75rem;
-	text-align: center;
 	margin-bottom: 6rem;
+	text-align: center;
 	border-spacing: 1rem;
 	border-collapse: separate;
 
@@ -109,6 +109,9 @@
 				padding: 0.5rem;
 				text-align: center;
 			}
+		}
+		&__error {
+			color: var(--colot-danger);
 		}
 	}
 }

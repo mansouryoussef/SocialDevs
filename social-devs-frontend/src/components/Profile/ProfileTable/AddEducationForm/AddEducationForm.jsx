@@ -4,8 +4,9 @@ import Button from '../../../Button/Button';
 import { DataContext } from '../../../../contexts/DataContext';
 import { handleAddEdu } from '../../../../service/profile';
 
-export default function AddEducationForm({ setAddingEdu }) {
-	const { setUserProfile } = useContext(DataContext);
+export default function AddEducationForm({ setAddingEdu, setError }) {
+	const { setUserProfile, userProfile } = useContext(DataContext);
+	const [errorMsg, setErrorMsg] = useState('');
 
 	const [eduFields, setEduFields] = useState({
 		school: '',
@@ -63,11 +64,18 @@ export default function AddEducationForm({ setAddingEdu }) {
 					/>
 				</tr>
 			</table>
+			<span className='profile-table__edit-row__error'>{errorMsg}</span>
+
 			<td>
 				<Button
 					text='Save it'
 					onClick={() =>
-						handleAddEdu({ ...eduFields }, setUserProfile, setAddingEdu)
+						handleAddEdu(
+							{ ...eduFields },
+							setUserProfile,
+							setAddingEdu,
+							setError
+						)
 					}
 					highlight
 					sm

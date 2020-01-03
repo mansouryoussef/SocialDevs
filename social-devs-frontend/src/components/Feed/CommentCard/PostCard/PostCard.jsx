@@ -14,31 +14,26 @@ export default function PostCard({
 	postUserId,
 	likes,
 	date,
-	id
+	id,
+	inPost
 }) {
 	let history = useHistory();
 	const { user, posts, setPosts } = useContext(DataContext);
-	// const likedByUser = likes.find(like => like.user === user._id);
 
-	const [liked, setLiked] = useState(
-		likes.find(like => (like.user === user._id) !== undefined)
-	);
+	const [liked, setLiked] = useState(false);
 	const [likesCount, setLikesCount] = useState(likes.length);
 
 	// @TODO consider using useMemo
 	// const isPostOwner = useMemo(() => user._id === postUserId, [user])
 
-	// const isLiked = async likesArr => {
-	// 	const isLikedByUser = await likesArr.find(like => like.user === user._id
-	// 	if (likesArr.find(like => like.user === user._id) !== undefined)
-	// 		return true;
-	// };
 	useEffect(() => {
 		// @TODO consider using usememo instead of useEffect + useState
 		const likedByUser = likes.find(like => like.user === user._id);
 
 		if (likedByUser !== undefined) {
 			setLiked(true);
+		} else {
+			setLiked(false);
 		}
 	}, [likes]);
 
@@ -132,7 +127,7 @@ export default function PostCard({
 					</div>
 
 					<div className='postcard-container__body__btns-container__btns'>
-						<Button text='Comments' to={`/post/${id}`} sm />
+						{!inPost && <Button text='Comments' to={`/post/${id}`} sm />}
 						{/* // @TODO consider using useMemo */}
 						{user._id === postUserId && (
 							<Button onClick={handleDeletePost} text='Delete' danger sm />

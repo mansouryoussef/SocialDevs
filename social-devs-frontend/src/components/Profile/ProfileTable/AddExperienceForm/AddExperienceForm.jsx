@@ -4,7 +4,7 @@ import Button from '../../../Button/Button';
 import { DataContext } from '../../../../contexts/DataContext';
 import { handleAddExp } from '../../../../service/profile';
 
-export default function AddExperienceForm({ setAddingExp }) {
+export default function AddExperienceForm({ setAddingExp, setError }) {
 	const { setUserProfile } = useContext(DataContext);
 
 	const [expFields, setExpFields] = useState({
@@ -69,7 +69,12 @@ export default function AddExperienceForm({ setAddingExp }) {
 				<Button
 					text='Save it'
 					onClick={() =>
-						handleAddExp({ ...expFields }, setUserProfile, setAddingExp)
+						handleAddExp(
+							{ ...expFields },
+							setUserProfile,
+							setAddingExp,
+							setError
+						)
 					}
 					highlight
 					sm
