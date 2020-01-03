@@ -48,7 +48,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 			const body = JSON.stringify(profileFields);
 
 			const res = await Axios.post('/api/profile', body, config);
-
+			setUserProfile(res.data);
 			getUserProfile(setUserProfile);
 
 			setShowEditForm(false);

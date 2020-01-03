@@ -143,14 +143,11 @@ export default function User({ match }) {
 												<p className='user-page__content__exp-edu-container__card__school'>
 													{item.school}
 												</p>
-												<p className='user-page__content__exp-edu-container__card__time'>
-													{from} - {to}
-												</p>
 												<p className='user-page__content__exp-edu-container__card__degree'>
 													{item.degree}
 												</p>
-												<p className='user-page__content__exp-edu-container__card__text'>
-													{item.description}
+												<p className='user-page__content__exp-edu-container__card__time'>
+													{from} - {to}
 												</p>
 												{array.length - 1 !== i && (
 													<div className='divider'></div>
