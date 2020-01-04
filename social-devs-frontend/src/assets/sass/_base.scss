@@ -47,9 +47,16 @@ body {
 	text-decoration: none;
 	color: inherit;
 }
+
 button {
 	outline: none;
 }
+
+ul {
+	display: flex;
+	list-style: none;
+}
+
 .divider {
 	width: 100%;
 	margin: 3rem auto;

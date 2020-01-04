@@ -19,6 +19,7 @@
 
 		&__img {
 			height: 9rem;
+
 			@include md {
 				height: 7rem;
 			}

@@ -64,6 +64,7 @@ export default function AddEducationForm({ setAddingEdu, setError }) {
 					/>
 				</tr>
 			</table>
+
 			<span className='profile-table__edit-row__error'>{errorMsg}</span>
 
 			<td>

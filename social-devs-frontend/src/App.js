@@ -13,8 +13,8 @@ import { Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { DataContext } from './contexts/DataContext';
 import Spinner from './components/Spinner/Spinner';
-import Nav from './components/Layout/Nav/Nav';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Nav from './components/NavBar/Nav/Nav';
 
 const App = ({ location }) => {
 	const { isLoggedin, isLoading } = useContext(DataContext);
