@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './ProfileInfoListStyles.scss';
 import { DataContext } from '../../../contexts/DataContext';
-import Button from '../../Button/Button';
+import Button from '../../Buttons/Button/Button';
 export default function ProfileInfoList({ setShowEditForm }) {
 	const { userProfile } = useContext(DataContext);
 
@@ -61,12 +61,7 @@ export default function ProfileInfoList({ setShowEditForm }) {
 				<h3 className='profile-infolist__item__title'>Bio:</h3>
 				<p className='profile-infolist__item__info__bio'>{isSet(bio)}</p>
 			</div>
-			<Button
-				onClick={() => setShowEditForm(true)}
-				sm
-				highlight
-				text='Edit info'
-			/>
+			<Button onClick={() => setShowEditForm(true)} filled text='Edit info' />
 		</div>
 	);
 }

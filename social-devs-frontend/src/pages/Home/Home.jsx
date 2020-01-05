@@ -1,10 +1,11 @@
 import React from 'react';
 import './HomeStyles.scss';
+import { Link } from 'react-router-dom';
 
 import Logo from '../../components/Logo/Logo';
 import hero from '../../assets/img/hero.svg';
-import Button from '../../components/Button/Button';
-
+import Button from '../../components/Buttons/Button/Button';
+import ButtonWhite from '../../components/Buttons/ButtonWhite/ButtonWhite';
 export default function Home() {
 	return (
 		<main className='home-page'>
@@ -14,7 +15,9 @@ export default function Home() {
 				{/* // @TODO consider making the clip an own component */}
 				<nav className='home-page__container__nav'>
 					<Logo />
-					<Button to='/users' text='View users' white />
+					<Link className='Link' to='/users'>
+						<ButtonWhite text='View users' />
+					</Link>
 				</nav>
 
 				<div className='home-page__container__content'>
@@ -24,8 +27,12 @@ export default function Home() {
 					</div>
 
 					<div className='home-page__container__content__btns'>
-						<Button to='/signup' text='Sign up' highlight />
-						<Button to='/login' text='Log in' />
+						<Link to='/signup' className='Link'>
+							<Button text='Sign up' filled />
+						</Link>
+						<Link to='/login' className='Link'>
+							<Button text='Log in' />
+						</Link>
 					</div>
 
 					{/* // @TODO consider making the hero an own component. For real! */}

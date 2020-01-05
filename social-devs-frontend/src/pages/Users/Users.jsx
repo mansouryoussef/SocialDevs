@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './UsersStyles.scss';
 import { DataContext } from '../../contexts/DataContext';
-import UserCard from '../../components/Feed/CommentCard/UserCard/UserCard';
+import UserCard from '../../components/UserCard/UserCard';
 import Disclaimer from '../../components/Disclaimer/Disclaimer';
 
 export default function Users() {

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './CreateProfileFormStyles.scss';
-import Button from '../../Button/Button';
+import Button from '../../Buttons/Button/Button';
 import Axios from 'axios';
 import { DataContext } from '../../../contexts/DataContext';
 import { getUserProfile } from '../../../service/profile';
@@ -158,7 +158,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 			<p className='profile-page__content__create-profile-form__msg'>
 				{errMsg}
 			</p>
-			<Button sm text='Save' onClick={handleCreateProfile} highlight />
+			<Button text='Save' onClick={handleCreateProfile} filled />
 		</form>
 	);
 }

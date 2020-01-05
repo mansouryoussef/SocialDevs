@@ -5,6 +5,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { DataContext } from '../../../contexts/DataContext';
 import Button from '../../Buttons/Button/Button';
 import IconButton from '../../Buttons/IconButton/IconButton';
+import IconButtonWhite from '../../Buttons/IconButtonWhite/IconButtonWhite';
 import Burger from '../Burger/Burger';
 import { handleSignout } from '../../../service/auth';
 
@@ -23,7 +24,7 @@ export default function ListItems() {
 	let history = useHistory();
 
 	const handleToggle = () => {
-		setOpen(!open);
+		setOpen(false);
 	};
 
 	return (
@@ -75,10 +76,11 @@ export default function ListItems() {
 									}}
 									to='/login'
 									className='Link'>
-									<IconButton
-										icon={open ? signoutWhite : signout}
-										text='Sign out'
-									/>
+									{open ? (
+										<IconButtonWhite icon={signoutWhite} text='Sign out' />
+									) : (
+										<IconButton icon={signout} text='Sign out' />
+									)}
 								</Link>
 							</li>
 						</ul>

@@ -39,6 +39,7 @@ export default function User({ match }) {
 		linkedin,
 		githubusername
 	};
+
 	// @TODO the template here is abit too long, consider refactoring it into multiple smaller componenets. for example a generic component to display skills or bio.
 	return (
 		<>
@@ -106,19 +107,22 @@ export default function User({ match }) {
 										Experience
 									</h1>
 									{experience.map((item, i, array) => {
-										// @TODO refactor this.
-										// const formatDate = date => date.split('T')[0];
 										const from = format(new Date(item.from), 'dd.MM.yyyy');
-										const to = format(new Date(item.to), 'dd.MM.yyyy');
+										const to =
+											item.to === null
+												? 'Present'
+												: format(new Date(item.to), 'dd-MM-yyyy');
 
 										return (
 											<div key={uuid()}>
 												<p className='user-page__content__exp-edu-container__card__profession'>
 													{item.title}
 												</p>
+
 												<p className='user-page__content__exp-edu-container__card__company'>
 													{item.company}
 												</p>
+
 												<p className='user-page__content__exp-edu-container__card__time'>
 													{from} - {to ? to : 'Present'}
 												</p>
@@ -135,20 +139,29 @@ export default function User({ match }) {
 									<h1 className='user-page__content__exp-edu-container__card__title'>
 										Education
 									</h1>
+
 									{education.map((item, i, array) => {
 										const from = format(new Date(item.from), 'dd.MM.yyyy');
-										const to = format(new Date(item.to), 'dd.MM.yyyy');
+
+										const to =
+											item.to === null
+												? 'Present'
+												: format(new Date(item.to), 'dd-MM-yyyy');
+
 										return (
 											<div key={uuid()}>
 												<p className='user-page__content__exp-edu-container__card__school'>
 													{item.school}
 												</p>
+
 												<p className='user-page__content__exp-edu-container__card__degree'>
 													{item.degree}
 												</p>
+
 												<p className='user-page__content__exp-edu-container__card__time'>
 													{from} - {to}
 												</p>
+
 												{array.length - 1 !== i && (
 													<div className='divider'></div>
 												)}

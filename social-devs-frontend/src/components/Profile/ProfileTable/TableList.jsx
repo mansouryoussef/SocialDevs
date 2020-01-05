@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { format } from 'date-fns';
 import { DataContext } from '../../../contexts/DataContext';
 import uuid from 'uuid';
-import Button from '../../Button/Button';
+import ButtonDanger from '../../Buttons/ButtonDanger/ButtonDanger';
 
 export default function TableList({ arr, itemNamesArr, handleDelete }) {
 	const { setUserProfile } = useContext(DataContext);
@@ -10,6 +10,7 @@ export default function TableList({ arr, itemNamesArr, handleDelete }) {
 	return arr.map(item => {
 		const to =
 			item.to === null ? 'Present' : format(new Date(item.to), 'dd-MM-yyyy');
+
 		const from = format(new Date(item.from), 'dd.MM.yyyy');
 
 		return (
@@ -20,11 +21,10 @@ export default function TableList({ arr, itemNamesArr, handleDelete }) {
 					<span>{from}</span> - <span>{to}</span>
 				</td>
 				<td>
-					<Button
-						danger
+					<ButtonDanger
 						onClick={() => handleDelete(item._id, setUserProfile)}
 						text='Delete'
-						sm
+						filled
 					/>
 				</td>
 			</tr>

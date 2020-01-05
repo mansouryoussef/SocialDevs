@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './AddExperienceFormStyles.scss';
-import Button from '../../../Button/Button';
+import Button from '../../../Buttons/Button/Button';
 import { DataContext } from '../../../../contexts/DataContext';
 import { handleAddExp } from '../../../../service/profile';
 
@@ -76,8 +76,7 @@ export default function AddExperienceForm({ setAddingExp, setError }) {
 							setError
 						)
 					}
-					highlight
-					sm
+					filled
 				/>
 			</td>
 		</tr>

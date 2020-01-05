@@ -31,6 +31,7 @@
 				border-color: rgb(200, 200, 200);
 				resize: none;
 				color: rgb(73, 73, 73);
+
 				&::placeholder {
 					font-size: 1.5rem;
 					color: rgb(179, 179, 179);
@@ -41,6 +42,7 @@
 				}
 			}
 		}
+
 		.divider {
 			width: 90%;
 			margin: 5rem auto;

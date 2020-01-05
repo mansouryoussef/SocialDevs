@@ -1,7 +1,7 @@
 @import './breakpoints';
 @import './variables';
 
-@mixin btn($color) {
+@mixin btn($color, $size: 1) {
 	display: flex;
 	align-items: center;
 	width: fit-content;
@@ -9,16 +9,17 @@
 	background-color: transparent;
 	border: 1px solid $color;
 	font-weight: 300;
-	font-size: $space-5;
-	padding: $space-1 $space-3;
+	font-size: $space-5 * $size;
+	padding: $space-1 * $size $space-3 * $size;
 	border-radius: $space-1;
-
-	margin-left: $space-5;
 	cursor: pointer;
 
 	&#filled {
 		background-color: $color;
 		color: #fff;
+	}
+
+	&-large {
 	}
 }
 

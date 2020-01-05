@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './PostStyles.scss';
-import Button from '../../components/Button/Button';
 import Axios from 'axios';
 import { DataContext } from '../../contexts/DataContext';
+import Button from '../../components/Buttons/Button/Button';
 import CommentCard from '../../components/Feed/CommentCard/CommentCard';
-import PostCard from '../../components/Feed/CommentCard/PostCard/PostCard';
+import PostCard from '../../components/Feed/PostCard/PostCard';
 import { format } from 'date-fns';
 import { firstName } from '../../service/helpers';
 import { getAllPosts } from '../../service/post';
@@ -83,12 +83,7 @@ export default function Post({ match }) {
 						onChange={handleOnChange}
 					/>
 
-					<Button
-						onClick={handleCreateComment}
-						text='Comment it!'
-						sm
-						highlight
-					/>
+					<Button onClick={handleCreateComment} text='Comment it!' filled />
 				</div>
 
 				<div className='divider'></div>

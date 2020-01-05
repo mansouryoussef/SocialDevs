@@ -1,5 +1,5 @@
-@import '../../../../assets/sass/breakpoints';
-@import '../../../../assets/sass/mixins';
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/mixins';
 
 .postcard-container {
 	@include wideCard;
@@ -69,16 +69,15 @@
 			&__btns {
 				display: flex;
 
-				@include md {
-					.btn {
-						margin-bottom: 0.75rem;
-					}
+				.button-container,
+				.button-danger-container {
+					margin-right: 1rem;
 				}
 			}
 
 			&__like {
 				height: fit-content;
-				margin-right: 2.5rem;
+				margin-right: 1.75rem;
 				cursor: pointer;
 
 				@include xs {

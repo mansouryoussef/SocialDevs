@@ -1,6 +1,7 @@
 import React from 'react';
 import './FormCardStyles.scss';
-import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
+import Button from '../Buttons/Button/Button';
 
 export default function FormCard({ handleSubmit, login, children, errorMsg }) {
 	return (
@@ -14,23 +15,22 @@ export default function FormCard({ handleSubmit, login, children, errorMsg }) {
 			<span className='formcard-container__error'>{errorMsg}</span>
 
 			<div className='formcard-container__btn-container'>
-				<Button
-					onClick={handleSubmit}
-					sm
-					text={login ? 'Log in' : 'Sign up'}
-					to='/profile'
-					highlight
-				/>
+				<Link className='Link' to='/profile'>
+					<Button
+						onClick={handleSubmit}
+						text={login ? 'Log in' : 'Sign up'}
+						filled
+					/>
+				</Link>
 			</div>
 
 			{/* @TODO consider moving this to an own component. e.g. Note */}
 			<p className='formcard-container__note'>
 				{login ? 'Don’t have an account?' : 'Already have an account?'}
-				{/* @TODO use anchor only for outside urls otherwise always use <Link> */}
 
-				<a href={login ? '/signup' : '/login'}>
+				<Link className='Link' to={login ? '/signup' : '/login'}>
 					{login ? 'Sign up' : 'Log in'}
-				</a>
+				</Link>
 			</p>
 		</form>
 	);

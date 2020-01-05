@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './ProfileStyles.scss';
-import Button from '../../components/Button/Button';
+
 import deleteprofile from '../../assets/img/icons/deleteprofile.svg';
 import { DataContext } from '../../contexts/DataContext';
 import CreateProfileForm from '../../components/Profile/CreateProfileForm/CreateProfileForm';
@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import ProfileTable from '../../components/Profile/ProfileTable/ProfileTable';
 import { handleDeleteAccount } from '../../service/profile';
 import ProfileInfoList from '../../components/Profile/ProfileInfoList/ProfileInfoList';
+import IconButtonDanger from '../../components/Buttons/IconButtonDanger/IconButtonDanger';
 
 export default function Profile() {
 	const { userProfile, setIsLoggedin } = useContext(DataContext);
@@ -55,14 +56,13 @@ export default function Profile() {
 				<ProfileTable info={expTableProps} />
 				<ProfileTable info={eduTableProps} />
 
-				<Button
-					icon={deleteprofile}
+				<IconButtonDanger
 					onClick={() => {
 						handleDeleteAccount(setIsLoggedin, history);
 					}}
-					danger
+					icon={deleteprofile}
 					text='Delete my account!'
-					sm
+					filled
 				/>
 			</div>
 		</div>

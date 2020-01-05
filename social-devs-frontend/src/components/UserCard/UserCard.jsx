@@ -1,7 +1,8 @@
 import React from 'react';
 import './UserCardStyles.scss';
-import Button from '../../../Button/Button';
-import user from '../../../../assets/img/icons/user.svg';
+import { Link } from 'react-router-dom';
+import Button from '../Buttons/Button/Button';
+import user from '../../assets/img/icons/user.svg';
 import uuid from 'uuid';
 
 export default function UserCard({
@@ -20,7 +21,9 @@ export default function UserCard({
 				<h2 className='usercard-container__user-info__name'>{name}</h2>
 				<p className='usercard-container__user-info__title'>{title}</p>
 				<p className='usercard-container__user-info__location'>{location}</p>
-				<Button text='View' to={`/user/${userId}`} highlight sm />
+				<Link className='Link' to={`/user/${userId}`}>
+					<Button text='View' filled />
+				</Link>
 			</div>
 
 			<div className='usercard-container__skills'>

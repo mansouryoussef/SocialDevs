@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import './FeedStyles.scss';
-import Button from '../../components/Button/Button';
+import Button from '../../components/Buttons/Button/Button';
 import { DataContext } from '../../contexts/DataContext';
 import Axios from 'axios';
 import { format } from 'date-fns';
-import PostCard from '../../components/Feed/CommentCard/PostCard/PostCard';
+import PostCard from '../../components/Feed/PostCard/PostCard';
 
 export default function Feed() {
 	const { posts, getPosts } = useContext(DataContext);
@@ -54,21 +54,12 @@ export default function Feed() {
 						className='feed-page__content__action-container__textArea'
 					/>
 
-					<Button onClick={handleCreatePost} text='Post it!' sm highlight />
+					<Button onClick={handleCreatePost} text='Post it!' filled />
 				</div>
 				{/* @TODO consider moving this to an own component */}
 				<div className='feed-page__content__posts-container'>
 					{posts.map(post => {
-						const {
-							text,
-							name,
-							avatar,
-							user,
-							likes,
-							date,
-							comments,
-							_id
-						} = post;
+						const { text, name, avatar, user, likes, date, _id } = post;
 
 						return (
 							<PostCard

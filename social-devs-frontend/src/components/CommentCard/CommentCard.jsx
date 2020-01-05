@@ -5,7 +5,6 @@ import { DataContext } from '../../../contexts/DataContext';
 import ButtonDanger from '../../Buttons/ButtonDanger/ButtonDanger';
 import { getAllPosts } from '../../../service/post';
 import defaultUserImg from '../../../assets/img/icons/user.svg';
-
 export default function CommentCard({
 	commentUserId,
 	text,

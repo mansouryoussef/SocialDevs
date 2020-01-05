@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './ProfileTableStyles.scss';
-import Button from '../../Button/Button';
+import Button from '../../Buttons/Button/Button';
 import AddExperienceForm from './AddExperienceForm/AddExperienceForm';
 import { DataContext } from '../../../contexts/DataContext';
 import TableList from './TableList';
@@ -33,7 +33,6 @@ export default function ProfileTable({ info }) {
 
 				<span className='profile-table__title-container__btn'>
 					<Button
-						sm
 						text={addingExp || addingEdu ? 'Cancel' : 'Add'}
 						onClick={() =>
 							type === 'experience'

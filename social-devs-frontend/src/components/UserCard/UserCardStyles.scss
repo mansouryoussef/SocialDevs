@@ -1,5 +1,5 @@
-@import '../../../../assets/sass/breakpoints';
-@import '../../../../assets/sass/mixins';
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
 
 .usercard-container {
 	@include wideCard;
@@ -47,7 +47,9 @@
 				font-size: 1.25rem;
 			}
 		}
-
+		&__location {
+			margin-bottom: 0.75rem;
+		}
 		.btn--highlight {
 			margin-top: 1rem;
 		}

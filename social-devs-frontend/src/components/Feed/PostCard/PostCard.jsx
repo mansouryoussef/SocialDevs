@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import './PostCardStyles.scss';
-import notLiked from '../../../../assets/img/icons/emptyheart.svg';
-import like from '../../../..//assets/img/icons/filledheart.svg';
-import { DataContext } from '../../../../contexts/DataContext';
+import notLiked from '../../../assets/img/icons/emptyheart.svg';
+import like from '../../../assets/img/icons/filledheart.svg';
+import { DataContext } from '../../../contexts/DataContext';
 import Axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import Button from '../../../Button/Button';
-import defaultUserImg from '../../../../assets/img/icons/user.svg';
+import { useHistory, Link } from 'react-router-dom';
+import Button from '../../Buttons/Button/Button';
+import ButtonDanger from '../../Buttons/ButtonDanger/ButtonDanger';
+import defaultUserImg from '../../../assets/img/icons/user.svg';
+
 export default function PostCard({
 	text,
 	name,
@@ -127,10 +129,14 @@ export default function PostCard({
 					</div>
 
 					<div className='postcard-container__body__btns-container__btns'>
-						{!inPost && <Button text='Comments' to={`/post/${id}`} sm />}
+						{!inPost && (
+							<Link className='Link' to={`/post/${id}`}>
+								<Button text='Comments' />
+							</Link>
+						)}
 						{/* // @TODO consider using useMemo */}
 						{user._id === postUserId && (
-							<Button onClick={handleDeletePost} text='Delete' danger sm />
+							<ButtonDanger onClick={handleDeletePost} filled text='Delete' />
 						)}
 					</div>
 				</div>
