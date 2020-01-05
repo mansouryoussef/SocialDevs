@@ -1,5 +1,10 @@
 import React, { useContext } from 'react';
 import './App.scss';
+
+import { Redirect, Route } from 'react-router-dom';
+import { DataContext } from './contexts/DataContext';
+
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
@@ -9,12 +14,8 @@ import Feed from './pages/Feed/Feed';
 import Profile from './pages/Profile/Profile';
 import Post from './pages/Post/Post';
 import Footer from './components/Layout/Footer/Footer';
-import { Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-import { DataContext } from './contexts/DataContext';
 import Spinner from './components/Spinner/Spinner';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import Nav from './components/NavBar/Nav/Nav';
+import Nav from './components/Navbar/Nav/Nav';
 
 const App = ({ location }) => {
 	const { isLoggedin, isLoading } = useContext(DataContext);
@@ -26,7 +27,7 @@ const App = ({ location }) => {
 			) : (
 				<main className='app-container'>
 					{location.pathname !== '/' && <Nav />}
-					{/* <HamburgerMenu /> */}
+
 					<Route
 						path='/'
 						exact
@@ -39,18 +40,6 @@ const App = ({ location }) => {
 					<PrivateRoute path='/feed' component={Feed} />
 					<PrivateRoute path='/profile' component={Profile} />
 					<PrivateRoute path='/post/:post_id' component={Post} />
-
-					{/* <Route
-						path='/login'
-						exact
-						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Login />)}
-					/> */}
-
-					{/* <Route
-						path='/signup'
-						exact
-						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Signup />)}
-					/> */}
 
 					{location.pathname !== '/' && <Footer />}
 				</main>

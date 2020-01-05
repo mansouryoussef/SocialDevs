@@ -1,4 +1,26 @@
 @import './breakpoints';
+@import './variables';
+
+@mixin btn($color) {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
+	background-color: transparent;
+	border: 1px solid $color;
+	font-weight: 300;
+	font-size: $space-5;
+	padding: $space-1 $space-3;
+	border-radius: $space-1;
+
+	margin-left: $space-5;
+	cursor: pointer;
+
+	&#filled {
+		background-color: $color;
+		color: #fff;
+	}
+}
 
 @mixin titleUnderline {
 	position: relative;
@@ -15,15 +37,6 @@
 	}
 }
 
-@mixin tableCell($pad: 1.5rem) {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-width: 24%;
-	max-width: 24%;
-	padding: $pad;
-}
-
 @mixin wideCard {
 	display: flex;
 	max-width: 80rem;
@@ -33,10 +46,19 @@
 	border-radius: 1.25rem;
 	box-shadow: var(--shadow-light);
 	align-items: center;
+
 	@include sm {
 		padding: 1rem 3rem;
 	}
 }
+// @mixin tableCell($pad: 1.5rem) {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	min-width: 24%;
+// 	max-width: 24%;
+// 	padding: $pad;
+// }
 
 // @mixin circleImg($size: 14rem) {
 // 	min-width: $size;

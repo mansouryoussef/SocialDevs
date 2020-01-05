@@ -1,0 +1,6 @@
+@import '../../../assets/sass/variables';
+@import '../../../assets/sass//mixins';
+
+.button-container {
+	@include btn(var(--color-primary));
+}

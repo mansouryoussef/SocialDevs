@@ -3,7 +3,8 @@ import './ListItemsStyles.scss';
 import { useHistory, Link } from 'react-router-dom';
 
 import { DataContext } from '../../../contexts/DataContext';
-import Button from '../../Button/Button';
+import Button from '../../Buttons/Button/Button';
+import IconButton from '../../Buttons/IconButton/IconButton';
 import Burger from '../Burger/Burger';
 import { handleSignout } from '../../../service/auth';
 
@@ -14,6 +15,7 @@ import usersWhite from '../../../assets/img/icons/usersWhite.svg';
 import feed from '../../../assets/img/icons/feed.svg';
 import feedWhite from '../../../assets/img/icons/feedWhite.svg';
 import signout from '../../../assets/img/icons/signout.svg';
+import signoutWhite from '../../../assets/img/icons/signoutWhite.svg';
 
 export default function ListItems() {
 	const [open, setOpen] = useState(false);
@@ -29,16 +31,20 @@ export default function ListItems() {
 			{!isLoggedin ? (
 				<ul>
 					<li>
-						<Button sm highlight text='Sign up' to='/signup' />
+						<Link to='/signup' className='Link'>
+							<Button filled text='Sign up' />
+						</Link>
 					</li>
 					<li>
-						<Button sm text='Log in' to='/login' />
+						<Link to='/login' className='Link'>
+							<Button text='Log in' />
+						</Link>
 					</li>
 				</ul>
 			) : (
 				<>
 					<Burger setOpen={setOpen} open={open} />
-					<div className='listItems-container' id={open && 'active'}>
+					<div className='listItems-container' id={open ? 'active' : ''}>
 						<ul>
 							<li>
 								<Link onClick={handleToggle} className='Link' to='/feed'>
@@ -46,28 +52,34 @@ export default function ListItems() {
 									<span>Feed</span>
 								</Link>
 							</li>
+
 							<li>
 								<Link onClick={handleToggle} className='Link' to='/users'>
 									<img src={open ? usersWhite : users} alt='Users icon' />
 									<span>Users</span>
 								</Link>
 							</li>
+
 							<li>
 								<Link onClick={handleToggle} className='Link' to='/profile'>
 									<img src={open ? profileWhite : profile} alt='Profile icon' />
 									<span>Profile</span>
 								</Link>
 							</li>
+
 							<li>
-								<Button
+								<Link
 									onClick={() => {
 										handleSignout(setIsLoggedin, history);
 										handleToggle();
 									}}
-									text='Sign out'
-									sm
-									icon={signout}
-								/>
+									to='/login'
+									className='Link'>
+									<IconButton
+										icon={open ? signoutWhite : signout}
+										text='Sign out'
+									/>
+								</Link>
 							</li>
 						</ul>
 					</div>
