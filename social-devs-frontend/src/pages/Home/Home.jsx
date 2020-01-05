@@ -6,6 +6,8 @@ import Logo from '../../components/Logo/Logo';
 import hero from '../../assets/img/hero.svg';
 import Button from '../../components/Buttons/Button/Button';
 import ButtonWhite from '../../components/Buttons/ButtonWhite/ButtonWhite';
+import AutoLogin from '../../components/AutoLogin/AutoLogin';
+
 export default function Home() {
 	return (
 		<main className='home-page'>
@@ -33,6 +35,7 @@ export default function Home() {
 						<Link to='/login' className='Link'>
 							<Button text='Log in' />
 						</Link>
+						<AutoLogin />
 					</div>
 
 					{/* // @TODO consider making the hero an own component. For real! */}

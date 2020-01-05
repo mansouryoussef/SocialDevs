@@ -12,7 +12,7 @@
 
 	@include sm {
 		padding: 2rem 3.75rem 2.5rem 3.75rem;
-		margin-top: 6vh; // @TODO whats up with this vh?
+		margin-top: 6vh;
 		max-width: 88vw;
 	}
 
@@ -97,7 +97,22 @@
 
 	&__btn-container {
 		display: flex;
+		align-items: center;
 		margin: 1rem 0;
+
+		.button-container {
+			margin-right: 1rem;
+		}
+
+		&__auto-login {
+			font-size: 1.3rem;
+			color: var(--color-primary);
+			cursor: pointer;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	&__note {
@@ -106,6 +121,10 @@
 
 		@include sm {
 			font-size: 1.25rem;
+		}
+
+		@include xs {
+			font-size: 1.1rem;
 		}
 
 		a {

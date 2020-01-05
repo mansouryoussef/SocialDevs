@@ -38,13 +38,6 @@
 			& .button-white-container {
 				@include btn(#fff, 1.4);
 			}
-
-			@include lg {
-				.btn--white {
-					border-color: var(--color-primary);
-					color: black;
-				}
-			}
 		}
 
 		&__content {
@@ -110,9 +103,10 @@
 			}
 
 			&__btns {
-				max-width: 23rem;
 				display: flex;
+				align-items: center;
 				margin-top: 3rem;
+				flex-wrap: wrap;
 
 				& .button-container {
 					@include btn(var(--color-primary), 1.25);
@@ -120,7 +114,14 @@
 				}
 
 				@include lg {
-					margin: 2rem auto;
+					justify-content: center;
+
+					& .auto-login-container {
+						width: 100%;
+						margin-top: 2rem;
+						border-left: none;
+						text-decoration: underline;
+					}
 				}
 
 				@include md {

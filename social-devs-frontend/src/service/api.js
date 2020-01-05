@@ -6,6 +6,10 @@ export const createAuthHeader = token => ({
 	'Content-Type': 'application/json'
 });
 
+// Post: auth user and get user token
+export const getUserToken = async (body, headers) =>
+	await Axios.post('/api/auth', body, { headers });
+
 // GET: user data
 export const getUserDataReq = async headers =>
 	await Axios.get('/api/auth', { headers });

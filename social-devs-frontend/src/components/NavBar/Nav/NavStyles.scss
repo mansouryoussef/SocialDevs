@@ -8,6 +8,10 @@
 	border-top: 3px solid var(--color-primary);
 	width: 100vw;
 
+	.button-container {
+		margin-left: 1rem;
+	}
+
 	@include lg {
 		padding: 0.5rem 2rem 0 2rem;
 	}

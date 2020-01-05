@@ -1,0 +1,17 @@
+@import '../../assets/sass/breakpoints';
+
+.auto-login-container {
+	font-size: 1.3rem;
+	color: var(--color-primary);
+	cursor: pointer;
+	border-left: 2px solid var(--color-primary);
+	padding-left: 0.5rem;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	@include xs {
+		font-size: 1.1rem;
+	}
+}

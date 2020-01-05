@@ -16,10 +16,13 @@ export default function TableList({ arr, itemNamesArr, handleDelete }) {
 		return (
 			<tr key={uuid()} className='profile-table__info-row'>
 				<td>{item[itemNamesArr[0]]}</td>
+
 				<td>{item[itemNamesArr[1]]}</td>
+
 				<td>
 					<span>{from}</span> - <span>{to}</span>
 				</td>
+
 				<td>
 					<ButtonDanger
 						onClick={() => handleDelete(item._id, setUserProfile)}

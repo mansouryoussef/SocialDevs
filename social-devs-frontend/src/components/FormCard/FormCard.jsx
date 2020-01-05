@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './FormCardStyles.scss';
 import { Link } from 'react-router-dom';
-import Button from '../Buttons/Button/Button';
 
-export default function FormCard({ handleSubmit, login, children, errorMsg }) {
+import Button from '../Buttons/Button/Button';
+import AutoLogin from '../AutoLogin/AutoLogin';
+
+export default function FormCard({
+	handleSubmit,
+	login,
+	children,
+	errorMsg,
+	setErrorMsg
+}) {
 	return (
 		<form className='formcard-container'>
 			<h1 className='formcard-container__title'>
@@ -22,6 +30,8 @@ export default function FormCard({ handleSubmit, login, children, errorMsg }) {
 						filled
 					/>
 				</Link>
+
+				<AutoLogin setErrorMsg={setErrorMsg} />
 			</div>
 
 			{/* @TODO consider moving this to an own component. e.g. Note */}

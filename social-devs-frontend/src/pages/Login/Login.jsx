@@ -4,6 +4,7 @@ import FormCard from '../../components/FormCard/FormCard';
 import axios from 'axios';
 import { DataContext } from '../../contexts/DataContext';
 import { useHistory } from 'react-router-dom';
+import { handleLogin } from '../../service/auth';
 
 export default function Login() {
 	let history = useHistory();
@@ -25,46 +26,22 @@ export default function Login() {
 		setLoginData({ ...loginData, [e.target.name]: e.target.value });
 	};
 
-	const handleOnSubmit = async e => {
-		e.preventDefault();
-
-		// @TODO duplicate name of "loginData", consider renaming this to be less confusing.
-
-		const loginData = {
-			email,
-			password
-		};
-
-		try {
-			const config = {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			};
-
-			const body = JSON.stringify(loginData);
-
-			const res = await axios.post('/api/auth', body, config);
-
-			window.localStorage.setItem('userToken', res.data.token);
-
-			getInitialData();
-			setIsLoggedin(true);
-			history.push('/feed');
-		} catch (error) {
-			console.log(error);
-			setErrorMsg(error.response.data.errors[0].msg);
-		}
-	};
-
 	return (
 		<div className='login-page'>
 			<FormCard
 				handleSubmit={e => {
-					handleOnSubmit(e);
+					handleLogin(
+						e,
+						loginData,
+						getInitialData,
+						setIsLoggedin,
+						history,
+						setErrorMsg
+					);
 				}}
 				login
-				errorMsg={errorMsg}>
+				errorMsg={errorMsg}
+				setErrorMsg={setErrorMsg}>
 				<div className='formcard-container__input-fields__field'>
 					<label htmlFor='email'>Email</label>
 
