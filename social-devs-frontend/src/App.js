@@ -15,7 +15,7 @@ import Profile from './pages/Profile/Profile';
 import Post from './pages/Post/Post';
 import Footer from './components/Layout/Footer/Footer';
 import Spinner from './components/Spinner/Spinner';
-import Nav from './components/Navbar/Nav/Nav';
+import Nav from './components/NavBar/Nav/Nav';
 
 const App = ({ location }) => {
 	const { isLoggedin, isLoading } = useContext(DataContext);
