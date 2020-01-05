@@ -10,8 +10,8 @@
 	border-spacing: 1rem;
 	border-collapse: separate;
 
-	@include md {
-		width: 100vw;
+	@include sm {
+		width: 100%;
 	}
 
 	&__title-container {
