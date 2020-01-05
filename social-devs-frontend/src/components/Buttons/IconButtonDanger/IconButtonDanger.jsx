@@ -11,7 +11,7 @@ export default function IconButtonDanger({ text, filled, icon, onClick }) {
 				src={icon}
 				alt='button icon'
 			/>
-			{text}
+			<span>{text}</span>
 		</button>
 	);
 }

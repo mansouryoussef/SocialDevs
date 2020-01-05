@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { format } from 'date-fns';
 import { DataContext } from '../../../contexts/DataContext';
 import uuid from 'uuid';
-import ButtonDanger from '../../Buttons/ButtonDanger/ButtonDanger';
+import IconButtonDanger from '../../Buttons/IconButtonDanger/IconButtonDanger';
+import trashWhite from '../../../assets/img/icons/trashWhite.svg';
 
 export default function TableList({ arr, itemNamesArr, handleDelete }) {
 	const { setUserProfile } = useContext(DataContext);
@@ -24,10 +25,11 @@ export default function TableList({ arr, itemNamesArr, handleDelete }) {
 				</td>
 
 				<td>
-					<ButtonDanger
+					<IconButtonDanger
 						onClick={() => handleDelete(item._id, setUserProfile)}
 						text='Delete'
 						filled
+						icon={trashWhite}
 					/>
 				</td>
 			</tr>

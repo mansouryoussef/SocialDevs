@@ -10,6 +10,10 @@
 	border-spacing: 1rem;
 	border-collapse: separate;
 
+	@include md {
+		width: 100vw;
+	}
+
 	&__title-container {
 		display: flex;
 		align-items: center;
@@ -28,12 +32,7 @@
 		}
 	}
 
-	@include md {
-		width: 100vw;
-	}
-
 	td {
-		width: 25%;
 		height: 6rem;
 		padding: 0 1rem;
 		word-wrap: break-word;
@@ -72,6 +71,18 @@
 				}
 			}
 
+			@include sm {
+				font-size: 1.25rem;
+
+				.icon-button-danger-container {
+					span {
+						display: none;
+					}
+					img {
+						margin: 0;
+					}
+				}
+			}
 			@include xs {
 				font-size: 0.85rem;
 			}
@@ -80,6 +91,7 @@
 			border: none;
 			text-align: start;
 			padding: 0;
+			width: fit-content;
 		}
 	}
 
