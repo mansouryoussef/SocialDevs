@@ -2,7 +2,6 @@ import React from 'react';
 import './HeroStyles.scss';
 import postSvg from '../../assets/img/icons/hero-post.svg';
 import heroSvg from '../../assets/img/icons/hero.svg';
-import svgString from './SVG';
 
 export default function Hero() {
 	return (

@@ -62,16 +62,24 @@
 			align-items: center;
 			width: fit-content;
 
-			@include sm {
-				flex-flow: row-reverse wrap-reverse;
-			}
-
 			&__btns {
 				display: flex;
 
 				.button-container,
-				.button-danger-container {
+				.icon-button-danger-container {
 					margin-right: 1rem;
+
+					@include sm {
+						font-size: 1.25rem;
+
+						span {
+							display: none;
+						}
+
+						img {
+							margin: 0;
+						}
+					}
 				}
 			}
 

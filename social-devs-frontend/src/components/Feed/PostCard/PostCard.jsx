@@ -4,10 +4,11 @@ import notLiked from '../../../assets/img/icons/emptyheart.svg';
 import like from '../../../assets/img/icons/filledheart.svg';
 import { DataContext } from '../../../contexts/DataContext';
 import Axios from 'axios';
+import trashWhite from '../../../assets/img/icons/trashWhite.svg';
 import { useHistory, Link } from 'react-router-dom';
 import Button from '../../Buttons/Button/Button';
-import ButtonDanger from '../../Buttons/ButtonDanger/ButtonDanger';
 import defaultUserImg from '../../../assets/img/icons/user.svg';
+import IconButtonDanger from '../../Buttons/IconButtonDanger/IconButtonDanger';
 
 export default function PostCard({
 	text,
@@ -136,7 +137,12 @@ export default function PostCard({
 						)}
 						{/* // @TODO consider using useMemo */}
 						{user._id === postUserId && (
-							<ButtonDanger onClick={handleDeletePost} filled text='Delete' />
+							<IconButtonDanger
+								icon={trashWhite}
+								onClick={handleDeletePost}
+								filled
+								text='Delete'
+							/>
 						)}
 					</div>
 				</div>
