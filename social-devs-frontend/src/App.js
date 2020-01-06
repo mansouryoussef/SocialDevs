@@ -16,6 +16,7 @@ import Post from './pages/Post/Post';
 import Footer from './components/Layout/Footer/Footer';
 import Spinner from './components/Spinner/Spinner';
 import Nav from './components/NavBar/Nav/Nav';
+import Hero from './components/Hero/Hero';
 
 const App = ({ location }) => {
 	const { isLoggedin, isLoading } = useContext(DataContext);

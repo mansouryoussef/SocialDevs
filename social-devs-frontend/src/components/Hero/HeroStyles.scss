@@ -1,0 +1,79 @@
+@import '../../assets/sass/breakpoints';
+
+.hero-container {
+	position: absolute;
+	right: 4vw;
+	top: 0;
+	width: 42%;
+
+	&__post {
+		position: absolute;
+		width: 15%;
+		top: 26%;
+		margin-left: -1rem;
+		z-index: 2;
+		animation: hover-post-lg 0.8s ease-in-out infinite alternate;
+
+		@include sm {
+			animation: hover-post-sm 0.8s ease-in-out infinite alternate;
+			margin-left: -0.8rem;
+		}
+	}
+
+	&__hero {
+		width: 100%;
+		right: 0;
+		z-index: -1;
+	}
+
+	@include xl {
+		right: 0;
+		width: 47%;
+		margin-top: 0;
+	}
+
+	@include lg {
+		position: static;
+		position: relative;
+		width: 60%;
+		margin-top: 4vh;
+	}
+
+	@include md {
+		width: 80%;
+		margin-top: 6vh;
+	}
+
+	@include sm {
+		width: 85%;
+	}
+}
+
+.svg-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: fit-content;
+	width: 100%;
+	z-index: 10;
+}
+
+@keyframes hover-post-lg {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(-1.2rem);
+	}
+}
+
+@keyframes hover-post-sm {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(-0.8rem);
+	}
+}

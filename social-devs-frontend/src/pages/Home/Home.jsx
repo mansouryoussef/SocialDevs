@@ -3,10 +3,11 @@ import './HomeStyles.scss';
 import { Link } from 'react-router-dom';
 
 import Logo from '../../components/Logo/Logo';
-import hero from '../../assets/img/hero.svg';
+import hero from '../../assets/img/icons/hero.svg';
 import Button from '../../components/Buttons/Button/Button';
 import ButtonWhite from '../../components/Buttons/ButtonWhite/ButtonWhite';
 import AutoLogin from '../../components/AutoLogin/AutoLogin';
+import Hero from '../../components/Hero/Hero';
 
 export default function Home() {
 	return (
@@ -14,7 +15,6 @@ export default function Home() {
 			{/* // @TODO consider making the clip an own component */}
 			<div className='home-page__clip'></div>
 			<section className='home-page__container'>
-				{/* // @TODO consider making the clip an own component */}
 				<nav className='home-page__container__nav'>
 					<Logo />
 					<Link className='Link' to='/users'>
@@ -39,7 +39,8 @@ export default function Home() {
 					</div>
 
 					{/* // @TODO consider making the hero an own component. For real! */}
-					<img src={hero} alt='hero' />
+					{/* <img src={hero} alt='hero' /> */}
+					<Hero />
 				</div>
 			</section>
 		</main>
