@@ -9,12 +9,16 @@ import ProfileTable from '../../components/Profile/ProfileTable/ProfileTable';
 import { handleDeleteAccount } from '../../service/profile';
 import ProfileInfoList from '../../components/Profile/ProfileInfoList/ProfileInfoList';
 import IconButtonDanger from '../../components/Buttons/IconButtonDanger/IconButtonDanger';
+import Disclaimer from '../../components/Disclaimer/Disclaimer';
+
 
 export default function Profile() {
-	const { userProfile, setIsLoggedin } = useContext(DataContext);
+	const { userProfile, setIsLoggedin, user } = useContext(DataContext);
 	const [showEditForm, setShowEditForm] = useState(
 		userProfile.title === undefined
 	);
+	
+	const [showError, setShowError] = useState(false);
 
 	useEffect(() => {
 		userProfile.title === undefined
@@ -56,12 +60,18 @@ export default function Profile() {
 
 				<IconButtonDanger
 					onClick={() => {
+						user.name === 'Guest' ?
+						setShowError(true) :
 						handleDeleteAccount(setIsLoggedin, history);
 					}}
+					
 					icon={deleteprofile}
 					text='Delete my account!'
 					filled
 				/>
+				{showError &&
+				<Disclaimer err='Sorry, guests are not allowed to delete their accounts for others to use it.'/>
+				}
 			</div>
 		</div>
 	);

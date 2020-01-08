@@ -1,6 +1,11 @@
 import React from 'react';
 import './IconButtonDangerStyles.scss';
-export default function IconButtonDanger({ text, filled, icon, onClick }) {
+export default function IconButtonDanger({
+	text,
+	filled,
+	icon,
+	onClick
+}) {
 	return (
 		<button
 			className='icon-button-danger-container'
