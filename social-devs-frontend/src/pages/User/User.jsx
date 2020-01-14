@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './UserStyles.scss';
-import person from '../../assets/img/person.jpg';
-import userDefaultImg from '../../assets/img/icons/user.svg';
-import { DataContext } from '../../contexts/DataContext';
+import userDefaultImg from 'assets/img/icons/user.svg';
+import { DataContext } from 'contexts/DataContext';
 import { format } from 'date-fns';
 import uuid from 'uuid';
 

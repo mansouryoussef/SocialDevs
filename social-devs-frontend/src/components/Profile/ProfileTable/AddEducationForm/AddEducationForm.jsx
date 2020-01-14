@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import './AddEducationFormStyles.scss';
-import Button from '../../../Buttons/Button/Button';
-import { DataContext } from '../../../../contexts/DataContext';
-import { handleAddEdu } from '../../../../service/profile';
+import Button from 'components/Shared/Buttons/Button/Button';
+import { DataContext } from 'contexts/DataContext';
+import { handleAddEdu } from 'service/profile';
 
 export default function AddEducationForm({ setAddingEdu, setError }) {
 	const { setUserProfile, userProfile } = useContext(DataContext);

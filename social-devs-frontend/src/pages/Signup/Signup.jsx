@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import './SignupStyles.scss';
-import FormCard from '../../components/FormCard/FormCard';
+import FormCard from 'components/Shared/FormCard/FormCard';
 import axios from 'axios';
-import { DataContext } from '../../contexts/DataContext';
+import { DataContext } from 'contexts/DataContext';
 import { useHistory } from 'react-router-dom';
 
 export default function Signup() {

@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
 import './PostCardStyles.scss';
-import notLiked from '../../../assets/img/icons/emptyheart.svg';
-import like from '../../../assets/img/icons/filledheart.svg';
-import { DataContext } from '../../../contexts/DataContext';
+import notLiked from 'assets/img/icons/emptyheart.svg';
+import like from 'assets/img/icons/filledheart.svg';
+import { DataContext } from 'contexts/DataContext';
 import Axios from 'axios';
-import trashWhite from '../../../assets/img/icons/trashWhite.svg';
+import trashWhite from 'assets/img/icons/trashWhite.svg';
 import { useHistory, Link } from 'react-router-dom';
-import Button from '../../Buttons/Button/Button';
-import defaultUserImg from '../../../assets/img/icons/user.svg';
-import IconButtonDanger from '../../Buttons/IconButtonDanger/IconButtonDanger';
+import Button from 'components/Shared/Buttons/Button/Button';
+import defaultUserImg from 'assets/img/icons/user.svg';
+import IconButtonDanger from 'components/Shared/Buttons/IconButtonDanger/IconButtonDanger';
 
 export default function PostCard({
 	text,
@@ -107,7 +107,7 @@ export default function PostCard({
 
 				<h2 className='postcard-container__img-name__name'>
 					{name.split(' ')[0]}
-					{/* // @TODO you can move this to an own service e.g user.js  */}
+					{/* @TODO you can move this to an own service e.g user.js  */}
 				</h2>
 			</div>
 
@@ -116,7 +116,7 @@ export default function PostCard({
 
 				<span className='postcard-container__body__date'>
 					Posted on: {date}
-					{/* // @TODO consider creating a date service to format dates. */}
+					{/* @TODO consider creating a date service to format dates. */}
 				</span>
 
 				<div className='postcard-container__body__btns-container'>
@@ -135,7 +135,7 @@ export default function PostCard({
 								<Button text='Comments' />
 							</Link>
 						)}
-						{/* // @TODO consider using useMemo */}
+						{/*  @TODO consider using useMemo */}
 						{user._id === postUserId && (
 							<IconButtonDanger
 								icon={trashWhite}

@@ -4,19 +4,18 @@ import './App.scss';
 import { Redirect, Route } from 'react-router-dom';
 import { DataContext } from './contexts/DataContext';
 
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
-import Users from './pages/Users/Users';
-import User from './pages/User/User';
-import Feed from './pages/Feed/Feed';
-import Profile from './pages/Profile/Profile';
-import Post from './pages/Post/Post';
-import Footer from './components/Layout/Footer/Footer';
-import Spinner from './components/Spinner/Spinner';
-import Nav from './components/NavBar/Nav/Nav';
-import Hero from './components/Hero/Hero';
+import PrivateRoute from './components/Shared/PrivateRoute/PrivateRoute';
+import Home from 'pages/Home/Home';
+import Login from 'pages/Login/Login';
+import Signup from 'pages/Signup/Signup';
+import Users from 'pages/Users/Users';
+import User from 'pages/User/User';
+import Feed from 'pages/Feed/Feed';
+import Profile from 'pages/Profile/Profile';
+import Post from 'pages/Post/Post';
+import Footer from 'components/Layout/Footer/Footer';
+import Spinner from 'components/Shared/Spinner/Spinner';
+import Nav from 'components/Layout/NavBar/Nav/Nav';
 
 const App = ({ location }) => {
 	const { isLoggedin, isLoading } = useContext(DataContext);

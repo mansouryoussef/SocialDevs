@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import './LoginStyles.scss';
-import FormCard from '../../components/FormCard/FormCard';
-import axios from 'axios';
-import { DataContext } from '../../contexts/DataContext';
+import FormCard from 'components/Shared/FormCard/FormCard';
+import { DataContext } from 'contexts/DataContext';
 import { useHistory } from 'react-router-dom';
-import { handleLogin } from '../../service/auth';
+import { handleLogin } from 'service/auth';
 
 export default function Login() {
 	let history = useHistory();

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './ProfileInfoListStyles.scss';
-import { DataContext } from '../../../contexts/DataContext';
-import Button from '../../Buttons/Button/Button';
+import { DataContext } from 'contexts/DataContext';
+import Button from 'components/Shared/Buttons/Button/Button';
 export default function ProfileInfoList({ setShowEditForm }) {
 	const { userProfile } = useContext(DataContext);
 

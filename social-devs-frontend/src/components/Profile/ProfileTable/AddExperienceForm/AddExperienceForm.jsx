@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import './AddExperienceFormStyles.scss';
-import Button from '../../../Buttons/Button/Button';
-import { DataContext } from '../../../../contexts/DataContext';
-import { handleAddExp } from '../../../../service/profile';
+import Button from 'components/Shared/Buttons/Button/Button';
+import { DataContext } from 'contexts/DataContext';
+import { handleAddExp } from 'service/profile';
 
 export default function AddExperienceForm({ setAddingExp, setError }) {
 	const { setUserProfile } = useContext(DataContext);

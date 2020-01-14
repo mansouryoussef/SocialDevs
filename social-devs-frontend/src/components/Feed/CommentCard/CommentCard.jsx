@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import './CommentCardStyles.scss';
 import Axios from 'axios';
-import { DataContext } from '../../../contexts/DataContext';
-import ButtonDanger from '../../Buttons/ButtonDanger/ButtonDanger';
-import { getAllPosts } from '../../../service/post';
-import defaultUserImg from '../../../assets/img/icons/user.svg';
+import { DataContext } from 'contexts/DataContext';
+import ButtonDanger from 'components/Shared/Buttons/ButtonDanger/ButtonDanger';
+import { getAllPosts } from 'service/post';
+import defaultUserImg from 'assets/img/icons/user.svg';
 
 export default function CommentCard({
 	commentUserId,

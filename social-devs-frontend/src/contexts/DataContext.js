@@ -10,6 +10,7 @@ import {
 	createAuthHeader,
 	getUserProfileReq
 } from '../service/api';
+
 import { getAllPosts } from '../service/post';
 
 export const DataContext = createContext();

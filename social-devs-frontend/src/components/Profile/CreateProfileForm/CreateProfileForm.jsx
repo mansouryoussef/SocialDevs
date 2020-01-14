@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import './CreateProfileFormStyles.scss';
-import Button from '../../Buttons/Button/Button';
+import Button from 'components/Shared/Buttons/Button/Button';
 import Axios from 'axios';
-import { DataContext } from '../../../contexts/DataContext';
-import { getUserProfile } from '../../../service/profile';
+import { DataContext } from 'contexts/DataContext';
+import { getUserProfile } from 'service/profile';
 
 export default function CreateProfileForm({ setShowEditForm }) {
 	const { userProfile, setUserProfile } = useContext(DataContext);

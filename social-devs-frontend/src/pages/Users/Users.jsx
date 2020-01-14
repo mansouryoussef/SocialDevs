@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import './UsersStyles.scss';
-import { DataContext } from '../../contexts/DataContext';
-import UserCard from '../../components/UserCard/UserCard';
-import Disclaimer from '../../components/Disclaimer/Disclaimer';
+import { DataContext } from 'contexts/DataContext';
+import UserCard from 'components/UserCard/UserCard';
+import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
 
 export default function Users() {
 	const { profiles, userProfile, isLoggedin } = useContext(DataContext);

@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import './FeedStyles.scss';
-import Button from '../../components/Buttons/Button/Button';
-import { DataContext } from '../../contexts/DataContext';
+import Button from 'components/Shared/Buttons/Button/Button';
+import { DataContext } from 'contexts/DataContext';
 import Axios from 'axios';
 import { format } from 'date-fns';
-import PostCard from '../../components/Feed/PostCard/PostCard';
+import PostCard from 'components/Feed/PostCard/PostCard';
 
 export default function Feed() {
 	const { posts, getPosts } = useContext(DataContext);

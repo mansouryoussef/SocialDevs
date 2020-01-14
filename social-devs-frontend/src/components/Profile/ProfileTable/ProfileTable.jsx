@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import './ProfileTableStyles.scss';
-import Button from '../../Buttons/Button/Button';
+import Button from 'components/Shared/Buttons/Button/Button';
 import AddExperienceForm from './AddExperienceForm/AddExperienceForm';
-import { DataContext } from '../../../contexts/DataContext';
+import { DataContext } from 'contexts/DataContext';
 import TableList from './TableList';
-import { capitalize } from '../../../service/helpers';
+import { capitalize } from 'service/helpers';
 import AddEducationForm from './AddEducationForm/AddEducationForm';
-import { handleDeleteEdu, handleDeleteExp } from '../../../service/profile';
-import Disclaimer from '../../Disclaimer/Disclaimer';
+import { handleDeleteEdu, handleDeleteExp } from 'service/profile';
+import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
 
 export default function ProfileTable({ info }) {
 	const [addingExp, setAddingExp] = useState(false);

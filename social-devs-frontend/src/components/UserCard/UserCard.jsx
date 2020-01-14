@@ -1,18 +1,11 @@
 import React from 'react';
 import './UserCardStyles.scss';
 import { Link } from 'react-router-dom';
-import Button from '../Buttons/Button/Button';
-import user from '../../assets/img/icons/user.svg';
+import Button from '../Shared/Buttons/Button/Button';
+import user from 'assets/img/icons/user.svg';
 import uuid from 'uuid';
 
-export default function UserCard({
-	img,
-	name,
-	title,
-	location,
-	skills,
-	userId
-}) {
+export default function UserCard({ name, title, location, skills, userId }) {
 	return (
 		<div className='usercard-container'>
 			<img src={user} className='usercard-container__img' alt="User's img" />

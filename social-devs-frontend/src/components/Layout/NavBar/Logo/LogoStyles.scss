@@ -1,0 +1,19 @@
+@import '../../../../assets/sass/breakpoints';
+
+.logo-container {
+	display: flex;
+	flex-direction: column;
+	width: auto;
+	margin-right: 1rem;
+	align-items: center;
+	padding: 1rem 0;
+
+	img {
+		height: 5.75rem;
+	}
+
+	p {
+		font-size: 1.25rem;
+		white-space: nowrap;
+	}
+}

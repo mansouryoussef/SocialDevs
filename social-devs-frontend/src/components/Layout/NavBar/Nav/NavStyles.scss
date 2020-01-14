@@ -1,0 +1,18 @@
+@import '../../../../assets/sass/breakpoints';
+
+.nav-containerr {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 5rem 0 5rem;
+	border-top: 3px solid var(--color-primary);
+	width: 100vw;
+
+	.button-container {
+		margin-left: 1rem;
+	}
+
+	@include lg {
+		padding: 0.5rem 2rem 0 2rem;
+	}
+}

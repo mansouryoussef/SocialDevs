@@ -1,8 +1,0 @@
-@import '../../../assets/sass/variables';
-@import '../../../assets/sass//mixins';
-
-.button-danger-container {
-	@include btn(var(--color-danger));
-
-	color: var(--color-danger);
-}
