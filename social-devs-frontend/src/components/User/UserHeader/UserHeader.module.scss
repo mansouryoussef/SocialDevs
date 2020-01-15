@@ -1,0 +1,38 @@
+@import '../../../assets/sass/breakpoints';
+
+.userHeader {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	background-color: var(--color-primary);
+	color: white;
+	box-shadow: var(--shadow);
+	padding: 4rem 0;
+	margin-bottom: 1.5rem;
+
+	.userImg {
+		margin-bottom: 1.5rem;
+		border: 2px solid white;
+		border-radius: 50%;
+		height: 12rem;
+		box-shadow: 0px 0px 18px 0px var(--color-primary-dark);
+
+		@include sm {
+			height: 9rem;
+		}
+	}
+
+	.userName {
+		@include sm {
+			font-size: 2.25rem;
+		}
+	}
+
+	.userTitle,
+	.userLocation {
+		@include sm {
+			font-size: 1.25rem;
+		}
+	}
+}

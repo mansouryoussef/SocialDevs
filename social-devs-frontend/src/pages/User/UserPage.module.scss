@@ -1,0 +1,34 @@
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+
+.userPage {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+
+	.userPageContent {
+		display: flex;
+		flex-direction: column;
+		width: 65vw;
+		max-width: 80rem;
+		margin: 0 auto;
+		padding: 4rem 0;
+
+		@include lg {
+			width: 85vw;
+		}
+
+		@include sm {
+			width: 95vw;
+		}
+
+		.cardsContainer {
+			display: flex;
+			justify-content: space-between;
+			@include sm {
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+	}
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserCardStyles.scss';
 import { Link } from 'react-router-dom';
-import Button from '../Shared/Buttons/Button/Button';
+import Button from 'components/Shared/Buttons/Button/Button';
 import user from 'assets/img/icons/user.svg';
 import uuid from 'uuid';
 

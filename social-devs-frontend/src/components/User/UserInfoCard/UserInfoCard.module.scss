@@ -1,0 +1,22 @@
+.userInfoCard {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	background-color: var(--color-primary-transparent);
+	margin-bottom: 1.25rem;
+	padding: 3rem;
+	border-radius: 0.5rem;
+
+	.bioTitle,
+	.skillsTitle {
+		color: var(--color-primary);
+		margin-bottom: 0.75rem;
+	}
+	.divider {
+		width: 100%;
+		margin: 2.5rem 0;
+		height: 1px;
+		background-color: silver;
+	}
+}

@@ -1,4 +1,4 @@
-// Component and page generator
+// React component and page generator
 // Creator - Youssef Manosur
 
 const fs = require('fs');
@@ -30,33 +30,33 @@ const generate = argsArr => {
 	}
 
 	// Check if 'components' folder doesn't exist
-	if (!fs.existsSync(`./${folder}`)) {
+	if (!fs.existsSync(`../${folder}`)) {
 		// Create components folder
-		fs.mkdirSync(folder);
+		fs.mkdirSync(`../${folder}`);
 	}
 
 	// Loop over argsArr
 	argsArr.forEach(name => {
 		// Check If component's name doesn't aleady exist and name item is not a flag
-		if (!fs.existsSync(`./${folder}/${name}`) && name.charAt(0) !== '-') {
-			// Create folder in ./components with the name of the component
+		if (!fs.existsSync(`../${folder}/${name}`) && name.charAt(0) !== '-') {
+			// Create folder in ../components with the name of the component
 			fs.mkdirSync(
-				`./${folder}/${name.charAt(0).toUpperCase() + name.slice(1)}`
+				`../${folder}/${name.charAt(0).toUpperCase() + name.slice(1)}`
 			);
 
 			// Create a js file with react fn component starter
 			fs.writeFileSync(
-				`./${folder}/${name.charAt(0).toUpperCase() +
+				`../${folder}/${name.charAt(0).toUpperCase() +
 					name.slice(1)}/${name.charAt(0).toUpperCase() + name.slice(1)}.jsx`,
 				`import React from 'react'
-import "./${name}Styles.scss"
+import Styles from "./${name}.module.scss"
 export default function ${name.charAt(0).toUpperCase() + name.slice(1)}() {
     return (
-        <div className="${name.toLowerCase()}-${
+        <div className={Styles.${name.toLowerCase()}${
 					folder === 'components'
-						? 'container'
+						? 'Container'
 						: folder.substring(0, folder.length - 1)
-				}">
+				}}>
             <h1>${name.toLowerCase()}</h1>             
         </div>
         )
@@ -66,10 +66,10 @@ export default function ${name.charAt(0).toUpperCase() + name.slice(1)}() {
 
 			// Create a sass file
 			fs.writeFileSync(
-				`./${folder}/${name}/${name}Styles.scss`,
-				`.${name.toLowerCase()}-${
+				`../${folder}/${name}/${name}.module.scss`,
+				`.${name.toLowerCase()}${
 					folder === 'components'
-						? 'container'
+						? 'Container'
 						: folder.substring(0, folder.length - 1)
 				} {}`
 			);
@@ -83,4 +83,4 @@ export default function ${name.charAt(0).toUpperCase() + name.slice(1)}() {
 generate(args);
 
 // Usage
-// node gen.js -<folder> your_comonents_name_here
+// node gen.js - <folder> your_comonent_names_here

@@ -1,0 +1,18 @@
+.skills {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 1.75rem;
+	font-weight: 300;
+
+	.skill {
+		display: flex;
+		align-items: center;
+		margin: 0 1rem;
+
+		span {
+			font-size: 1rem;
+			margin-right: 0.25rem;
+			color: var(--color-primary);
+		}
+	}
+}
