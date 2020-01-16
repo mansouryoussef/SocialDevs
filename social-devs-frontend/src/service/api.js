@@ -18,6 +18,10 @@ export const getUserDataReq = async headers =>
 export const getAllPostsReq = async headers =>
 	await Axios.get('/api/posts', { headers });
 
+// DELETE: single comment
+export const deleteCommentReq = async (headers, postId, commentId) =>
+	await Axios.delete(`/api/posts/comment/${postId}/${commentId}`, { headers });
+
 // GET: all profiles
 export const getAllProfilesReq = async headers =>
 	await Axios.get('/api/profile', { headers });

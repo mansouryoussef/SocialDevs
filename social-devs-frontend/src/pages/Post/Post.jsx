@@ -13,7 +13,7 @@ import uuid from 'uuid';
 export default function Post({ match }) {
 	const { posts, setPosts } = useContext(DataContext);
 	const [commentText, setCommentText] = useState('');
-
+	console.log(posts);
 	const handleOnChange = e => {
 		setCommentText(e.target.value);
 	};
@@ -104,14 +104,13 @@ export default function Post({ match }) {
 							}
 
 							return comments.map(comment => {
-								const { user, text, name, avatar, date, _id } = comment;
+								const { user, text, name, date, _id } = comment;
 
 								return (
 									<CommentCard
 										commentUserId={user}
 										text={text}
 										name={firstName(name)}
-										avatar={avatar}
 										date={format(new Date(date), 'dd.MM.yyyy')}
 										commentId={_id}
 										postId={match.params.post_id}

@@ -1,7 +1,7 @@
 @import '../../../assets/sass/breakpoints';
 @import '../../../assets/sass/mixins';
 
-.commentCard-container {
+.commentCardContainer {
 	@include wideCard;
 	padding: 1.5rem 3rem;
 	align-items: center;
@@ -13,7 +13,7 @@
 		padding: 2rem;
 	}
 
-	&__img-name {
+	.imgNameContainer {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -23,11 +23,11 @@
 			margin-right: 2rem;
 		}
 
-		&__img {
+		.img {
 			height: 5rem;
 		}
 
-		&__name {
+		.name {
 			text-align: center;
 			font-size: 1.75rem;
 
@@ -37,12 +37,12 @@
 		}
 	}
 
-	&__body {
+	.bodyContainer {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
 
-		&__text {
+		.text {
 			font-size: 1.4rem;
 			position: relative;
 			padding-bottom: 1rem;
@@ -57,15 +57,17 @@
 				height: 1px;
 				background-color: rgb(221, 220, 220);
 			}
+
 			@include md {
 				font-size: 1.5rem;
 			}
+
 			@include xs {
 				font-size: 1.1rem;
 			}
 		}
 
-		&__date-btn {
+		.dateBtnContainer {
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-start;
@@ -74,26 +76,5 @@
 				font-weight: 300;
 			}
 		}
-		// &__date {
-		// 	margin-top: 0.5rem;
-		// 	color: rgb(100, 100, 100);
-		// 	font-size: 1.15rem;
-		// }
-
-		// &__btns-container {
-		// 	display: flex;
-		// 	flex-wrap: wrap;
-		// 	align-items: center;
-		// 	justify-content: flex-end;
-
-		// 	@include sm {
-		// 		margin-top: 1rem;
-		// 	}
-
-		// 	&__btns {
-		// 		display: flex;
-		// 		justify-content: flex-end;
-		// 	}
-		// }
 	}
 }

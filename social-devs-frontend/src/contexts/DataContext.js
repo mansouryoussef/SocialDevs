@@ -25,22 +25,19 @@ export function DataContextProvider(props) {
 	const [profiles, setProfiles] = useState([]);
 	const [userProfile, setUserProfile] = useState({});
 
-	// @TODO consider refactoring this:
-	// 1. add token as a variable
-	// 2. set loading state outside this function.
-	// 3. move setting posts outside of this function.
-	// The logic is that functions should do only one thing
 	const getInitialData = async () => {
 		try {
 			setIsLoading(true);
 			const token = window.localStorage.getItem('userToken');
 			const headers = createAuthHeader(token);
+
 			try {
 				const userData = await getUserDataReq(headers);
 				setUser(userData.data);
 			} catch (error) {
 				console.log(error);
 			}
+
 			try {
 				const posts = await getAllPostsReq(headers);
 				setPosts(posts.data);

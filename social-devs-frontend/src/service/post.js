@@ -1,4 +1,4 @@
-import { getAllPostsReq, createAuthHeader } from './api';
+import { getAllPostsReq, createAuthHeader, deleteCommentReq } from './api';
 
 // user token import with alias: 'token'
 import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
@@ -13,5 +13,18 @@ export const getAllPosts = async setPosts => {
 		setPosts(res.data);
 	} catch (error) {
 		console.log(error);
+	}
+};
+
+//  Handler: deletes post comment
+export const handleDeleteComment = async (postId, commentId, setPosts) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		await deleteCommentReq({ ...headers }, postId, commentId);
+
+		getAllPosts(setPosts);
+	} catch (error) {
+		console.error(error);
 	}
 };

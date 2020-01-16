@@ -1,62 +1,46 @@
 import React, { useContext } from 'react';
-import './CommentCardStyles.scss';
-import Axios from 'axios';
+import Styles from './CommentCard.module.scss';
 import { DataContext } from 'contexts/DataContext';
 import ButtonDanger from 'components/Shared/Buttons/ButtonDanger/ButtonDanger';
-import { getAllPosts } from 'service/post';
+import { handleDeleteComment } from 'service/post';
 import defaultUserImg from 'assets/img/icons/user.svg';
 
 export default function CommentCard({
 	commentUserId,
 	text,
 	name,
-	avatar,
 	date,
 	commentId,
 	postId
 }) {
 	const { user, setPosts } = useContext(DataContext);
 
-	const handleDeletePost = async () => {
-		try {
-			const config = {
-				headers: {
-					'x-auth-token': window.localStorage.getItem('userToken')
-				}
-			};
-
-			await Axios.delete(`/api/posts/comment/${postId}/${commentId}`, config);
-
-			getAllPosts(setPosts);
-		} catch (error) {
-			console.error(error);
-		}
-	};
 	return (
-		<div className='commentCard-container'>
-			<div className='commentCard-container__img-name'>
+		<div className={Styles.commentCardContainer}>
+			<div className={Styles.imgNameContainer}>
 				<img
-					className='commentCard-container__img-name__img'
+					className={Styles.img}
 					src={defaultUserImg}
 					alt='user default img'
 				/>
 
-				<h2 className='commentCard-container__img-name__name'>{name}</h2>
+				<h2 className={Styles.name}>{name}</h2>
 			</div>
 
-			<div className='commentCard-container__body'>
-				<p className='commentCard-container__body__text'>{text}</p>
+			<div className={Styles.bodyContainer}>
+				<p className={Styles.text}>{text}</p>
 
-				<span className='commentCard-container__body__date-btn'>
+				<span className={Styles.dateBtnContainer}>
 					<span>Commented on: {date}</span>
 
 					{commentUserId === user._id && (
-						<ButtonDanger onClick={handleDeletePost} text='Delete' filled />
+						<ButtonDanger
+							onClick={() => handleDeleteComment(postId, commentId, setPosts)}
+							text='Delete'
+							filled
+						/>
 					)}
 				</span>
-
-				{/* <div className='commentCard-container__body__btns-container'>
-				</div> */}
 			</div>
 		</div>
 	);
