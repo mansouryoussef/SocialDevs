@@ -6,7 +6,8 @@ import {
 	deleteProfileEducation,
 	getUserProfileReq,
 	getAllProfilesReq,
-	deleteAccount
+	deleteAccount,
+	createUserProfile
 } from './api';
 
 // user token import with alias: 'token'
@@ -37,6 +38,29 @@ export const getUserProfile = async setUserProfile => {
 		setUserProfile(res.data);
 	} catch (error) {
 		console.log(error);
+	}
+};
+
+//  Handler: create profile
+export const handleCreateProfile = async (
+	profileFields,
+	setUserProfile,
+	setShowEditForm,
+	setErrMsg
+) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		const body = JSON.stringify(profileFields);
+
+		const res = await createUserProfile(body, { ...headers });
+
+		setUserProfile(res.data);
+		getUserProfile(setUserProfile);
+
+		setShowEditForm(false);
+	} catch (error) {
+		setErrMsg(error.response.data.errors[0].msg);
 	}
 };
 
@@ -113,7 +137,7 @@ export const handleDeleteAccount = async (setIsLoggedin, history) => {
 	try {
 		const headers = createAuthHeader(token);
 
-		const res = await deleteAccount({ ...headers });
+		await deleteAccount({ ...headers });
 
 		window.localStorage.removeItem('userToken');
 

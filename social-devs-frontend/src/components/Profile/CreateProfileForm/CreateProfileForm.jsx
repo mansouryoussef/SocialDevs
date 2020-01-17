@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
-import './CreateProfileFormStyles.scss';
+import Styles from './CreateProfileForm.module.scss';
 import Button from 'components/Shared/Buttons/Button/Button';
-import Axios from 'axios';
 import { DataContext } from 'contexts/DataContext';
-import { getUserProfile } from 'service/profile';
+import { handleCreateProfile } from '../../../service/profile';
 
 export default function CreateProfileForm({ setShowEditForm }) {
 	const { userProfile, setUserProfile } = useContext(DataContext);
@@ -24,7 +23,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 		setProfileFields({ ...profileFields, [e.target.name]: e.target.value });
 	};
 
-	// destructure profile fields
+	// Destructure profile fields
 	const {
 		title,
 		location,
@@ -36,30 +35,9 @@ export default function CreateProfileForm({ setShowEditForm }) {
 		bio
 	} = profileFields;
 
-	const handleCreateProfile = async () => {
-		try {
-			const config = {
-				headers: {
-					'x-auth-token': window.localStorage.getItem('userToken'),
-					'Content-Type': 'application/json'
-				}
-			};
-
-			const body = JSON.stringify(profileFields);
-
-			const res = await Axios.post('/api/profile', body, config);
-			setUserProfile(res.data);
-			getUserProfile(setUserProfile);
-
-			setShowEditForm(false);
-		} catch (error) {
-			setErrMsg(error.response.data.errors[0].msg);
-		}
-	};
-
 	return (
-		<form className='profile-page__content__create-profile-form'>
-			<div className='profile-page__content__create-profile-form__input-container'>
+		<form className={Styles.createProfileForm}>
+			<div className={Styles.inputsContainer}>
 				<label>Title*</label>
 
 				<input
@@ -71,7 +49,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				/>
 			</div>
 
-			<div className='profile-page__content__create-profile-form__input-container'>
+			<div className={Styles.inputsContainer}>
 				<label>Skills*</label>
 				<input
 					id='skills'
@@ -79,12 +57,11 @@ export default function CreateProfileForm({ setShowEditForm }) {
 					onChange={e => handleChange(e)}
 					name='skills'
 					type='text'
-					type='text'
 					placeholder='Javascript,css,html'
 				/>
 			</div>
 
-			<div className='profile-page__content__create-profile-form__input-container'>
+			<div className={Styles.inputsContainer}>
 				<label>Location</label>
 
 				<input
@@ -97,7 +74,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				/>
 			</div>
 
-			<div className='profile-page__content__create-profile-form__input-container'>
+			<div className={Styles.inputsContainer}>
 				<label>Website</label>
 				<input
 					id='website'
@@ -109,7 +86,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				/>
 			</div>
 
-			<div className='profile-page__content__create-profile-form__input-container'>
+			<div className={Styles.inputsContainer}>
 				<label>Github</label>
 				<input
 					id='github'
@@ -121,7 +98,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				/>
 			</div>
 
-			<div className='profile-page__content__create-profile-form__input-container'>
+			<div className={Styles.inputsContainer}>
 				<label>Linkedin</label>
 				<input
 					id='linkedin'
@@ -133,7 +110,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				/>
 			</div>
 
-			<div className='profile-page__content__create-profile-form__input-container'>
+			<div className={Styles.inputsContainer}>
 				<label>Twitter</label>
 				<input
 					id='twitter'
@@ -145,8 +122,9 @@ export default function CreateProfileForm({ setShowEditForm }) {
 				/>
 			</div>
 
-			<div className='profile-page__content__create-profile-form__textarea-container'>
+			<div className={Styles.textareaContainer}>
 				<label>Bio</label>
+
 				<textarea
 					id='bio'
 					value={bio}
@@ -155,10 +133,21 @@ export default function CreateProfileForm({ setShowEditForm }) {
 					placeholder='I run after rabbits...'
 				/>
 			</div>
-			<p className='profile-page__content__create-profile-form__msg'>
-				{errMsg}
-			</p>
-			<Button text='Save' onClick={handleCreateProfile} filled />
+
+			<p className={Styles.errorMsg}>{errMsg}</p>
+
+			<Button
+				text='Save'
+				onClick={() =>
+					handleCreateProfile(
+						profileFields,
+						setUserProfile,
+						setShowEditForm,
+						setErrMsg
+					)
+				}
+				filled
+			/>
 		</form>
 	);
 }

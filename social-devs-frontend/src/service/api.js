@@ -34,6 +34,10 @@ export const getAllProfilesReq = async headers =>
 export const getUserProfileReq = async headers =>
 	await Axios.get('/api/profile/me', { headers });
 
+// POST: create user profile
+export const createUserProfile = async (body, headers) =>
+	await Axios.post('/api/profile', body, { headers });
+
 // PUT: like
 export const likePost = async (postId, headers) =>
 	await Axios.put(`/api/posts/like/${postId}`, null, { headers });
