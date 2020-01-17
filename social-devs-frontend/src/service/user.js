@@ -15,3 +15,6 @@ export const getUserData = async setUser => {
 		console.log(error);
 	}
 };
+
+// Returns user's first name.
+export const getFirstName = name => name.split(' ')[0];

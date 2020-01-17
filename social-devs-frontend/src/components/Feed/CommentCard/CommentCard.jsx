@@ -6,7 +6,7 @@ import { handleDeleteComment } from 'service/post';
 import defaultUserImg from 'assets/img/icons/user.svg';
 
 export default function CommentCard({
-	commentUserId,
+	commentOwnerId,
 	text,
 	name,
 	date,
@@ -33,7 +33,7 @@ export default function CommentCard({
 				<span className={Styles.dateBtnContainer}>
 					<span>Commented on: {date}</span>
 
-					{commentUserId === user._id && (
+					{commentOwnerId === user._id && (
 						<ButtonDanger
 							onClick={() => handleDeleteComment(postId, commentId, setPosts)}
 							text='Delete'

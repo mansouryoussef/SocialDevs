@@ -113,7 +113,10 @@ router.delete('/:post_id', auth, async (req, res) => {
 		}
 
 		await post.remove();
-		res.json({ msg: 'Post removed!' });
+
+		const allPosts = await Post.find().sort({ date: -1 });
+
+		res.json(allPosts);
 	} catch (err) {
 		console.error(err);
 

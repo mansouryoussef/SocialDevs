@@ -1,0 +1,17 @@
+@import '../../../../assets/sass/breakpoints';
+
+.likeBtn {
+	height: fit-content;
+	margin-right: 1.75rem;
+	cursor: pointer;
+
+	@include xs {
+		margin-top: 1rem;
+	}
+
+	img {
+		@include md {
+			height: 2.5rem;
+		}
+	}
+}

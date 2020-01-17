@@ -108,7 +108,7 @@ export default function Post({ match }) {
 
 								return (
 									<CommentCard
-										commentUserId={user}
+										commentOwnerId={user}
 										text={text}
 										name={firstName(name)}
 										date={format(new Date(date), 'dd.MM.yyyy')}
