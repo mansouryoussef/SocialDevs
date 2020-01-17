@@ -1,0 +1,76 @@
+@import '../../../../assets/sass/breakpoints';
+
+label {
+	font-size: 1.5rem;
+	margin-right: 1rem;
+}
+
+.formFieldContainer {
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+	align-items: center;
+	margin: 0.5rem 0;
+
+	@include xs {
+		justify-content: flex-start;
+	}
+
+	input {
+		min-height: 3.5rem;
+		min-width: 26rem;
+		border-radius: 0.75rem;
+		border: 1px solid var(--color-primary-light);
+		font-size: 1.5rem;
+		margin-top: 0.25rem;
+		padding: 0.75rem 1rem;
+		color: rgb(54, 54, 54); // @TODO try to avoid colors without variables.
+
+		@include md {
+			padding: 0.25rem 0.75rem;
+			min-height: 3rem;
+		}
+
+		@include xs {
+			min-width: auto;
+		}
+
+		&:focus {
+			outline: 0;
+		}
+
+		&::placeholder {
+			font-size: 1rem;
+			margin-left: 1rem;
+			transform: translate3d(0, -2px, 0);
+			color: rgb(116, 116, 116);
+			font-size: 1.35rem;
+		}
+	}
+}
+
+.textareaContainer {
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+	margin: 0.5rem 0;
+
+	textarea {
+		min-height: 3.25rem;
+		min-width: 26rem;
+		min-height: 10rem;
+		border-radius: 0.4rem;
+		padding: 1rem;
+		font-size: 1.75rem;
+		margin-bottom: 0.5rem;
+		border-color: rgb(200, 200, 200);
+		resize: none;
+		color: rgb(73, 73, 73);
+		outline: none;
+		font-size: 1.35rem;
+
+		&::placeholder {
+			font-size: 1.35rem;
+		}
+	}
+}

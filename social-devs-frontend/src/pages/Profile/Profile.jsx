@@ -49,7 +49,10 @@ export default function Profile() {
 				</h2>
 
 				{showEditForm ? (
-					<CreateProfileForm setShowEditForm={setShowEditForm} />
+					<CreateProfileForm
+						setShowEditForm={setShowEditForm}
+						showEditForm={showEditForm}
+					/>
 				) : (
 					<ProfileInfoList setShowEditForm={setShowEditForm} />
 				)}

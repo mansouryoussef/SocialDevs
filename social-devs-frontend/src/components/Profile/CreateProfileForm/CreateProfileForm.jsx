@@ -3,8 +3,9 @@ import Styles from './CreateProfileForm.module.scss';
 import Button from 'components/Shared/Buttons/Button/Button';
 import { DataContext } from 'contexts/DataContext';
 import { handleCreateProfile } from '../../../service/profile';
+import FormField from './FormField/FormField';
 
-export default function CreateProfileForm({ setShowEditForm }) {
+export default function CreateProfileForm({ setShowEditForm, showEditForm }) {
 	const { userProfile, setUserProfile } = useContext(DataContext);
 	const [errMsg, setErrMsg] = useState('');
 
@@ -37,117 +38,89 @@ export default function CreateProfileForm({ setShowEditForm }) {
 
 	return (
 		<form className={Styles.createProfileForm}>
-			<div className={Styles.inputsContainer}>
-				<label>Title*</label>
+			<FormField
+				name='title'
+				value={title}
+				placeholder='Front-end developer'
+				required
+				onChange={e => handleChange(e)}
+			/>
 
-				<input
-					value={title}
-					onChange={e => handleChange(e)}
-					name='title'
-					type='text'
-					placeholder='Front-end developer'
-				/>
-			</div>
+			<FormField
+				name='skills'
+				value={skills}
+				placeholder='Javascript,css,html'
+				required
+				onChange={e => handleChange(e)}
+			/>
 
-			<div className={Styles.inputsContainer}>
-				<label>Skills*</label>
-				<input
-					id='skills'
-					value={skills}
-					onChange={e => handleChange(e)}
-					name='skills'
-					type='text'
-					placeholder='Javascript,css,html'
-				/>
-			</div>
+			<FormField
+				name='location'
+				value={location}
+				placeholder='City, Country'
+				onChange={e => handleChange(e)}
+			/>
 
-			<div className={Styles.inputsContainer}>
-				<label>Location</label>
+			<FormField
+				name='website'
+				value={website}
+				placeholder='https://example.com'
+				onChange={e => handleChange(e)}
+			/>
 
-				<input
-					id='location'
-					value={location}
-					onChange={e => handleChange(e)}
-					name='location'
-					type='text'
-					placeholder='City, Country'
-				/>
-			</div>
+			<FormField
+				name='github'
+				value={githubusername}
+				placeholder='https://github.com/username'
+				onChange={e => handleChange(e)}
+			/>
 
-			<div className={Styles.inputsContainer}>
-				<label>Website</label>
-				<input
-					id='website'
-					value={website}
-					onChange={e => handleChange(e)}
-					name='website'
-					type='text'
-					placeholder='https://example.com'
-				/>
-			</div>
+			<FormField
+				name='linkedin'
+				value={linkedin}
+				placeholder='https://linkedin.com/in/someone/'
+				onChange={e => handleChange(e)}
+			/>
 
-			<div className={Styles.inputsContainer}>
-				<label>Github</label>
-				<input
-					id='github'
-					value={githubusername}
-					onChange={e => handleChange(e)}
-					name='githubusername'
-					type='text'
-					placeholder='https://github.com/username'
-				/>
-			</div>
+			<FormField
+				name='twitter'
+				value={twitter}
+				placeholder='twitter.com/Twitter'
+				onChange={e => handleChange(e)}
+			/>
 
-			<div className={Styles.inputsContainer}>
-				<label>Linkedin</label>
-				<input
-					id='linkedin'
-					value={linkedin}
-					onChange={e => handleChange(e)}
-					name='linkedin'
-					type='text'
-					placeholder='https://linkedin.com/in/someone/'
-				/>
-			</div>
-
-			<div className={Styles.inputsContainer}>
-				<label>Twitter</label>
-				<input
-					id='twitter'
-					value={twitter}
-					onChange={e => handleChange(e)}
-					name='twitter'
-					type='text'
-					placeholder='twitter.com/Twitter'
-				/>
-			</div>
-
-			<div className={Styles.textareaContainer}>
-				<label>Bio</label>
-
-				<textarea
-					id='bio'
-					value={bio}
-					onChange={e => handleChange(e)}
-					name='bio'
-					placeholder='I run after rabbits...'
-				/>
-			</div>
+			<FormField
+				name='bio'
+				value={bio}
+				placeholder='I run after rabbits...'
+				textarea
+				onChange={e => handleChange(e)}
+			/>
 
 			<p className={Styles.errorMsg}>{errMsg}</p>
 
-			<Button
-				text='Save'
-				onClick={() =>
-					handleCreateProfile(
-						profileFields,
-						setUserProfile,
-						setShowEditForm,
-						setErrMsg
-					)
-				}
-				filled
-			/>
+			<div className={Styles.btnsContainer}>
+				<Button
+					text='Cancel'
+					onClick={event => {
+						setShowEditForm(false);
+					}}
+				/>
+
+				<Button
+					text='Save'
+					filled
+					onClick={event => {
+						handleCreateProfile(
+							profileFields,
+							setUserProfile,
+							setShowEditForm,
+							setErrMsg,
+							event
+						);
+					}}
+				/>
+			</div>
 		</form>
 	);
 }

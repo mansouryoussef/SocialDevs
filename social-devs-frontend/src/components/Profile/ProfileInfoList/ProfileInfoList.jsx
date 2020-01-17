@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './ProfileInfoListStyles.scss';
 import { DataContext } from 'contexts/DataContext';
 import Button from 'components/Shared/Buttons/Button/Button';
+import { createSkillsStr } from 'service/helpers.js';
 export default function ProfileInfoList({ setShowEditForm }) {
 	const { userProfile } = useContext(DataContext);
 
@@ -19,7 +20,10 @@ export default function ProfileInfoList({ setShowEditForm }) {
 	const skillsList =
 		skills &&
 		skills.map((skill, i, arr) => {
-			if (arr.length === 1 || arr.length === i + 1) return skill;
+			if (arr.length === 1 || arr.length === i + 1) {
+				return skill;
+			}
+
 			if (arr.length >= 1) {
 				return skill + ', ';
 			}
@@ -35,7 +39,9 @@ export default function ProfileInfoList({ setShowEditForm }) {
 			</div>
 			<div className='profile-infolist__item'>
 				<h3 className='profile-infolist__item__title'>Skills:</h3>
-				<p className='profile-infolist__item__info'>{skillsList}</p>
+				<p className='profile-infolist__item__info'>
+					{createSkillsStr(skills)}
+				</p>
 			</div>
 			<div className='profile-infolist__item'>
 				<h3 className='profile-infolist__item__title'>Location:</h3>

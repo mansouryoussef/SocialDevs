@@ -46,9 +46,12 @@ export const handleCreateProfile = async (
 	profileFields,
 	setUserProfile,
 	setShowEditForm,
-	setErrMsg
+	setErrMsg,
+	event
 ) => {
 	try {
+		event.preventDefault();
+
 		const headers = createAuthHeader(token);
 
 		const body = JSON.stringify(profileFields);
@@ -60,7 +63,9 @@ export const handleCreateProfile = async (
 
 		setShowEditForm(false);
 	} catch (error) {
-		setErrMsg(error.response.data.errors[0].msg);
+		error.response.data.errors
+			? setErrMsg(error.response.data.errors[0].msg)
+			: console.log(error);
 	}
 };
 

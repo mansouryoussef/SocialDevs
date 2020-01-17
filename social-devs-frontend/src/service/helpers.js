@@ -8,3 +8,15 @@ export const capitalize = word => {
 export const firstName = name => {
 	return name.split(' ')[0];
 };
+
+// Converts a skills array to skills string
+export const createSkillsStr = skillsArr =>
+	skillsArr.map((skill, i, arr) => {
+		if (arr.length === 1 || arr.length === i + 1) {
+			return skill;
+		}
+
+		if (arr.length >= 1) {
+			return skill + ', ';
+		}
+	});
