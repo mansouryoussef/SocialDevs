@@ -1,6 +1,6 @@
 @import '../../../assets/sass/breakpoints';
 
-.footer-container {
+.footerContainer {
 	width: 100vw;
 	padding: 0.75rem 7rem;
 	display: flex;
@@ -16,7 +16,7 @@
 		align-items: center;
 	}
 
-	&__item {
+	.footerItem {
 		font-size: 1.5rem;
 		display: flex;
 		flex-wrap: wrap;
