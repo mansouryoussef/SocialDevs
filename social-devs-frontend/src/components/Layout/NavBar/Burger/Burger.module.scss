@@ -4,14 +4,14 @@ $width: 3.5rem;
 $height: 0.4rem;
 $background: var(--color-primary);
 
-#burger-container {
+#burgerContainer {
 	position: absolute;
 	right: 3em;
 	top: 4rem;
-	cursor: pointer;
 	padding: 12px 0;
 	display: none;
 	z-index: 3;
+	cursor: pointer;
 
 	@include sm {
 		display: inline-block;
@@ -27,9 +27,9 @@ $background: var(--color-primary);
 
 		&:before,
 		&:after {
+			content: '';
 			position: absolute;
 			background: $background;
-			content: '';
 			width: $width;
 			height: $height;
 			transition: all 0.2s ease-in-out;

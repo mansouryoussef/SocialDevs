@@ -1,9 +1,13 @@
 import React from 'react';
-import './BurgerStyles.scss';
+import Styles from './Burger.module.scss';
+
 export default function Burger({ open, setOpen }) {
 	return (
 		<div onClick={() => setOpen(!open)}>
-			<a className={open ? 'active' : ''} id='burger-container' href='#'>
+			<a
+				className={open ? Styles.active : ''}
+				id={Styles.burgerContainer}
+				href='#'>
 				<span></span>
 			</a>
 		</div>

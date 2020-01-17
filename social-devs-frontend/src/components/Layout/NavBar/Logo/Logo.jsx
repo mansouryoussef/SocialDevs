@@ -1,11 +1,11 @@
 import React from 'react';
-import './LogoStyles.scss';
+import Styles from './Logo.module.scss';
 import logo from 'assets/img/logo.svg';
 import { Link } from 'react-router-dom';
 
 export default function Logo() {
 	return (
-		<div className='logo-container'>
+		<div className={Styles.logoContainer}>
 			<Link to='/' className='Link'>
 				<img src={logo} alt='Website logo' />
 			</Link>

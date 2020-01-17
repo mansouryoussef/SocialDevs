@@ -1,11 +1,11 @@
 @import '../../../../assets/sass/breakpoints';
 
-.logo-container {
+.logoContainer {
 	display: flex;
 	flex-direction: column;
 	width: auto;
-	margin-right: 1rem;
 	align-items: center;
+	margin-right: 1rem;
 	padding: 1rem 0;
 
 	img {

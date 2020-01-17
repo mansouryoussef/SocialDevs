@@ -1,12 +1,12 @@
 import React from 'react';
-import './NavStyles.scss';
+import Styles from './Nav.module.scss';
 
 import Logo from '../Logo/Logo';
 import ListItems from '../ListItems/ListItems';
 
 export default function Nav() {
 	return (
-		<nav className='nav-containerr'>
+		<nav className={Styles.navContainer}>
 			<Logo />
 			<ListItems />
 		</nav>

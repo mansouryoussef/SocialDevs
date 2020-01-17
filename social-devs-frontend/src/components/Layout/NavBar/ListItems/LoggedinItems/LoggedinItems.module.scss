@@ -1,7 +1,7 @@
-@import '../../../../assets/sass/breakpoints';
-@import '../../../../assets/sass/mixins';
+@import '../../../../../assets/sass/breakpoints';
+@import '../../../../../assets/sass/mixins';
 
-.listItems-container {
+.listItemsContainer {
 	transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
 	@include sm {
