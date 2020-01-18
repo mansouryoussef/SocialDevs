@@ -1,13 +1,12 @@
 import React from 'react';
-import './IconButtonStyles.scss';
+import Styles from './IconButton.module.scss';
+
 export default function IconButton({ text, filled, icon }) {
 	return (
-		<button className='icon-button-container' id={filled ? 'filled' : ''}>
-			<img
-				className='icon-button-container__icon'
-				src={icon}
-				alt='button icon'
-			/>
+		<button
+			className={Styles.iconButtonContainer}
+			id={filled ? Styles.filled : ''}>
+			<img className={Styles.icon} src={icon} alt='button icon' />
 			{text}
 		</button>
 	);

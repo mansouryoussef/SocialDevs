@@ -1,12 +1,17 @@
 @import '../../../../assets/sass/variables';
 @import '../../../../assets/sass//mixins';
 
-.icon-button-container {
+.iconButtonContainer {
 	@include btn(var(--color-primary));
 	padding: $space-1 $space-3;
 
-	&__icon {
+	.icon {
 		margin-right: $space-3;
 		height: $space-5;
 	}
+}
+
+#filled {
+	background-color: var(--color-primary);
+	color: #fff;
 }

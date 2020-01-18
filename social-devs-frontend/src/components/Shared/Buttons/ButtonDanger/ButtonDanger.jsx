@@ -1,11 +1,12 @@
 import React from 'react';
-import './ButtonDangerStyles.scss';
+import Styles from './ButtonDanger.module.scss';
+
 export default function ButtonDanger({ text, filled, onClick }) {
 	return (
 		<button
-			className='button-danger-container'
+			className={Styles.buttonDangerContainer}
 			onClick={onClick}
-			id={filled ? 'filled' : ''}>
+			id={filled ? Styles.filled : ''}>
 			{text}
 		</button>
 	);

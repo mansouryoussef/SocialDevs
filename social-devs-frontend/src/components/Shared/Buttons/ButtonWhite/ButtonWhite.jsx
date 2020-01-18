@@ -1,11 +1,12 @@
 import React from 'react';
-import './ButtonWhiteStyles.scss';
+import Styles from './ButtonWhite.module.scss';
+
 export default function ButtonWhite({ text, filled, onClick }) {
 	return (
 		<button
-			className='button-white-container'
+			className={Styles.buttonWhiteContainer}
 			onClick={onClick}
-			id={filled ? 'filled' : ''}>
+			id={filled ? Styles.filled : ''}>
 			{text}
 		</button>
 	);

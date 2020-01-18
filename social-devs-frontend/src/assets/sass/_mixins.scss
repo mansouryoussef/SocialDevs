@@ -14,13 +14,10 @@
 	border-radius: $space-1;
 	cursor: pointer;
 
-	&#filled {
-		background-color: $color;
-		color: #fff;
-	}
-
-	&-large {
-	}
+	// &#filled {
+	// 	background-color: $color;
+	// 	color: #fff;
+	// }
 }
 
 @mixin titleUnderline {

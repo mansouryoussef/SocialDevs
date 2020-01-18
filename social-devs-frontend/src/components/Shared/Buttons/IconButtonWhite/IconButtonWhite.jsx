@@ -1,17 +1,13 @@
 import React from 'react';
-import './IconButtonWhiteStyles.scss';
+import Styles from './IconButtonWhite.module.scss';
 
 export default function IconButtonWhite({ text, filled, icon, onClick }) {
 	return (
 		<button
-			className='icon-button-white-container'
-			id={filled ? 'filled' : ''}
+			className={Styles.iconButtonWhiteContainer}
+			id={filled ? Styles.filled : ''}
 			onClick={onClick}>
-			<img
-				className='icon-button-white-container__icon'
-				src={icon}
-				alt='button icon'
-			/>
+			<img className={Styles.icon} src={icon} alt='button icon' />
 			{text}
 		</button>
 	);

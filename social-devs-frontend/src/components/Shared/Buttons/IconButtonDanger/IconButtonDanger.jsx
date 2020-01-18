@@ -1,21 +1,14 @@
 import React from 'react';
-import './IconButtonDangerStyles.scss';
-export default function IconButtonDanger({
-	text,
-	filled,
-	icon,
-	onClick
-}) {
+import Styles from './IconButtonDanger.module.scss';
+
+export default function IconButtonDanger({ text, filled, icon, onClick }) {
 	return (
 		<button
-			className='icon-button-danger-container'
-			id={filled ? 'filled' : ''}
+			className={Styles.iconButtonDangerContainer}
+			id={filled ? Styles.filled : ''}
 			onClick={onClick}>
-			<img
-				className='icon-button-danger-container__icon'
-				src={icon}
-				alt='button icon'
-			/>
+			<img className={Styles.icon} src={icon} alt='button icon' />
+
 			<span>{text}</span>
 		</button>
 	);

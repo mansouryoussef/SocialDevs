@@ -1,11 +1,11 @@
 @import '../../../../assets/sass/variables';
 @import '../../../../assets/sass//mixins';
 
-.icon-button-danger-container {
+.iconButtonDangerContainer {
 	@include btn(var(--color-danger));
 	padding: $space-1 $space-3;
 
-	&__icon {
+	.icon {
 		margin-right: $space-3;
 		height: $space-5;
 	}
@@ -14,4 +14,9 @@
 		cursor: not-allowed;
 		opacity: 0.7;
 	}
+}
+
+#filled {
+	background-color: var(--color-danger);
+	color: #fff;
 }
