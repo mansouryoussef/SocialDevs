@@ -1,0 +1,17 @@
+@import '../../../assets/sass/breakpoints';
+
+.profileInfoListContainer {
+	display: flex;
+	flex-direction: column;
+	width: 40vw;
+	max-width: 45rem;
+	align-items: flex-end;
+	margin-bottom: 6rem;
+
+	@include lg {
+		width: 60vw;
+	}
+	@include sm {
+		width: 100%;
+	}
+}

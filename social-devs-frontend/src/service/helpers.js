@@ -20,3 +20,7 @@ export const createSkillsStr = skillsArr =>
 			return skill + ', ';
 		}
 	});
+
+// Checks if an item is set
+export const isSet = str =>
+	str === undefined || null || '' ? 'Not set!' : str;
