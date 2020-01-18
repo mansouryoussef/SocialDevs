@@ -1,0 +1,40 @@
+@import '../../../../assets/sass/breakpoints';
+
+.infoRowContainer {
+	td {
+		border: 1px solid var(--color-light-gray);
+		font-weight: 300;
+		font-size: 1.5rem;
+		padding: 1rem 0.5rem;
+
+		span {
+			@include sm {
+				display: block;
+			}
+		}
+
+		@include sm {
+			font-size: 1.25rem;
+
+			button {
+				span {
+					display: none;
+				}
+				img {
+					margin: 0;
+				}
+			}
+		}
+
+		@include xs {
+			font-size: 0.85rem;
+		}
+	}
+
+	td:last-child {
+		border: none;
+		text-align: start;
+		padding: 0;
+		width: fit-content;
+	}
+}

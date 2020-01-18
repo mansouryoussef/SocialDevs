@@ -1,0 +1,19 @@
+@import '../../../../assets/sass/breakpoints';
+
+.tableTitleContainer {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1.75rem;
+
+	.title {
+		font-weight: 300;
+
+		@include custom(500) {
+			font-size: 2.5rem;
+		}
+	}
+
+	.btnContainer {
+		margin: 0 1rem;
+	}
+}

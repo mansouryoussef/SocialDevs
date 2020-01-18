@@ -125,7 +125,7 @@ export const handleAddEdu = async (
 ) => {
 	try {
 		const headers = createAuthHeader(token);
-		console.log(token);
+
 		const body = JSON.stringify(fields);
 		const res = await addProfileEducation(body, { ...headers });
 

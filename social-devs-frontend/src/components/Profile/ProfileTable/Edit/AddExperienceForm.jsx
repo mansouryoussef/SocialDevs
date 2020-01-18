@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
-import './AddExperienceFormStyles.scss';
+
 import Button from 'components/Shared/Buttons/Button/Button';
 import { DataContext } from 'contexts/DataContext';
 import { handleAddExp } from 'service/profile';
+import TableInputField from '../TableInputField/TableInputField';
+import DateFields from './DateFields/DateFields';
 
 export default function AddExperienceForm({ setAddingExp, setError }) {
 	const { setUserProfile } = useContext(DataContext);
@@ -22,49 +24,23 @@ export default function AddExperienceForm({ setAddingExp, setError }) {
 	const { company, title, from, to } = expFields;
 
 	return (
-		<tr className='profile-table__edit-row'>
-			<td>
-				<input
-					placeholder='Company here'
-					value={company}
-					onChange={e => handleChange(e)}
-					name='company'
-					type='text'
-				/>
-			</td>
-			<td>
-				<input
-					placeholder='Title here'
-					value={title}
-					onChange={e => handleChange(e)}
-					name='title'
-					type='text'
-				/>
-			</td>
+		<tr>
+			<TableInputField
+				name='comapny'
+				value={company}
+				handleChange={e => handleChange(e)}
+				placeholder='Company here'
+			/>
 
-			<table className='profile-table__edit-row__date-inputs'>
-				<tbody>
-					<tr>
-						<input
-							placeholder='From: DD-MM-YY'
-							value={from}
-							onChange={e => handleChange(e)}
-							name='from'
-							type='text'
-						/>
-					</tr>
+			<TableInputField
+				name='title'
+				value={title}
+				handleChange={e => handleChange(e)}
+				placeholder='Title here'
+			/>
 
-					<tr>
-						<input
-							placeholder='To: DD-MM-YY'
-							value={to}
-							onChange={e => handleChange(e)}
-							name='to'
-							type='text'
-						/>
-					</tr>
-				</tbody>
-			</table>
+			<DateFields from={from} to={to} handleChange={handleChange} />
+
 			<td>
 				<Button
 					text='Save it'

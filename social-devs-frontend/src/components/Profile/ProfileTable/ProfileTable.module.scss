@@ -1,0 +1,25 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/mixins';
+
+.profileTable {
+	width: 90vw;
+	max-width: 85rem;
+	font-size: 1.75rem;
+	margin-bottom: 6rem;
+	text-align: center;
+	border-spacing: 1rem;
+	border-collapse: separate;
+
+	@include sm {
+		width: 100%;
+	}
+
+	td {
+		height: 6rem;
+		word-wrap: break-word;
+
+		@include sm {
+			height: 4rem;
+		}
+	}
+}

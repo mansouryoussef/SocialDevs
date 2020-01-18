@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import Styles from './TableList.module.scss';
 import { format } from 'date-fns';
 import { DataContext } from 'contexts/DataContext';
-import uuid from 'uuid';
 import IconButtonDanger from 'components/Shared/Buttons/IconButtonDanger/IconButtonDanger';
 import trashWhite from 'assets/img/icons/trashWhite.svg';
 
@@ -15,7 +15,7 @@ export default function TableList({ arr, itemNamesArr, handleDelete }) {
 		const from = format(new Date(item.from), 'dd.MM.yyyy');
 
 		return (
-			<tr key={uuid()} className='profile-table__info-row'>
+			<tr className={Styles.infoRowContainer}>
 				<td>{item[itemNamesArr[0]]}</td>
 
 				<td>{item[itemNamesArr[1]]}</td>

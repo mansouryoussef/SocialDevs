@@ -1,82 +1,78 @@
-import React, { useState, useContext } from 'react';
-import './ProfileTableStyles.scss';
-import Button from 'components/Shared/Buttons/Button/Button';
-import AddExperienceForm from './AddExperienceForm/AddExperienceForm';
-import { DataContext } from 'contexts/DataContext';
-import TableList from './TableList';
-import { capitalize } from 'service/helpers';
-import AddEducationForm from './AddEducationForm/AddEducationForm';
+import React, { useState, useContext, Fragment } from 'react';
+import Styles from './ProfileTable.module.scss';
+import AddExperienceForm from './Edit/AddExperienceForm';
+import TableList from './TableList/TableList';
+import AddEducationForm from './Edit/AddEducationForm';
+import TableHeaderRow from './TableHeaderRow/TableHeaderRow';
+import TableTitle from './TableTitle/TableTitle';
 import { handleDeleteEdu, handleDeleteExp } from 'service/profile';
-import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
+import { DataContext } from 'contexts/DataContext';
 
 export default function ProfileTable({ info }) {
 	const [addingExp, setAddingExp] = useState(false);
 	const [addingEdu, setAddingEdu] = useState(false);
+
 	const [errorMsg, setErrorMsg] = useState('');
 
 	const { userProfile } = useContext(DataContext);
+
 	const { type, headerCells, itemList } = info;
 
-	const handleToggle = (setShow, show) => {
+	const handleToggleError = (setShow, show) => {
 		if (userProfile.title === undefined) {
 			setErrorMsg('Please create a profile first.');
 		} else {
 			setShow(!show);
 		}
 	};
+
 	return (
-		<>
-			<div className='profile-table__title-container'>
-				<h2 className='profile-table__title-container__title'>
-					{type == 'experience' ? 'Experience' : 'Education'}
-				</h2>
+		<Fragment>
+			{type === 'experience' ? (
+				<TableTitle
+					title='Experience'
+					editingTable={addingExp}
+					handleToggle={() => handleToggleError(setAddingExp, addingExp)}
+					errorMsg={errorMsg}
+				/>
+			) : (
+				<TableTitle
+					title='Education'
+					editingTable={addingEdu}
+					handleToggle={() => handleToggleError(setAddingEdu, addingEdu)}
+					errorMsg={errorMsg}
+				/>
+			)}
 
-				<span className='profile-table__title-container__btn'>
-					<Button
-						text={addingExp || addingEdu ? 'Cancel' : 'Add'}
-						onClick={() =>
-							type === 'experience'
-								? handleToggle(setAddingExp, addingExp)
-								: handleToggle(setAddingEdu, addingEdu)
-						}
-					/>
-				</span>
+			<table className={Styles.profileTable}>
+				<tbody>
+					<TableHeaderRow cells={headerCells} />
 
-				{errorMsg !== '' && <Disclaimer err={errorMsg} />}
-			</div>
+					{addingExp && type === 'experience' && (
+						<AddExperienceForm
+							setError={setErrorMsg}
+							setAddingExp={setAddingExp}
+						/>
+					)}
 
-			<table className='profile-table'>
-				<tr className='profile-table__header-row'>
-					{headerCells.map(cell => (
-						<td key={cell}>{capitalize(cell)}</td>
-					))}
-					<td></td>
-				</tr>
+					{addingEdu && type === 'education' && (
+						<AddEducationForm
+							setError={setErrorMsg}
+							setAddingEdu={setAddingEdu}
+						/>
+					)}
 
-				{addingExp && type === 'experience' && (
-					<AddExperienceForm
-						setError={setErrorMsg}
-						setAddingExp={setAddingExp}
-					/>
-				)}
-
-				{addingEdu && type === 'education' && (
-					<AddEducationForm
-						setError={setErrorMsg}
-						setAddingEdu={setAddingEdu}
-					/>
-				)}
-
-				{userProfile[type] && (
-					<TableList
-						arr={itemList}
-						itemNamesArr={headerCells.slice(0, 2)}
-						handleDelete={
-							type === 'education' ? handleDeleteEdu : handleDeleteExp
-						}
-					/>
-				)}
+					{userProfile[type] && (
+						<TableList
+							arr={itemList}
+							itemNamesArr={headerCells.slice(0, 2)}
+							handleDelete={
+								type === 'education' ? handleDeleteEdu : handleDeleteExp
+							}
+						/>
+					)}
+				</tbody>
 			</table>
-		</>
+		</Fragment>
 	);
 }
