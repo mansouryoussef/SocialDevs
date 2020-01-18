@@ -1,0 +1,55 @@
+@import '../../../assets/sass/breakpoints';
+
+.formcardContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 3rem 5.75rem 4.5rem 5.75rem;
+	border: 1px solid var(--color-primary-light);
+	border-radius: 1.25rem;
+	box-shadow: var(--shadow-light);
+	margin: 0 1rem;
+	margin-top: 3vh;
+
+	@include sm {
+		padding: 2rem 3.75rem 2.5rem 3.75rem;
+		margin-top: 6vh;
+		max-width: 88vw;
+	}
+
+	.title {
+		text-align: center;
+		font-size: 3.25rem;
+
+		@include md {
+			font-size: 3rem;
+		}
+
+		@include xs {
+			font-size: 2.5rem;
+		}
+	}
+
+	.inputFieldsContainer {
+		margin-top: 2.25rem;
+
+		@include md {
+			margin: 1.5rem 0;
+		}
+	}
+
+	.errorMsg {
+		font-size: 1.35rem;
+		color: var(--color-danger);
+		margin-bottom: 2.25rem;
+	}
+
+	.btnContainer {
+		display: flex;
+		align-items: center;
+		margin: 1rem 0;
+
+		button {
+			margin-right: 1rem;
+		}
+	}
+}

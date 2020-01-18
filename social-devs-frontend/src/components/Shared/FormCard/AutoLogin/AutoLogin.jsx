@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import './AutoLoginStyles.scss';
+import Styles from './AutoLogin.module.scss';
+
 import { DataContext } from 'contexts/DataContext';
 import { handleLogin } from 'service/auth';
 import { useHistory } from 'react-router-dom';
@@ -13,6 +14,7 @@ export default function AutoLogin({ setErrorMsg }) {
 		email: 'demo@guest.fi',
 		password: '123456'
 	};
+
 	return (
 		<span
 			onClick={e => {
@@ -25,7 +27,7 @@ export default function AutoLogin({ setErrorMsg }) {
 					setErrorMsg
 				);
 			}}
-			className='auto-login-container'>
+			className={Styles.autoLogin}>
 			Auto Login as a guest.
 		</span>
 	);

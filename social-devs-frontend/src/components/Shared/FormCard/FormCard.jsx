@@ -1,9 +1,10 @@
 import React from 'react';
-import './FormCardStyles.scss';
+import Styles from './FormCard.module.scss';
 import { Link } from 'react-router-dom';
 
 import Button from 'components/Shared/Buttons/Button/Button';
 import AutoLogin from './AutoLogin/AutoLogin';
+import FormCardNote from './FormCardNote/FormCardNote';
 
 export default function FormCard({
 	handleSubmit,
@@ -13,16 +14,14 @@ export default function FormCard({
 	setErrorMsg
 }) {
 	return (
-		<form className='formcard-container'>
-			<h1 className='formcard-container__title'>
-				{login ? 'Log in' : 'Sign up'}
-			</h1>
+		<form className={Styles.formcardContainer}>
+			<h1 className={Styles.title}>{login ? 'Log in' : 'Sign up'}</h1>
 
-			<div className='formcard-container__input-fields'>{children}</div>
+			<div className={Styles.inputFieldsContainer}>{children}</div>
 
-			<span className='formcard-container__error'>{errorMsg}</span>
+			<span className={Styles.errorMsg}>{errorMsg}</span>
 
-			<div className='formcard-container__btn-container'>
+			<div className={Styles.btnContainer}>
 				<Link className='Link' to='/profile'>
 					<Button
 						onClick={handleSubmit}
@@ -34,14 +33,19 @@ export default function FormCard({
 				<AutoLogin setErrorMsg={setErrorMsg} />
 			</div>
 
-			{/* @TODO consider moving this to an own component. e.g. Note */}
-			<p className='formcard-container__note'>
-				{login ? 'Don’t have an account?' : 'Already have an account?'}
-
-				<Link className='Link' to={login ? '/signup' : '/login'}>
-					{login ? 'Sign up' : 'Log in'}
-				</Link>
-			</p>
+			{login ? (
+				<FormCardNote
+					note='Don’t have an account?'
+					to='/signup'
+					linkText='Sign up'
+				/>
+			) : (
+				<FormCardNote
+					note='Already have an account?'
+					to='/login'
+					linkText='Log in'
+				/>
+			)}
 		</form>
 	);
 }

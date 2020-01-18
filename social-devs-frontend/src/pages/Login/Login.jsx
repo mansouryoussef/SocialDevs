@@ -4,6 +4,7 @@ import FormCard from 'components/Shared/FormCard/FormCard';
 import { DataContext } from 'contexts/DataContext';
 import { useHistory } from 'react-router-dom';
 import { handleLogin } from 'service/auth';
+import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
 
 export default function Login() {
 	let history = useHistory();
@@ -41,29 +42,21 @@ export default function Login() {
 				login
 				errorMsg={errorMsg}
 				setErrorMsg={setErrorMsg}>
-				<div className='formcard-container__input-fields__field'>
-					<label htmlFor='email'>Email</label>
+				<FormCardField
+					label='Email'
+					name='email'
+					value={email}
+					handleOnChange={e => handleOnChange(e)}
+					type='email'
+				/>
 
-					<input
-						id='email'
-						type='email'
-						value={email}
-						onChange={e => handleOnChange(e)}
-						name='email'
-					/>
-				</div>
-
-				<div className='formcard-container__input-fields__field'>
-					<label htmlFor='password'>Password</label>
-
-					<input
-						id='password'
-						type='password'
-						value={password}
-						onChange={e => handleOnChange(e)}
-						name='password'
-					/>
-				</div>
+				<FormCardField
+					label='Password'
+					name='password'
+					value={password}
+					handleOnChange={e => handleOnChange(e)}
+					type='password'
+				/>
 			</FormCard>
 		</div>
 	);

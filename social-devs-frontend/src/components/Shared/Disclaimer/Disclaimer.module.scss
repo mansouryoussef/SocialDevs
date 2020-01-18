@@ -1,5 +1,6 @@
 @import '../../../assets/sass/breakpoints';
-.disclaimer-container {
+
+.disclaimerContainer {
 	display: flex;
 	align-items: center;
 	background-color: var(--color-danger);
@@ -16,6 +17,7 @@
 			display: none;
 		}
 	}
+
 	p {
 		font-size: 1.5rem;
 		color: white;
