@@ -63,7 +63,7 @@ export default function Post({ match }) {
 								avatar={avatar}
 								postUserId={user}
 								likes={likes}
-								date={date}
+								date={format(new Date(date), 'dd.MM.yyyy')}
 								inPost
 								id={_id}
 							/>
