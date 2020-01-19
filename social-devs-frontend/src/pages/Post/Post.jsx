@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useMemo } from 'react';
+import React, { useContext } from 'react';
 import Styles from './Post.module.scss';
 
 import CreateCommentForm from 'components/Feed/CreateCommentForm/CreateCommentForm';
