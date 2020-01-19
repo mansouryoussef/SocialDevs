@@ -22,7 +22,7 @@ const App = ({ location }) => {
 
 	return (
 		<>
-			{!!isLoading ? (
+			{isLoading ? (
 				<Spinner />
 			) : (
 				<main className='app-container'>

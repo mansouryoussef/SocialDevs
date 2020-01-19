@@ -5,7 +5,8 @@ import {
 	deletePostReq,
 	likePost,
 	unlikePost,
-	createPost
+	createPost,
+	createComment
 } from './api';
 
 // user token import with alias: 'token'
@@ -48,19 +49,6 @@ export const handleCreatePost = async (
 	}
 };
 
-//  Handler: deletes post comment
-export const handleDeleteComment = async (postId, commentId, setPosts) => {
-	try {
-		const headers = createAuthHeader(token);
-
-		await deleteCommentReq({ ...headers }, postId, commentId);
-
-		getAllPosts(setPosts);
-	} catch (error) {
-		console.error(error);
-	}
-};
-
 //  Handler: deletes post
 export const handleDeletePost = async (postId, setPosts, history) => {
 	try {
@@ -71,6 +59,44 @@ export const handleDeletePost = async (postId, setPosts, history) => {
 		setPosts(res.data);
 
 		history.push('/feed');
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+//  Handler: creates comment
+export const handleCreateComment = async (
+	commentText,
+	postId,
+	getAllPosts,
+	setPosts,
+	setCommentText
+) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		const body = {
+			text: commentText
+		};
+
+		const res = await createComment(postId, body, { ...headers });
+
+		getAllPosts(setPosts);
+
+		setCommentText('');
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+//  Handler: deletes post comment
+export const handleDeleteComment = async (postId, commentId, setPosts) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		await deleteCommentReq({ ...headers }, postId, commentId);
+
+		getAllPosts(setPosts);
 	} catch (error) {
 		console.error(error);
 	}
@@ -115,3 +141,7 @@ export const handleUnlike = async (
 		console.log(error);
 	}
 };
+
+// Finds single post by post id.
+export const findPostById = (posts, postId) =>
+	posts.filter(post => post._id === postId);

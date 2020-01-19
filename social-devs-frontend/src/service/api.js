@@ -26,6 +26,10 @@ export const createPost = async (body, headers) =>
 export const deletePostReq = async (postId, headers) =>
 	await Axios.delete(`/api/posts/${postId}`, { headers });
 
+// PUT: create comment
+export const createComment = async (postId, body, headers) =>
+	await Axios.put(`/api/posts/comment/${postId}`, body, { headers });
+
 // DELETE: single comment
 export const deleteCommentReq = async (headers, postId, commentId) =>
 	await Axios.delete(`/api/posts/comment/${postId}/${commentId}`, { headers });
