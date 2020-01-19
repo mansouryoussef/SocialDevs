@@ -4,7 +4,8 @@ import {
 	deleteCommentReq,
 	deletePostReq,
 	likePost,
-	unlikePost
+	unlikePost,
+	createPost
 } from './api';
 
 // user token import with alias: 'token'
@@ -18,6 +19,30 @@ export const getAllPosts = async setPosts => {
 		const res = await getAllPostsReq({ ...headers });
 
 		setPosts(res.data);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+//  Handler: create post
+export const handleCreatePost = async (
+	postText,
+	posts,
+	setPosts,
+	setPostText
+) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		const body = {
+			text: postText
+		};
+
+		const res = await createPost(body, { ...headers });
+
+		setPosts([res.data, ...posts]);
+
+		setPostText('');
 	} catch (error) {
 		console.log(error);
 	}

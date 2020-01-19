@@ -18,7 +18,11 @@ export const getUserDataReq = async headers =>
 export const getAllPostsReq = async headers =>
 	await Axios.get('/api/posts', { headers });
 
-// DELETE: single posts
+// POST: single post
+export const createPost = async (body, headers) =>
+	await Axios.post('/api/posts', body, { headers });
+
+// DELETE: single post
 export const deletePostReq = async (postId, headers) =>
 	await Axios.delete(`/api/posts/${postId}`, { headers });
 

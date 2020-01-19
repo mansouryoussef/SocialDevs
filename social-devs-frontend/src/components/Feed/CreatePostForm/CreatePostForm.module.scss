@@ -1,0 +1,30 @@
+.createPostFormContainer {
+	margin-top: 3rem;
+
+	.title {
+		font-weight: 500;
+		color: rgb(95, 95, 95);
+		margin-bottom: 0.5rem;
+	}
+
+	textarea {
+		width: 100%;
+		min-height: 10rem;
+		border-radius: 0.4rem;
+		padding: 1rem;
+		font-size: 1.75rem;
+		margin-bottom: 0.5rem;
+		border-color: rgb(200, 200, 200);
+		resize: none;
+		color: rgb(73, 73, 73);
+
+		&::placeholder {
+			font-size: 1.5rem;
+			color: rgb(179, 179, 179);
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
