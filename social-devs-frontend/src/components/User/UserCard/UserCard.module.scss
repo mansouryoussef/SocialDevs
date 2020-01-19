@@ -1,0 +1,55 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/mixins';
+
+.userCardContainer {
+	@include wideCard;
+
+	@include md {
+		padding: 1.5rem 2.5rem;
+	}
+
+	@include custom(400) {
+		padding: 1rem 2rem;
+	}
+
+	.userImg {
+		margin-right: 3rem;
+
+		height: 10rem;
+
+		@include md {
+			height: 8rem;
+		}
+
+		@include sm {
+			height: 7rem;
+		}
+	}
+
+	.userInfo {
+		.userName {
+			font-size: 3rem;
+
+			@include md {
+				font-size: 2.5rem;
+			}
+
+			@include sm {
+				font-size: 2rem;
+			}
+		}
+
+		.userTitle,
+		.userLocation {
+			font-size: 1.55rem;
+
+			@include sm {
+				font-size: 1.25rem;
+			}
+		}
+
+		.userLocation {
+			margin-bottom: 0.75rem;
+		}
+	}
+}

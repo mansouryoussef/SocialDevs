@@ -1,32 +1,28 @@
 import React from 'react';
-import './UserCardStyles.scss';
+import Styles from './UserCard.module.scss';
 import { Link } from 'react-router-dom';
 import Button from 'components/Shared/Buttons/Button/Button';
 import user from 'assets/img/icons/user.svg';
-import uuid from 'uuid';
+import UserSkillsList from './UserSkillsList/UserSkillsList';
 
 export default function UserCard({ name, title, location, skills, userId }) {
 	return (
-		<div className='usercard-container'>
-			<img src={user} className='usercard-container__img' alt="User's img" />
+		<div className={Styles.userCardContainer}>
+			<img src={user} className={Styles.userImg} alt="User's img" />
 
-			<div className='usercard-container__user-info'>
-				<h2 className='usercard-container__user-info__name'>{name}</h2>
-				<p className='usercard-container__user-info__title'>{title}</p>
-				<p className='usercard-container__user-info__location'>{location}</p>
+			<div className={Styles.userInfo}>
+				<h2 className={Styles.userName}>{name}</h2>
+
+				<p className={Styles.userTitle}>{title}</p>
+
+				<p className={Styles.userLocation}>{location}</p>
+
 				<Link className='Link' to={`/user/${userId}`}>
 					<Button text='View' filled />
 				</Link>
 			</div>
 
-			<div className='usercard-container__skills'>
-				{skills.map(skill => (
-					<div key={uuid()} className='usercard-container__skills__skill'>
-						<span>{'</> '}</span>
-						{skill}
-					</div>
-				))}
-			</div>
+			<UserSkillsList skills={skills} />
 		</div>
 	);
 }

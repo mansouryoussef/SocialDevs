@@ -1,0 +1,28 @@
+@import '../../../../assets/sass/breakpoints';
+
+.skillsContainer {
+	margin-left: auto;
+	font-size: 1.75rem;
+	color: rgb(68, 68, 68);
+	font-weight: 300;
+
+	@include sm {
+		font-size: 1.25rem;
+	}
+
+	@include custom(400) {
+		display: none;
+	}
+
+	.skill {
+		display: flex;
+		align-items: center;
+
+		span {
+			color: var(--color-primary);
+			font-size: 1rem;
+			margin: 0.4rem 0.5rem 0 0;
+			font-weight: 500;
+		}
+	}
+}
