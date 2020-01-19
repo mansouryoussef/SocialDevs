@@ -1,25 +1,11 @@
 @import '../../assets/sass/breakpoints';
 @import '../../assets/sass/mixins';
 
-.home-page {
+.homePage {
 	position: relative;
 	width: 100vw;
 
-	&__clip {
-		position: absolute;
-		height: 100vh;
-		width: 45vw;
-		z-index: -1;
-		background-color: var(--color-primary);
-		right: 0;
-		clip-path: polygon(4% 0, 100% 0, 100% 100%, 16% 100%, 0 63%, 23% 33%);
-		@include lg {
-			clip-path: polygon(0 75%, 100% 61%, 100% 100%, 0% 100%);
-			width: 100vw;
-		}
-	}
-
-	&__container {
+	.section {
 		padding: 2rem 6rem;
 		height: 100vh;
 
@@ -27,7 +13,7 @@
 			padding: 1rem 3rem;
 		}
 
-		&__nav {
+		.starterNav {
 			display: flex;
 			width: 100%;
 			justify-content: space-between;
@@ -35,12 +21,12 @@
 			max-width: 170rem;
 			margin: 0 auto;
 
-			& .button-white-container {
+			button {
 				@include btn(#fff, 1.4);
 			}
 		}
 
-		&__content {
+		.content {
 			display: flex;
 			flex-direction: column;
 			position: relative;
@@ -54,36 +40,11 @@
 				margin-top: 11vh;
 			}
 
-			// img {
-			// 	position: absolute;
-			// 	right: 4vw;
-			// 	top: 0;
-			// 	width: 43%;
-			// 	margin-top: -2rem;
-
-			// 	@include xl {
-			// 		right: 0;
-			// 		width: 47%;
-			// 		margin-top: 0;
-			// 	}
-			// 	@include lg {
-			// 		position: static;
-			// 		width: 60%;
-			// 		margin-top: 4vh;
-			// 	}
-			// 	@include md {
-			// 		width: 80%;
-			// 		margin-top: 6vh;
-			// 	}
-			// 	@include sm {
-			// 		width: 85%;
-			// 	}
-			// }
-
-			&__header {
+			.header {
 				h1,
 				h2 {
 					font-size: 4rem;
+
 					@include lg {
 						font-size: 3.5rem;
 					}
@@ -103,26 +64,19 @@
 				font-weight: 300;
 			}
 
-			&__btns {
+			.btnsContainer {
 				display: flex;
 				align-items: center;
 				margin-top: 3rem;
 				flex-wrap: wrap;
 
-				& .button-container {
-					@include btn(var(--color-primary), 1.25);
+				button {
 					margin-right: 1rem;
+					font-size: 1.75rem;
 				}
 
 				@include lg {
 					justify-content: center;
-
-					& .auto-login-container {
-						width: 100%;
-						margin-top: 2rem;
-						border-left: none;
-						text-decoration: underline;
-					}
 				}
 
 				@include md {
