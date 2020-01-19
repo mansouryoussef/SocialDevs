@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
-import './LoginStyles.scss';
+import Styles from './Login.module.scss';
+
 import FormCard from 'components/Shared/FormCard/FormCard';
+import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
 import { DataContext } from 'contexts/DataContext';
 import { useHistory } from 'react-router-dom';
 import { handleLogin } from 'service/auth';
-import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
 
 export default function Login() {
 	let history = useHistory();
@@ -18,16 +19,14 @@ export default function Login() {
 
 	const [errorMsg, setErrorMsg] = useState('');
 
-	// destructure loginData fields
 	const { email, password } = loginData;
 
-	// @TODO add loginData as a param. To make the function pure.
 	const handleOnChange = e => {
 		setLoginData({ ...loginData, [e.target.name]: e.target.value });
 	};
 
 	return (
-		<div className='login-page'>
+		<div className={Styles.loginPage}>
 			<FormCard
 				handleSubmit={e => {
 					handleLogin(
