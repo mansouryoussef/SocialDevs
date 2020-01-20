@@ -3,7 +3,7 @@ import Styles from './Signup.module.scss';
 import FormCard from 'components/Shared/FormCard/FormCard';
 import { DataContext } from 'contexts/DataContext';
 import { useHistory } from 'react-router-dom';
-import { handleUserSignup } from '../../service/user';
+import { handleSignup } from '../../service/auth';
 import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
 
 export default function Signup() {
@@ -36,7 +36,7 @@ export default function Signup() {
 		e.preventDefault();
 
 		password === confirmPassword
-			? handleUserSignup(newUser, setIsLoggedin, history, setErrorMsg)
+			? handleSignup(newUser, setIsLoggedin, history, setErrorMsg)
 			: setErrorMsg("Passwords don't match, please try again.");
 	};
 	return (

@@ -29,14 +29,7 @@ export default function Login() {
 		<div className={Styles.loginPage}>
 			<FormCard
 				handleSubmit={e => {
-					handleLogin(
-						e,
-						loginData,
-						getInitialData,
-						setIsLoggedin,
-						history,
-						setErrorMsg
-					);
+					handleLogin(e, loginData, setIsLoggedin, history, setErrorMsg);
 				}}
 				login
 				errorMsg={errorMsg}

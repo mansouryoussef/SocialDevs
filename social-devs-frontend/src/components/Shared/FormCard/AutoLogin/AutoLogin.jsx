@@ -18,14 +18,7 @@ export default function AutoLogin({ setErrorMsg }) {
 	return (
 		<span
 			onClick={e => {
-				handleLogin(
-					e,
-					loginData,
-					getInitialData,
-					setIsLoggedin,
-					history,
-					setErrorMsg
-				);
+				handleLogin(e, loginData, setIsLoggedin, history, setErrorMsg);
 			}}
 			className={Styles.autoLogin}>
 			Auto Login as a guest.
