@@ -138,7 +138,7 @@ export const handleAddEdu = async (
 };
 
 // Handler: delete account
-export const handleDeleteAccount = async (setIsLoggedin, history) => {
+export const handleDeleteAccount = async setIsLoggedin => {
 	try {
 		const headers = createAuthHeader(token);
 

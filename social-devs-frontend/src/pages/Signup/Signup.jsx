@@ -1,14 +1,15 @@
 import React, { useState, useContext } from 'react';
-import './SignupStyles.scss';
+import Styles from './Signup.module.scss';
 import FormCard from 'components/Shared/FormCard/FormCard';
-import axios from 'axios';
 import { DataContext } from 'contexts/DataContext';
 import { useHistory } from 'react-router-dom';
+import { handleUserSignup } from '../../service/user';
+import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
 
 export default function Signup() {
 	let history = useHistory();
 
-	const { setIsLoggedin, getInitialData } = useContext(DataContext);
+	const { setIsLoggedin } = useContext(DataContext);
 
 	const [signupData, setSignupData] = useState({
 		name: '',
@@ -19,107 +20,57 @@ export default function Signup() {
 
 	const [errorMsg, setErrorMsg] = useState('');
 
-	// destructure signupData fields
 	const { name, email, password, confirmPassword } = signupData;
+
+	const newUser = {
+		name,
+		email,
+		password
+	};
 
 	const handleOnChange = e => {
 		setSignupData({ ...signupData, [e.target.name]: e.target.value });
 	};
 
-	const handleOnSubmit = async e => {
+	const handleSubmit = e => {
 		e.preventDefault();
 
-		if (password !== confirmPassword) {
-			setErrorMsg("Passwords don't match.");
-		} else {
-			const newUser = {
-				name,
-				email,
-				password
-			};
-
-			try {
-				const config = {
-					headers: {
-						'Content-Type': 'application/json'
-					}
-				};
-
-				const body = JSON.stringify(newUser);
-
-				const res = await axios.post('/api/users', body, config);
-
-				window.localStorage.setItem('userToken', res.data.token);
-				setIsLoggedin(true);
-				getInitialData();
-				history.push('/feed');
-			} catch (error) {
-				if (error.response.data !== undefined) {
-					setErrorMsg(error.response.data.errors[0].msg);
-					console.log(error.response.data.errors[0].msg);
-				}
-				console.log(error);
-			}
-		}
+		password === confirmPassword
+			? handleUserSignup(newUser, setIsLoggedin, history, setErrorMsg)
+			: setErrorMsg("Passwords don't match, please try again.");
 	};
-
 	return (
-		<div className='signup-page'>
-			{/* @TODO 
-			Suggestion:
-			It feels that this component is mixing two things.
-			Maybe it could be better, to create a component from the FormCard & its input elements together with handleOnChange Fn.
-			This way we separate the form inputs from the submission logic. 
-			*/}
-			<FormCard
-				handleSubmit={e => {
-					handleOnSubmit(e);
-				}}
-				errorMsg={errorMsg}>
-				<div className='formcard-container__input-fields__field'>
-					<label htmlFor='name'>Name</label>
+		<div className={Styles.signupPage}>
+			<FormCard handleSubmit={handleSubmit} errorMsg={errorMsg}>
+				<FormCardField
+					label='Name'
+					name='name'
+					value={name}
+					handleOnChange={e => handleOnChange(e)}
+				/>
 
-					<input
-						id='name'
-						value={name}
-						onChange={e => handleOnChange(e)}
-						name='name'
-						type='text'
-					/>
-				</div>
-				<div className='formcard-container__input-fields__field'>
-					<label htmlFor='email'>Email</label>
+				<FormCardField
+					label='Email'
+					name='email'
+					value={email}
+					handleOnChange={e => handleOnChange(e)}
+				/>
 
-					<input
-						id='email'
-						type='email'
-						value={email}
-						onChange={e => handleOnChange(e)}
-						name='email'
-					/>
-				</div>
-				<div className='formcard-container__input-fields__field'>
-					<label htmlFor='password'>Password</label>
+				<FormCardField
+					label='Password'
+					name='password'
+					value={password}
+					handleOnChange={e => handleOnChange(e)}
+					type='password'
+				/>
 
-					<input
-						id='password'
-						type='password'
-						value={password}
-						onChange={e => handleOnChange(e)}
-						name='password'
-					/>
-				</div>
-				<div className='formcard-container__input-fields__field'>
-					<label htmlFor='confirm password'>Confirm password</label>
-
-					<input
-						id='confirm password'
-						type='password'
-						value={confirmPassword}
-						onChange={e => handleOnChange(e)}
-						name='confirmPassword'
-					/>
-				</div>
+				<FormCardField
+					label='Confirm password'
+					name='confirmPassword'
+					value={confirmPassword}
+					handleOnChange={e => handleOnChange(e)}
+					type='password'
+				/>
 			</FormCard>
 		</div>
 	);

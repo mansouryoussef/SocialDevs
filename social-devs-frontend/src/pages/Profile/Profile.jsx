@@ -63,7 +63,7 @@ export default function Profile() {
 					onClick={() => {
 						user.name === 'Guest'
 							? setIsGuest(true)
-							: handleDeleteAccount(setIsLoggedin, history);
+							: handleDeleteAccount(setIsLoggedin);
 					}}
 					icon={deleteprofile}
 					text='Delete my account!'

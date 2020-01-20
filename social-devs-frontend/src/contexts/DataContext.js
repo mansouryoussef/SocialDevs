@@ -28,7 +28,6 @@ export function DataContextProvider(props) {
 	const getInitialData = async () => {
 		try {
 			setIsLoading(true);
-			const token = window.localStorage.getItem('userToken');
 			const headers = createAuthHeader(token);
 
 			try {

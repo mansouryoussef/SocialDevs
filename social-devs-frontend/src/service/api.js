@@ -14,6 +14,10 @@ export const getUserToken = async (body, headers) =>
 export const getUserDataReq = async headers =>
 	await Axios.get('/api/auth', { headers });
 
+// POST: signup user
+export const signupUser = async (body, headers) =>
+	await Axios.post('/api/users', body, { headers });
+
 // GET: all posts
 export const getAllPostsReq = async headers =>
 	await Axios.get('/api/posts', { headers });

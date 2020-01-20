@@ -8,7 +8,8 @@ export default function FormField({
 	onChange,
 	placeholder,
 	required,
-	textarea
+	textarea,
+	type
 }) {
 	const label = `${capitalize(name)}${required ? '*' : ''}`;
 
@@ -29,7 +30,7 @@ export default function FormField({
 				value={value}
 				onChange={e => onChange(e)}
 				name={name}
-				type='text'
+				type={type ? type : 'text'}
 				placeholder={placeholder}
 				required
 			/>
