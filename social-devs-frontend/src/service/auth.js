@@ -1,5 +1,4 @@
 import { createAuthHeader, getUserToken } from './api';
-import Axios from 'axios';
 
 // Handler: Sign out process
 export const handleSignout = (setIsLoggedin, history) => {
