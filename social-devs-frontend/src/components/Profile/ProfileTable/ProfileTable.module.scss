@@ -2,13 +2,14 @@
 @import '../../../assets/sass/mixins';
 
 .profileTable {
-	width: 90vw;
-	max-width: $space-7 * 17;
+	width: $space-7 * 21;
+	max-width: $space-7 * 21;
 	font-size: $font-sm;
 	margin-bottom: $space-5 * 2;
 	text-align: center;
 	border-spacing: $space-2;
 	border-collapse: separate;
+	table-layout: fixed;
 
 	@include sm {
 		width: 100%;

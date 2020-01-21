@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Styles from './CommentList.module.scss';
 import CommentCard from './CommentCard/CommentCard';
 import { format } from 'date-fns';

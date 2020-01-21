@@ -8,12 +8,9 @@ import ProfileInfoList from 'components/Profile/ProfileInfoList/ProfileInfoList'
 import IconButtonDanger from 'components/Shared/Buttons/IconButtonDanger/IconButtonDanger';
 import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
 import { DataContext } from 'contexts/DataContext';
-import { useHistory } from 'react-router-dom';
 import { handleDeleteAccount } from 'service/profile';
 
 export default function Profile() {
-	const history = useHistory();
-
 	const { userProfile, setIsLoggedin, user } = useContext(DataContext);
 	const [showEditForm, setShowEditForm] = useState(
 		userProfile.title === undefined
@@ -59,16 +56,18 @@ export default function Profile() {
 				<ProfileTable info={expTableProps} />
 				<ProfileTable info={eduTableProps} />
 
-				<IconButtonDanger
-					onClick={() => {
-						user.name === 'Guest'
-							? setIsGuest(true)
-							: handleDeleteAccount(setIsLoggedin);
-					}}
-					icon={deleteprofile}
-					text='Delete my account!'
-					filled
-				/>
+				<div className={Styles.btnContainer}>
+					<IconButtonDanger
+						onClick={() => {
+							user.name === 'Guest'
+								? setIsGuest(true)
+								: handleDeleteAccount(setIsLoggedin);
+						}}
+						icon={deleteprofile}
+						text='Delete my account!'
+						filled
+					/>
+				</div>
 
 				{isGuest && (
 					<Disclaimer err='Sorry, guests are not allowed to delete their accounts for others to use it.' />

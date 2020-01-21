@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 export default function AutoLogin({ setErrorMsg }) {
 	let history = useHistory();
 
-	const { setIsLoggedin, getInitialData } = useContext(DataContext);
+	const { setIsLoggedin } = useContext(DataContext);
 
 	const loginData = {
 		email: 'demo@guest.fi',

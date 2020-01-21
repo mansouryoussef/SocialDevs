@@ -105,7 +105,12 @@ export const handleAddExp = async (
 	try {
 		const headers = createAuthHeader(token);
 		const body = JSON.stringify(fields);
-		console.log({ ...headers });
+
+		console.log('Exp:');
+		console.log('Body:', body);
+		console.log('Fields:', fields);
+		console.log('Headers:', headers);
+
 		const res = await addProfileExperience(body, { ...headers });
 
 		setUserProfile(res.data);
@@ -127,6 +132,11 @@ export const handleAddEdu = async (
 		const headers = createAuthHeader(token);
 
 		const body = JSON.stringify(fields);
+
+		console.log('Edu:');
+		console.log('Body:', body);
+		console.log('Fields:', fields);
+		console.log('Headers:', headers);
 		const res = await addProfileEducation(body, { ...headers });
 
 		setUserProfile(res.data);

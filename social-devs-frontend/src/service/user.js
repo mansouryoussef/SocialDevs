@@ -1,4 +1,4 @@
-import { getUserDataReq, createAuthHeader, signupUser } from './api';
+import { getUserDataReq, createAuthHeader } from './api';
 
 // user token import with alias: 'token'
 import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';

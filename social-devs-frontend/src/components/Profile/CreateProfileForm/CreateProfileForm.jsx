@@ -69,7 +69,7 @@ export default function CreateProfileForm({ setShowEditForm, showEditForm }) {
 			/>
 
 			<FormField
-				name='github'
+				name='githubusername'
 				value={githubusername}
 				placeholder='https://github.com/username'
 				onChange={e => handleChange(e)}

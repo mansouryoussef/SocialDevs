@@ -13,9 +13,7 @@ export default function TableTitle({
 		<div className={Styles.tableTitleContainer}>
 			<h2 className={Styles.title}>{title}</h2>
 
-			<span className={Styles.btnContainer}>
-				<Button text={editingTable ? 'Cancel' : 'Add'} onClick={handleToggle} />
-			</span>
+			<Button text={editingTable ? 'Cancel' : 'Add'} onClick={handleToggle} />
 
 			{errorMsg !== '' && <Disclaimer err={errorMsg} />}
 		</div>

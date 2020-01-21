@@ -10,7 +10,7 @@ import { handleLogin } from 'service/auth';
 export default function Login() {
 	let history = useHistory();
 
-	const { setIsLoggedin, getInitialData } = useContext(DataContext);
+	const { setIsLoggedin } = useContext(DataContext);
 
 	const [loginData, setLoginData] = useState({
 		email: '',

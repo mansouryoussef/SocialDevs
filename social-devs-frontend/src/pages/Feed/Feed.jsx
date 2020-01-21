@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Styles from './Feed.module.scss';
 import { DataContext } from 'contexts/DataContext';
 import PostList from '../../components/Feed/PostCard/PostList/PostList';

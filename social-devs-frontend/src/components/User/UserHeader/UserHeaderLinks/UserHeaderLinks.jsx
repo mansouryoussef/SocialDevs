@@ -13,7 +13,8 @@ export default function UserHeaderLinks({ links }) {
 							key={url}
 							href={url}
 							className={Styles.userHeaderLink}
-							target='_blank'>
+							target='_blank'
+							rel='noopener noreferrer'>
 							<img
 								src={require(`../../../../assets/img/icons/${icon}.png`)}
 								alt='Github'
