@@ -3,12 +3,12 @@
 
 .iconButtonWhiteContainer {
 	@include btn(#fff);
-	padding: $space-1 $space-3;
+	padding: $space-1 $space-2;
 	color: #fff;
 
 	.icon {
-		margin-right: $space-3;
-		height: $space-5;
+		margin-right: $space-2;
+		height: $space-3;
 	}
 }
 

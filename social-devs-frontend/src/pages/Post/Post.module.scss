@@ -1,5 +1,6 @@
 @import '../../assets/sass/breakpoints';
 @import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
 
 .postPage {
 	display: flex;
@@ -7,14 +8,14 @@
 	align-items: center;
 
 	.content {
-		max-width: 82rem;
+		max-width: $space-2 * 82;
 		width: 100%;
-		padding: 0 2rem;
+		padding: 0 $space-4;
 		margin-top: 6vh;
 
 		.divider {
 			width: 90%;
-			margin: 5rem auto;
+			margin: $space-7 auto;
 		}
 	}
 }

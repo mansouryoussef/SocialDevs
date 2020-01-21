@@ -1,5 +1,6 @@
 @import '../../assets/sass/breakpoints';
 @import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
 
 .profilePage {
 	display: flex;
@@ -13,7 +14,7 @@
 	.content {
 		width: 100%;
 		padding: 0 10vw;
-		margin: 8rem 0;
+		margin: $space-6 * 2 0;
 
 		@include lg {
 			padding: 0 6vw;
@@ -26,12 +27,12 @@
 
 		.formTitle {
 			font-weight: 300;
-			margin-bottom: 1.75rem;
+			margin-bottom: $space-4;
 			position: relative;
 			width: fit-content;
 
 			@include md {
-				font-size: 2rem;
+				font-size: $font-md;
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+@import '../../../../assets/sass/variables';
+
 .tableData {
 	padding: 0;
 
@@ -5,12 +7,12 @@
 		height: 100%;
 		width: 100%;
 		outline: none;
-		font-size: 1.5rem;
+		font-size: $font-sm;
 		text-align: center;
 
 		&::placeholder {
 			text-align: center;
-			font-size: 1.25rem;
+			font-size: $font-sm;
 		}
 
 		&:focus {

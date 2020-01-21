@@ -1,25 +1,27 @@
+@import '../../../assets/sass/variables';
+
 .createPostFormContainer {
-	margin-top: 3rem;
+	margin-top: $space-5;
 
 	.title {
 		font-weight: 500;
 		color: rgb(95, 95, 95);
-		margin-bottom: 0.5rem;
+		margin-bottom: $space-1;
 	}
 
 	textarea {
 		width: 100%;
-		min-height: 10rem;
-		border-radius: 0.4rem;
-		padding: 1rem;
-		font-size: 1.75rem;
-		margin-bottom: 0.5rem;
+		min-height: $space-7 * 2;
+		border-radius: $space-1 * 0.8;
+		padding: $space-2;
+		font-size: $font-md;
+		margin-bottom: $space-1;
 		border-color: rgb(200, 200, 200);
 		resize: none;
 		color: rgb(73, 73, 73);
 
 		&::placeholder {
-			font-size: 1.5rem;
+			font-size: $font-sm;
 			color: rgb(179, 179, 179);
 		}
 

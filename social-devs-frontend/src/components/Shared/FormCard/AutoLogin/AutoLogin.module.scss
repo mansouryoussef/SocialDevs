@@ -1,17 +1,18 @@
 @import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
 
 .autoLogin {
-	font-size: 1.3rem;
+	font-size: $font-xs * 1.2;
 	color: var(--color-primary);
 	cursor: pointer;
 	border-left: 2px solid var(--color-primary);
-	padding-left: 0.5rem;
+	padding-left: $space-1;
 
 	&:hover {
 		text-decoration: underline;
 	}
 
 	@include xs {
-		font-size: 1.1rem;
+		font-size: $font-xs;
 	}
 }

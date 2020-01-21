@@ -1,5 +1,6 @@
 @import '../../assets/sass/breakpoints';
 @import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
 
 .feedPage {
 	display: flex;
@@ -11,8 +12,8 @@
 	}
 
 	.content {
-		max-width: 82rem;
+		max-width: $space-2 * 82;
 		width: 100%;
-		padding: 0 2rem;
+		padding: 0 $space-4;
 	}
 }

@@ -1,14 +1,15 @@
 @import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
 
 .tableHeaderRow {
 	td {
 		background-color: var(--color-primary-transparent);
 
 		@include sm {
-			font-size: 1.5rem;
+			font-size: $font-sm;
 		}
 		@include xs {
-			font-size: 1.25rem;
+			font-size: $font-xs;
 		}
 	}
 

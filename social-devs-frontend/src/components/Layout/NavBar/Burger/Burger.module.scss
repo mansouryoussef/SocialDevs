@@ -1,14 +1,15 @@
 @import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
 
-$width: 3.5rem;
-$height: 0.4rem;
+$width: $space-2 * 3.5;
+$height: $space-2 * 0.4;
 $background: var(--color-primary);
 
 #burgerContainer {
 	position: absolute;
-	right: 3em;
-	top: 4rem;
-	padding: 12px 0;
+	right: $space-5;
+	top: $space-6;
+	padding: $space-2 * 1.2 0;
 	display: none;
 	z-index: 3;
 	cursor: pointer;
@@ -36,11 +37,11 @@ $background: var(--color-primary);
 		}
 
 		&:before {
-			top: -1rem;
+			top: -$space-2;
 		}
 
 		&:after {
-			top: 1rem;
+			top: $space-2;
 		}
 	}
 
@@ -51,12 +52,12 @@ $background: var(--color-primary);
 			background: transparent;
 
 			&:before {
-				transform: rotate(45deg) translate(8px, 6px);
+				transform: rotate(45deg) translate(0.8rem, 0.6rem);
 				background: #fff;
 			}
 
 			&:after {
-				transform: rotate(-45deg) translate(8px, -6px);
+				transform: rotate(-45deg) translate(0.8rem, -0.6rem);
 				background: #fff;
 			}
 		}

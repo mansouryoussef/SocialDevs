@@ -1,11 +1,16 @@
 $base-unit: 0.5rem;
 
-$space-1: $base-unit * 1;
-$space-2: $base-unit * 1.5;
-$space-3: $base-unit * 2;
-$space-4: $base-unit * 2.5;
-$space-5: $base-unit * 3;
-$space-6: $base-unit * 3.5;
-$space-7: $base-unit * 4;
-$space-8: $base-unit * 5;
-$space-9: $base-unit * 6;
+// Font sizes
+$font-xs: $base_unit * 2; // 1rem
+$font-sm: $base_unit * 3; // 1.5rem
+$font-md: $base_unit * 4; // 2rem
+$font-lg: $base_unit * 5; // 2.5rem
+$font-xl: $base_unit * 6; // 3rem
+
+$space-1: $base-unit * 1; // 0.5rem
+$space-2: $base-unit * 2; // 1rem
+$space-3: $base-unit * 3; // 1.5rem
+$space-4: $base-unit * 4; // 2rem
+$space-5: $base-unit * 6; // 3rem
+$space-6: $base-unit * 8; // 4rem
+$space-7: $base-unit * 10; // 5rem

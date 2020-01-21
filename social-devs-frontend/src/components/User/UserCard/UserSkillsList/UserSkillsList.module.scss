@@ -1,14 +1,11 @@
 @import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
 
 .skillsContainer {
 	margin-left: auto;
-	font-size: 1.75rem;
-	color: rgb(68, 68, 68);
+	font-size: $font-sm;
+	color: var(--color-dark-gray);
 	font-weight: 300;
-
-	@include sm {
-		font-size: 1.25rem;
-	}
 
 	@include custom(400) {
 		display: none;
@@ -20,8 +17,8 @@
 
 		span {
 			color: var(--color-primary);
-			font-size: 1rem;
-			margin: 0.4rem 0.5rem 0 0;
+			font-size: $font-xs;
+			margin: $space-1 $space-1 0 0;
 			font-weight: 500;
 		}
 	}

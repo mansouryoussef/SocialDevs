@@ -1,20 +1,19 @@
 @import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
 
 .FormCardNoteContainer {
 	display: flex;
 	font-weight: 500;
-
-	@include sm {
-		font-size: 1.25rem;
-	}
+	font-size: $font-sm;
+	margin-top: $space-2;
 
 	@include xs {
-		font-size: 1.1rem;
+		font-size: $font-xs;
 	}
 
 	a {
 		color: var(--color-primary);
 		text-decoration: none;
-		margin-left: 0.5rem;
+		margin-left: $space-1;
 	}
 }

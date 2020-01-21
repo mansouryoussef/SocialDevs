@@ -1,16 +1,17 @@
 @import '../../assets/sass/breakpoints';
 @import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
 
 .homePage {
 	position: relative;
 	width: 100vw;
 
 	.section {
-		padding: 2rem 6rem;
+		padding: $space-4 $space-5 * 2;
 		height: 100vh;
 
 		@include xl {
-			padding: 1rem 3rem;
+			padding: $space-2 $space-5;
 		}
 
 		.starterNav {
@@ -18,7 +19,7 @@
 			width: 100%;
 			justify-content: space-between;
 			align-items: center;
-			max-width: 170rem;
+			max-width: $space-2 * 170;
 			margin: 0 auto;
 
 			button {
@@ -30,7 +31,7 @@
 			display: flex;
 			flex-direction: column;
 			position: relative;
-			max-width: 170rem;
+			max-width: $space-2 * 170;
 			margin: 0 auto;
 			margin-top: 14vh;
 
@@ -43,19 +44,14 @@
 			.header {
 				h1,
 				h2 {
-					font-size: 4rem;
+					font-size: $font-xl;
 
-					@include lg {
-						font-size: 3.5rem;
-					}
 					@include md {
-						font-size: 2.85rem;
+						font-size: $font-lg;
 					}
-					@include custom(400) {
-						font-size: 2.65rem;
-					}
+
 					@include xs {
-						font-size: 2.15rem;
+						font-size: $font-md;
 					}
 				}
 			}
@@ -67,12 +63,12 @@
 			.btnsContainer {
 				display: flex;
 				align-items: center;
-				margin-top: 3rem;
+				margin-top: $space-5;
 				flex-wrap: wrap;
 
 				button {
-					margin-right: 1rem;
-					font-size: 1.75rem;
+					margin-right: $space-2;
+					font-size: $font-md;
 				}
 
 				@include lg {

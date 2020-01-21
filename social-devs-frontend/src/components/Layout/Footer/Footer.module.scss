@@ -1,8 +1,9 @@
 @import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/variables';
 
 .footerContainer {
 	width: 100vw;
-	padding: 0.75rem 7rem;
+	padding: $space-2 $space-2 * 7;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -11,19 +12,19 @@
 	margin-top: auto;
 
 	@include sm {
-		padding: 0.75rem 2rem;
+		padding: $space-2 $space-4;
 		flex-direction: column;
 		align-items: center;
 	}
 
 	.footerItem {
-		font-size: 1.5rem;
+		font-size: $font-sm;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 
 		h3 {
-			margin-right: 0.25rem;
+			margin-right: $base-unit * 0.5;
 			font-size: inherit;
 			white-space: nowrap;
 		}

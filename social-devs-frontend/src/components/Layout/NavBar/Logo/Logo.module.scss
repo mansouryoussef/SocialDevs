@@ -1,19 +1,20 @@
 @import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
 
 .logoContainer {
 	display: flex;
 	flex-direction: column;
 	width: auto;
 	align-items: center;
-	margin-right: 1rem;
-	padding: 1rem 0;
+	margin-right: $space-2;
+	padding: $space-2 0;
 
 	img {
-		height: 5.75rem;
+		height: $space-7 * 1.2;
 	}
 
 	p {
-		font-size: 1.25rem;
+		font-size: $font-sm * 0.9;
 		white-space: nowrap;
 	}
 }

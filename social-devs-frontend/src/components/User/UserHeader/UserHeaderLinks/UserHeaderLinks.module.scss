@@ -1,7 +1,9 @@
+@import '../../../../assets/sass/variables';
+
 .userHeaderSocialLinks {
 	display: flex;
 	width: fit-content;
-	margin-top: 1.5rem;
+	margin-top: $space-3;
 
 	.userHeaderLink {
 		margin: 0 0.2rem;
@@ -15,7 +17,7 @@
 		}
 
 		img {
-			height: 2.75rem;
+			height: $space-5;
 		}
 	}
 }

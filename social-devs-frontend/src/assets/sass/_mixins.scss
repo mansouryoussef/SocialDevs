@@ -9,20 +9,15 @@
 	background-color: transparent;
 	border: 1px solid $color;
 	font-weight: 300;
-	font-size: $space-5 * $size;
-	padding: $space-1 * $size $space-3 * $size;
+	font-size: $font-sm * $size;
+	padding: $space-1 * $size $space-2 * $size;
 	border-radius: $space-1;
 	cursor: pointer;
-
-	// &#filled {
-	// 	background-color: $color;
-	// 	color: #fff;
-	// }
 }
 
 @mixin titleUnderline {
 	position: relative;
-	margin: 3rem 0;
+	margin: $space-5 0;
 
 	&::after {
 		content: '';
@@ -30,23 +25,23 @@
 		bottom: 0;
 		left: 0;
 		height: 3px;
-		width: 4rem;
+		width: $space-6;
 		background-color: var(--color-primary);
 	}
 }
 
 @mixin wideCard {
 	display: flex;
-	max-width: 80rem;
+	max-width: $space-7 * 16;
 	width: 100%;
-	margin-bottom: 3rem;
-	padding: 3rem 5rem;
-	border-radius: 1.25rem;
+	margin-bottom: $space-5;
+	padding: $space-5 $space-7;
+	border-radius: $base-unit * 2.5;
 	box-shadow: var(--shadow-light);
 	align-items: center;
 
 	@include sm {
-		padding: 1rem 3rem;
+		padding: $space-2 $space-5;
 	}
 }
 
@@ -59,12 +54,12 @@
 		height: 100%;
 		width: 100%;
 		outline: none;
-		font-size: 1.5rem;
+		font-size: $font-sm;
 		text-align: center;
 
 		&::placeholder {
 			text-align: center;
-			font-size: 1.25rem;
+			font-size: $font-sm;
 		}
 
 		&:focus {

@@ -1,27 +1,28 @@
 @import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
 
 .formCardFieldContainer {
 	display: flex;
 	flex-direction: column;
-	margin: 1.25rem 0;
+	margin: $space-2 * 1.25 0;
 
 	@include md {
-		margin: 1rem 0;
+		margin: $space-2 0;
 	}
 
 	input {
-		min-height: 3.25rem;
-		min-width: 22rem;
-		border-radius: 0.75rem;
+		min-height: $space-5;
+		min-width: $space-2 * 22;
+		border-radius: $space-1 * 1.5;
 		border: 1px solid var(--color-primary-light);
-		font-size: 1.5rem;
-		margin-top: 0.25rem;
-		padding: 0.75rem 1rem;
-		color: rgb(54, 54, 54);
+		font-size: $font-sm;
+		margin-top: $space-1 * 0.5;
+		padding: $space-1 * 1.5 $space-2;
+		color: var(--color-dark-gray);
 
 		@include md {
-			padding: 0.25rem 0.75rem;
-			min-height: 3rem;
+			padding: $space-1 * 0.5 $space-1 * 1.5;
+			min-height: $space-5;
 		}
 
 		@include sm {
@@ -33,15 +34,15 @@
 		}
 
 		&::placeholder {
-			font-size: 1rem;
-			margin-left: 1rem;
+			font-size: $font-sm;
+			margin-left: $space-2;
 			transform: translate3d(0, -3px, 0);
-			color: rgb(116, 116, 116);
+			color: var(--color-gray);
 		}
 	}
 
 	label {
-		font-size: 1.25rem;
-		margin-left: 0.5rem;
+		font-size: $font-sm;
+		margin-left: $space-1;
 	}
 }

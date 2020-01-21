@@ -1,12 +1,13 @@
 @import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/variables';
 
 .profileInfoListContainer {
 	display: flex;
 	flex-direction: column;
 	width: 40vw;
-	max-width: 45rem;
+	max-width: $space-7 * 9;
 	align-items: flex-end;
-	margin-bottom: 6rem;
+	margin-bottom: $space-2 * 6;
 
 	@include lg {
 		width: 60vw;

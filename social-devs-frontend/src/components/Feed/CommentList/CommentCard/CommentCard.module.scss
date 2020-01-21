@@ -1,38 +1,39 @@
 @import '../../../../assets/sass/breakpoints';
 @import '../../../../assets/sass/mixins';
+@import '../../../../assets/sass/variables';
 
 .commentCardContainer {
 	@include wideCard;
-	padding: 1.5rem 3rem;
+	padding: $space-3 $space-5;
 	align-items: center;
 	justify-content: center;
 
 	@include md {
 		justify-content: flex-start;
 		align-items: flex-start;
-		padding: 2rem;
+		padding: $space-4;
 	}
 
 	.imgNameContainer {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-right: 5rem;
+		margin-right: $space-7;
 
 		@include md {
-			margin-right: 2rem;
+			margin-right: $space-4;
 		}
 
 		.img {
-			height: 5rem;
+			height: $space-7;
 		}
 
 		.name {
 			text-align: center;
-			font-size: 1.75rem;
+			font-size: $font-sm;
 
-			@include md {
-				font-size: 1.5rem;
+			@include sm {
+				font-size: $font-xs;
 			}
 		}
 	}
@@ -43,10 +44,10 @@
 		width: 100%;
 
 		.text {
-			font-size: 1.4rem;
+			font-size: $font-sm;
 			position: relative;
-			padding-bottom: 1rem;
-			margin-bottom: 1rem;
+			padding-bottom: $space-2;
+			margin-bottom: $space-2;
 
 			&::after {
 				content: '';
@@ -58,12 +59,8 @@
 				background-color: rgb(221, 220, 220);
 			}
 
-			@include md {
-				font-size: 1.5rem;
-			}
-
 			@include xs {
-				font-size: 1.1rem;
+				font-size: $font-xs;
 			}
 		}
 

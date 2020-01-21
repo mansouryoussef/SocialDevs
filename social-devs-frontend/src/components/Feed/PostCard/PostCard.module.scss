@@ -1,5 +1,6 @@
 @import '../../../assets/sass/breakpoints';
 @import '../../../assets/sass/mixins';
+@import '../../../assets/sass/variables';
 
 .postcardContainer {
 	@include wideCard;
@@ -7,31 +8,27 @@
 	@include md {
 		justify-content: flex-start;
 		align-items: center;
-		padding: 2rem;
+		padding: $space-4;
 	}
 
 	.imgNameContainer {
-		margin-right: 5rem;
+		margin-right: $space-7;
 
 		@include md {
-			margin-right: 3rem;
+			margin-right: $space-5;
 		}
 
 		.img {
-			height: 9rem;
+			height: $space-5 * 3;
 
 			@include md {
-				height: 7rem;
+				height: $space-2 * 7;
 			}
 		}
 
 		.name {
 			text-align: center;
-			font-size: 2.25rem;
-
-			@include md {
-				font-size: 1.75rem;
-			}
+			font-size: $font-md;
 		}
 	}
 
@@ -41,19 +38,19 @@
 		width: 100%;
 
 		.postText {
-			font-size: 1.4rem;
+			font-size: $font-sm;
 			border-bottom: 1px solid rgb(206, 206, 206);
-			padding-bottom: 1rem;
+			padding-bottom: $space-2;
 
 			@include xs {
-				font-size: 1.1rem;
+				font-size: $font-xs;
 			}
 		}
 
 		.date {
-			margin: 0.25rem 0 2rem 0;
+			margin: $space-1 * 0.5 0 $space-4 0;
 			color: rgb(100, 100, 100);
-			font-size: 1.15rem;
+			font-size: $font-xs;
 		}
 
 		.btnsContainer {
@@ -62,30 +59,14 @@
 			align-items: center;
 			width: fit-content;
 
-			// .likeBtn {
-			// 	height: fit-content;
-			// 	margin-right: 1.75rem;
-			// 	cursor: pointer;
-
-			// 	@include xs {
-			// 		margin-top: 1rem;
-			// 	}
-
-			// 	img {
-			// 		@include md {
-			// 			height: 2.5rem;
-			// 		}
-			// 	}
-			// }
-
 			.regularBtnsContainer {
 				display: flex;
 
 				button {
-					margin-right: 1rem;
+					margin-right: $space-2;
 
 					@include sm {
-						font-size: 1.25rem;
+						font-size: $font-xs;
 
 						span {
 							display: none;

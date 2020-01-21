@@ -1,5 +1,6 @@
 @import '../../assets/sass/breakpoints';
 @import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
 
 .userPage {
 	display: flex;
@@ -10,9 +11,9 @@
 		display: flex;
 		flex-direction: column;
 		width: 65vw;
-		max-width: 80rem;
+		max-width: $space-7 * 16;
 		margin: 0 auto;
-		padding: 4rem 0;
+		padding: $space-6 0;
 
 		@include lg {
 			width: 85vw;
@@ -25,6 +26,7 @@
 		.cardsContainer {
 			display: flex;
 			justify-content: space-between;
+
 			@include sm {
 				flex-direction: column;
 				align-items: center;
