@@ -1,6 +1,5 @@
 import React, { useContext, useMemo } from 'react';
 import Styles from './PostCard.module.scss';
-
 import Button from 'components/Shared/Buttons/Button/Button';
 import Like from './Like/Like';
 import trashWhite from 'assets/img/icons/trashWhite.svg';
@@ -8,8 +7,10 @@ import defaultUserImg from 'assets/img/icons/user.svg';
 import IconButtonDanger from 'components/Shared/Buttons/IconButtonDanger/IconButtonDanger';
 import { useHistory, Link } from 'react-router-dom';
 import { getFirstName } from 'service/user';
-import { handleDeletePost } from '../../../service/post';
-import { DataContext } from 'contexts/DataContext';
+import { handleDeletePost } from 'service/post';
+
+import { PostContext } from 'contexts/PostContext';
+import { UserContext } from 'contexts/UserContext';
 
 export default function PostCard({
 	text,
@@ -22,7 +23,9 @@ export default function PostCard({
 }) {
 	let history = useHistory();
 
-	const { user, setPosts } = useContext(DataContext);
+	const { setPosts } = useContext(PostContext);
+	const { user } = useContext(UserContext);
+
 	const isPostOwner = useMemo(() => user._id === postUserId, [user]);
 
 	return (

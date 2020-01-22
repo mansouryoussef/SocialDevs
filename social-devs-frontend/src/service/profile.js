@@ -4,8 +4,8 @@ import {
 	addProfileEducation,
 	deleteProfileExperience,
 	deleteProfileEducation,
-	getUserProfileReq,
-	getAllProfilesReq,
+	getUserProfile,
+	getAllProfiles,
 	deleteAccount,
 	createUserProfile
 } from './api';
@@ -14,26 +14,25 @@ import {
 import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
 
 //  Fetches: user profile data
-export const getAllProfiles = async (setProfiles, setIsLoading) => {
+export const handleGetAllProfiles = async (setProfiles, setIsLoading) => {
 	try {
 		const headers = createAuthHeader();
 
-		const res = await getAllProfilesReq({ ...headers });
+		const res = await getAllProfiles({ ...headers });
 
 		setProfiles(res.data);
 		setIsLoading(false);
 	} catch (error) {
-		setIsLoading(false);
 		console.log(error);
 	}
 };
 
-//  Fetches: user profile data
-export const getUserProfile = async setUserProfile => {
+//  Handler: fetches user profile data
+export const handleGetUserProfile = async setUserProfile => {
 	try {
 		const headers = createAuthHeader(token);
 
-		const res = await getUserProfileReq(headers);
+		const res = await getUserProfile(headers);
 
 		setUserProfile(res.data);
 	} catch (error) {
@@ -59,7 +58,7 @@ export const handleCreateProfile = async (
 		const res = await createUserProfile(body, { ...headers });
 
 		setUserProfile(res.data);
-		getUserProfile(setUserProfile);
+		handleGetUserProfile(setUserProfile);
 
 		setShowEditForm(false);
 	} catch (error) {

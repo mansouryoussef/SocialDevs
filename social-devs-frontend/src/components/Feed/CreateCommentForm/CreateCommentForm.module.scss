@@ -3,7 +3,7 @@
 .createCommentForm {
 	margin-top: $space-7;
 
-	&__title {
+	.title {
 		font-weight: 500;
 		color: rgb(95, 95, 95);
 		margin-bottom: $space-1;
@@ -14,7 +14,7 @@
 		min-height: $space-7 * 2;
 		border-radius: $space-1 * 0.8;
 		padding: $space-2;
-		font-size: $font-md;
+		font-size: $font-sm;
 		margin-bottom: $space-1;
 		border-color: rgb(200, 200, 200);
 		resize: none;

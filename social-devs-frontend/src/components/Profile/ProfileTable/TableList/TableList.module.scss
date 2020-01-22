@@ -9,7 +9,8 @@
 		padding: $space-2 $space-1;
 
 		span {
-			@include sm {
+			white-space: nowrap;
+			@include md {
 				display: block;
 			}
 		}
@@ -19,13 +20,14 @@
 				span {
 					display: none;
 				}
+
 				img {
-					margin: 0;
+					margin-right: 0;
 				}
 			}
 		}
 
-		@include xs {
+		@include sm {
 			font-size: $font-xs;
 		}
 	}

@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { DataContext } from '../../../contexts/DataContext';
+
+import { AuthContext } from 'contexts/AuthContext';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
-	const { isLoggedin } = useContext(DataContext);
+	const { isLoggedin } = useContext(AuthContext);
 
 	return (
 		<Route

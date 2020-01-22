@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import Styles from './Feed.module.scss';
-import { DataContext } from 'contexts/DataContext';
-import PostList from '../../components/Feed/PostCard/PostList/PostList';
-import CreatePostForm from '../../components/Feed/CreatePostForm/CreatePostForm';
+import PostList from 'components/Feed/PostCard/PostList/PostList';
+import CreatePostForm from 'components/Feed/CreatePostForm/CreatePostForm';
+import { PostContext } from 'contexts/PostContext';
 
 export default function Feed() {
-	const { posts, setPosts } = useContext(DataContext);
+	const { posts, setPosts } = useContext(PostContext);
 
 	return (
 		<div className={Styles.feedPage}>

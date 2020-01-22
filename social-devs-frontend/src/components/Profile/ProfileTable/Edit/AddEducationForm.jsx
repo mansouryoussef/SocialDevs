@@ -2,12 +2,11 @@ import React, { useState, useContext } from 'react';
 import Button from 'components/Shared/Buttons/Button/Button';
 import DateFields from './DateFields/DateFields';
 import TableInputField from '../TableInputField/TableInputField';
-
-import { DataContext } from 'contexts/DataContext';
 import { handleAddEdu } from 'service/profile';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function AddEducationForm({ setAddingEdu, setError }) {
-	const { setUserProfile } = useContext(DataContext);
+	const { setUserProfile } = useContext(ProfileContext);
 
 	const [eduFields, setEduFields] = useState({
 		school: '',

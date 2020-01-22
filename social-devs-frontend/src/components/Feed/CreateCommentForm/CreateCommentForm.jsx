@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Styles from './CreateCommentForm.module.scss';
-import { handleCreateComment, getAllPosts } from '../../../service/post';
+import { handleCreateComment, handleGetAllPosts } from '../../../service/post';
 import Button from 'components/Shared/Buttons/Button/Button';
 
 export default function CreateCommentForm({ postId, setPosts }) {
@@ -25,7 +25,7 @@ export default function CreateCommentForm({ postId, setPosts }) {
 					handleCreateComment(
 						commentText,
 						postId,
-						getAllPosts,
+						handleGetAllPosts,
 						setPosts,
 						setCommentText
 					)

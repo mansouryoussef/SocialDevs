@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react';
 import Styles from './Signup.module.scss';
 import FormCard from 'components/Shared/FormCard/FormCard';
-import { DataContext } from 'contexts/DataContext';
 import { useHistory } from 'react-router-dom';
-import { handleSignup } from '../../service/auth';
+import { handleSignup } from 'service/auth';
 import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Signup() {
 	let history = useHistory();
 
-	const { setIsLoggedin } = useContext(DataContext);
+	const { setIsLoggedin } = useContext(AuthContext);
 
 	const [signupData, setSignupData] = useState({
 		name: '',

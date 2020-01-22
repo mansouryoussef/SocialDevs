@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import Styles from './Users.module.scss';
-import { DataContext } from 'contexts/DataContext';
 import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
 import UserList from '../../components/User/UserList/UserList';
+import { ProfileContext } from '../../contexts/ProfileContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Users() {
-	const { profiles, userProfile, isLoggedin } = useContext(DataContext);
+	const { profiles, userProfile } = useContext(ProfileContext);
+	const { isLoggedin } = useContext(AuthContext);
 
 	return (
 		<div className={Styles.usersPage}>

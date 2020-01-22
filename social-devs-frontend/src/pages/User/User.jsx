@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Styles from './UserPage.module.scss';
-import { DataContext } from 'contexts/DataContext';
 import UserHeader from 'components/User/UserHeader/UserHeader';
 import UserInfoCard from 'components/User/UserInfoCard/UserInfoCard';
-import UserOccupationCard from '../../components/User/UserOccupationCard/UserOccupationCard';
+import UserOccupationCard from 'components/User/UserOccupationCard/UserOccupationCard';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function User({ match }) {
-	const { profiles } = useContext(DataContext);
+	const { profiles } = useContext(ProfileContext);
 	const [profile, setProfile] = useState([]);
 
 	useEffect(() => {

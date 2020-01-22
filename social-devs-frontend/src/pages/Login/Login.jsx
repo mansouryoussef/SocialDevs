@@ -3,14 +3,15 @@ import Styles from './Login.module.scss';
 
 import FormCard from 'components/Shared/FormCard/FormCard';
 import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
-import { DataContext } from 'contexts/DataContext';
+
 import { useHistory } from 'react-router-dom';
 import { handleLogin } from 'service/auth';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Login() {
 	let history = useHistory();
 
-	const { setIsLoggedin } = useContext(DataContext);
+	const { setIsLoggedin } = useContext(AuthContext);
 
 	const [loginData, setLoginData] = useState({
 		email: '',

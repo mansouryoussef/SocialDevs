@@ -1,14 +1,14 @@
-import { getUserDataReq, createAuthHeader } from './api';
+import { getUserData, createAuthHeader } from './api';
 
 // user token import with alias: 'token'
 import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
 
-//  Fetches: user data
-export const getUserData = async setUser => {
+//  Handler: fetches user data
+export const handlGetUserData = async setUser => {
 	try {
 		const headers = createAuthHeader(token);
 
-		const res = await getUserDataReq(headers);
+		const res = await getUserData(headers);
 
 		setUser(res.data);
 	} catch (error) {

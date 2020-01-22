@@ -1,8 +1,8 @@
 import {
-	getAllPostsReq,
+	getAllPosts,
 	createAuthHeader,
-	deleteCommentReq,
-	deletePostReq,
+	deleteComment,
+	deletePost,
 	likePost,
 	unlikePost,
 	createPost,
@@ -12,14 +12,15 @@ import {
 // user token import with alias: 'token'
 import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
 
-//  Fetches: user profile data
-export const getAllPosts = async setPosts => {
+//  Handler: fetches user profile data
+export const handleGetAllPosts = async (setPosts, setIsLoading) => {
 	try {
 		const headers = createAuthHeader(token);
 
-		const res = await getAllPostsReq({ ...headers });
+		const res = await getAllPosts({ ...headers });
 
 		setPosts(res.data);
+		setIsLoading(false);
 	} catch (error) {
 		console.log(error);
 	}
@@ -54,7 +55,7 @@ export const handleDeletePost = async (postId, setPosts, history) => {
 	try {
 		const headers = createAuthHeader(token);
 
-		const res = await deletePostReq(postId, { ...headers });
+		const res = await deletePost(postId, { ...headers });
 		console.log(res.data);
 		setPosts(res.data);
 
@@ -79,7 +80,7 @@ export const handleCreateComment = async (
 			text: commentText
 		};
 
-		const res = await createComment(postId, body, { ...headers });
+		await createComment(postId, body, { ...headers });
 
 		getAllPosts(setPosts);
 
@@ -94,9 +95,9 @@ export const handleDeleteComment = async (postId, commentId, setPosts) => {
 	try {
 		const headers = createAuthHeader(token);
 
-		await deleteCommentReq({ ...headers }, postId, commentId);
+		await deleteComment({ ...headers }, postId, commentId);
 
-		getAllPosts(setPosts);
+		handleGetAllPosts(setPosts);
 	} catch (error) {
 		console.error(error);
 	}

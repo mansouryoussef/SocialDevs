@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import Styles from './TableList.module.scss';
 import { format } from 'date-fns';
-import { DataContext } from 'contexts/DataContext';
 import IconButtonDanger from 'components/Shared/Buttons/IconButtonDanger/IconButtonDanger';
 import trashWhite from 'assets/img/icons/trashWhite.svg';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function TableList({ arr, itemNamesArr, handleDelete }) {
-	const { setUserProfile } = useContext(DataContext);
+	const { setUserProfile } = useContext(ProfileContext);
 
 	return arr.map(item => {
 		const to =

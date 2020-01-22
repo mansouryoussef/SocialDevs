@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
 import Styles from './CreateProfileForm.module.scss';
 import Button from 'components/Shared/Buttons/Button/Button';
-import { DataContext } from 'contexts/DataContext';
-import { handleCreateProfile } from '../../../service/profile';
+import { handleCreateProfile } from 'service/profile';
 import FormField from './FormField/FormField';
+import { ProfileContext } from 'contexts/ProfileContext';
 
-export default function CreateProfileForm({ setShowEditForm, showEditForm }) {
-	const { userProfile, setUserProfile } = useContext(DataContext);
+export default function CreateProfileForm({ setShowEditForm }) {
+	const { userProfile, setUserProfile } = useContext(ProfileContext);
+
 	const [errMsg, setErrMsg] = useState('');
 
 	const [profileFields, setProfileFields] = useState({

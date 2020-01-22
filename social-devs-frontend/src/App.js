@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import './App.scss';
 
 import { Redirect, Route } from 'react-router-dom';
-import { DataContext } from './contexts/DataContext';
 
 import PrivateRoute from './components/Shared/PrivateRoute/PrivateRoute';
 import Home from 'pages/Home/Home';
@@ -16,9 +15,12 @@ import Post from 'pages/Post/Post';
 import Footer from 'components/Layout/Footer/Footer';
 import Spinner from 'components/Shared/Spinner/Spinner';
 import Nav from 'components/Layout/NavBar/Nav/Nav';
+import { AuthContext } from './contexts/AuthContext';
+import { LoadingContext } from './contexts/LoadingContext';
 
 const App = ({ location }) => {
-	const { isLoggedin, isLoading } = useContext(DataContext);
+	const { isLoggedin } = useContext(AuthContext);
+	const { isLoading } = useContext(LoadingContext);
 
 	return (
 		<>

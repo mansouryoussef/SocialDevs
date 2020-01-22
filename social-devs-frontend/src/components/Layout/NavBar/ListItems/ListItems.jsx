@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-
-import { DataContext } from 'contexts/DataContext';
-
 import { Link } from 'react-router-dom';
 import Button from 'components/Shared/Buttons/Button/Button';
 import LoggedinItems from './LoggedinItems/LoggedinItems';
+import { AuthContext } from 'contexts/AuthContext';
 
 const NotLoggedinItems = () => (
 	<ul>
@@ -22,7 +20,7 @@ const NotLoggedinItems = () => (
 );
 
 export default function ListItems() {
-	const { isLoggedin, setIsLoggedin } = useContext(DataContext);
+	const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
 
 	return isLoggedin ? (
 		<LoggedinItems setIsLoggedin={setIsLoggedin} />

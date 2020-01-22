@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import Styles from './Post.module.scss';
 
 import CreateCommentForm from 'components/Feed/CreateCommentForm/CreateCommentForm';
-import CurrentPost from '../../components/Feed/CurrentPost/CurrentPost';
-import CommentList from '../../components/Feed/CommentList/CommentList';
-import { DataContext } from 'contexts/DataContext';
+import CurrentPost from 'components/Feed/CurrentPost/CurrentPost';
+import CommentList from 'components/Feed/CommentList/CommentList';
+import { PostContext } from 'contexts/PostContext';
 
 export default function Post({ match }) {
-	const { posts, setPosts } = useContext(DataContext);
+	const { posts, setPosts } = useContext(PostContext);
 
 	const postId = match.params.post_id;
 

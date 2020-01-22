@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import Styles from './ProfileInfoList.module.scss';
-import { DataContext } from 'contexts/DataContext';
 import Button from 'components/Shared/Buttons/Button/Button';
 import { createSkillsStr, isSet } from 'service/helpers.js';
 import ProfileInfoItem from './ProfileInfoItem/ProfileInfoItem';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function ProfileInfoList({ setShowEditForm }) {
-	const { userProfile } = useContext(DataContext);
+	const { userProfile } = useContext(ProfileContext);
 
 	const {
 		title,

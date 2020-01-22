@@ -7,7 +7,7 @@ export default function IconButtonDanger({ text, filled, icon, onClick }) {
 			className={Styles.iconButtonDangerContainer}
 			id={filled ? Styles.filled : ''}
 			onClick={onClick}>
-			<img className={Styles.icon} src={icon} alt='button icon' />
+			<img src={icon} alt='button icon' />
 
 			<span>{text}</span>
 		</button>

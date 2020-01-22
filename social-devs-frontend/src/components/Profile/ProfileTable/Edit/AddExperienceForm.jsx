@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 
 import Button from 'components/Shared/Buttons/Button/Button';
-import { DataContext } from 'contexts/DataContext';
 import { handleAddExp } from 'service/profile';
 import TableInputField from '../TableInputField/TableInputField';
 import DateFields from './DateFields/DateFields';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function AddExperienceForm({ setAddingExp, setError }) {
-	const { setUserProfile } = useContext(DataContext);
+	const { setUserProfile } = useContext(ProfileContext);
 
 	const [expFields, setExpFields] = useState({
 		company: '',

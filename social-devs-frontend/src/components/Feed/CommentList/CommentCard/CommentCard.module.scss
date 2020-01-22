@@ -47,7 +47,7 @@
 			font-size: $font-sm;
 			position: relative;
 			padding-bottom: $space-2;
-			margin-bottom: $space-2;
+			margin-bottom: $space-1;
 
 			&::after {
 				content: '';
@@ -70,7 +70,8 @@
 			align-items: flex-start;
 
 			span {
-				font-weight: 300;
+				font-weight: 500;
+				color: var(--color-gray);
 			}
 		}
 	}

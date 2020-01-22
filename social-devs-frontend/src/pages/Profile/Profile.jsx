@@ -7,14 +7,20 @@ import ProfileTable from 'components/Profile/ProfileTable/ProfileTable';
 import ProfileInfoList from 'components/Profile/ProfileInfoList/ProfileInfoList';
 import IconButtonDanger from 'components/Shared/Buttons/IconButtonDanger/IconButtonDanger';
 import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
-import { DataContext } from 'contexts/DataContext';
 import { handleDeleteAccount } from 'service/profile';
+import { UserContext } from 'contexts/UserContext';
+import { ProfileContext } from 'contexts/ProfileContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Profile() {
-	const { userProfile, setIsLoggedin, user } = useContext(DataContext);
+	const { user } = useContext(UserContext);
+	const { setIsLoggedin } = useContext(AuthContext);
+	const { userProfile } = useContext(ProfileContext);
+
 	const [showEditForm, setShowEditForm] = useState(
 		userProfile.title === undefined
 	);
+
 	const [isGuest, setIsGuest] = useState(false);
 
 	useEffect(() => {

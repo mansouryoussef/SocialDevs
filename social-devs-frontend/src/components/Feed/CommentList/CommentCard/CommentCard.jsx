@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import Styles from './CommentCard.module.scss';
-import { DataContext } from 'contexts/DataContext';
+
 import ButtonDanger from 'components/Shared/Buttons/ButtonDanger/ButtonDanger';
 import { handleDeleteComment } from 'service/post';
 import defaultUserImg from 'assets/img/icons/user.svg';
+import { PostContext } from 'contexts/PostContext';
+import { UserContext } from 'contexts/UserContext';
 
 export default function CommentCard({
 	commentOwnerId,
@@ -13,7 +15,8 @@ export default function CommentCard({
 	commentId,
 	postId
 }) {
-	const { user, setPosts } = useContext(DataContext);
+	const { setPosts } = useContext(PostContext);
+	const { user } = useContext(UserContext);
 
 	return (
 		<div className={Styles.commentCardContainer}>

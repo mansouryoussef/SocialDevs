@@ -6,7 +6,7 @@ import AddEducationForm from './Edit/AddEducationForm';
 import TableHeaderRow from './TableHeaderRow/TableHeaderRow';
 import TableTitle from './TableTitle/TableTitle';
 import { handleDeleteEdu, handleDeleteExp } from 'service/profile';
-import { DataContext } from 'contexts/DataContext';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function ProfileTable({ info }) {
 	const [addingExp, setAddingExp] = useState(false);
@@ -14,7 +14,7 @@ export default function ProfileTable({ info }) {
 
 	const [errorMsg, setErrorMsg] = useState('');
 
-	const { userProfile } = useContext(DataContext);
+	const { userProfile } = useContext(ProfileContext);
 
 	const { type, headerCells, itemList } = info;
 
