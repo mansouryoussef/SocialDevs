@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"start": "node server",
-		"server": "nodemon server",
+		"server": "env-cmd -f ./config/dev.env nodemon server",
 		"client": "npm start --prefix social-devs-frontend",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix social-devs-frontend && npm run build --prefix social-devs-frontend"
@@ -25,7 +25,7 @@
 	"homepage": "https://github.com/mansouryoussef/SocialDev#readme",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
-		"config": "^3.2.4",
+		"env-cmd": "^10.0.1",
 		"express": "^4.17.1",
 		"express-validator": "^6.2.0",
 		"gravatar": "^1.8.0",
