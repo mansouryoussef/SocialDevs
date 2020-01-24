@@ -12,7 +12,7 @@ const connectDB = async () => {
 			useFindAndModify: false
 		});
 
-		console.log('Connected to Mongo Atlas');
+		// console.log('Connected to Mongo Atlas');
 	} catch (e) {
 		console.error(e.message);
 

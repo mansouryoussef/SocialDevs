@@ -93,7 +93,7 @@ router.post(
 				// callback with err OR token
 				(err, token) => {
 					if (err) throw err; // check for err
-					res.json({ token }); // send token
+					res.status(201).json({ token }); // send token
 				}
 			);
 		} catch (err) {}
