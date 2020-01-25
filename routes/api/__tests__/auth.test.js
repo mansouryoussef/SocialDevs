@@ -4,6 +4,9 @@ const User = require('../../../models/User');
 const bcrypt = require('bcryptjs');
 
 beforeEach(async () => {
+	// Overwrite timeout
+	jest.setTimeout(10000);
+
 	// Clear all users.
 	await User.deleteMany();
 
@@ -21,18 +24,6 @@ beforeEach(async () => {
 
 	// Create user.
 	await new User(userMock).save();
-}, 9000);
-
-it('Should register a new user', async () => {
-	await request(app)
-		.post('/api/users')
-		.send({
-			name: 'Test User',
-			email: 'test@user.fi',
-			password: '123456'
-		})
-		.expect('Content-type', /json/)
-		.expect(201);
 });
 
 it('Should login user', async () => {
@@ -54,5 +45,8 @@ it('Should not login user', async () => {
 			password: 'userMockPassword2'
 		})
 		.expect('Content-type', /json/)
-		.expect(400);
+		.expect(400)
+		.then(res => {
+			expect(res.body.errors[0].msg).toEqual('Wrong email or password!');
+		});
 });
