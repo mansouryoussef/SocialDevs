@@ -12,7 +12,7 @@
 		"client": "npm start --prefix social-devs-frontend",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix social-devs-frontend && npm run build --prefix social-devs-frontend",
-		"test": "env-cmd -f ./config/test.env jest --watch "
+		"test": "env-cmd -f ./config/test.env jest --runInBand --watch "
 	},
 	"jest": {
 		"testEnvironment": "node"

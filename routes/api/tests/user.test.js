@@ -1,13 +1,10 @@
 const request = require('supertest');
 const app = require('../../../app');
 const User = require('../../../models/User');
+const { genarateUserData } = require('./services/auth.service');
 
 // Mock user data
-const userMock = {
-	name: 'Test User',
-	email: 'test@user.fi',
-	password: '123456'
-};
+const userMock = genarateUserData();
 
 const { name, email, password } = userMock;
 

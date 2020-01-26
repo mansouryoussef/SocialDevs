@@ -58,7 +58,6 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		// Pull everything out of the body
 		const {
 			company,
 			website,
@@ -71,7 +70,6 @@ router.post(
 			linkedin
 		} = req.body;
 
-		// Build profile object
 		const profileFields = {};
 
 		profileFields.user = req.user.id;
