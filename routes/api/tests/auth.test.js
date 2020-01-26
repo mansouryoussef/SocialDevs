@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../../../app');
 const User = require('../../../models/User');
-const { registerUser, genarateUserData } = require('./services/auth.service');
+const { registerUser, genarateUserData } = require('./services/user.service');
 
 // Mock user data
 const userMock = {
@@ -107,17 +107,17 @@ describe('Auth api', () => {
 
 		return request(app)
 			.get('/api/auth')
-			.set('Accept', 'application/json')
+			.set('Content-Type', 'application/json')
 			.set('x-auth-token', userToken)
 			.expect('Content-type', /json/)
 			.expect(200)
 			.then(res => {
 				const expectedKeys = ['_id', 'name', 'email', 'avatar', 'date', '__v'];
 				const unexpectedKeys = ['password'];
-				const keys = res.body && Object.keys(res.body);
+				const keys = Object.keys(res.body);
 
-				expect(keys).toEqual(expectedKeys);
-				expect(keys).not.toEqual(unexpectedKeys);
+				expect(keys).toEqual(expect.arrayContaining(expectedKeys));
+				expect(keys).not.toEqual(expect.arrayContaining(unexpectedKeys));
 			});
 	});
 

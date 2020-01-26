@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../../../app');
 const User = require('../../../models/User');
-const { genarateUserData } = require('./services/auth.service');
+const { genarateUserData } = require('./services/user.service');
 
 // Mock user data
 const userMock = genarateUserData();
