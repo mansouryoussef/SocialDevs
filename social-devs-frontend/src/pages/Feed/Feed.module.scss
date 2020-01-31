@@ -1,0 +1,19 @@
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
+
+.feedPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.title {
+		@include titleUnderline;
+	}
+
+	.content {
+		max-width: $space-2 * 82;
+		width: 100%;
+		padding: 0 $space-4;
+	}
+}

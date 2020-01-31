@@ -1,32 +1,33 @@
 import React, { useContext, useState, useEffect } from 'react';
-import './ProfileStyles.scss';
+import Styles from './Profile.module.scss';
 
-import deleteprofile from '../../assets/img/icons/deleteprofile.svg';
-import { DataContext } from '../../contexts/DataContext';
-import CreateProfileForm from '../../components/Profile/CreateProfileForm/CreateProfileForm';
-import { useHistory } from 'react-router-dom';
-import ProfileTable from '../../components/Profile/ProfileTable/ProfileTable';
-import { handleDeleteAccount } from '../../service/profile';
-import ProfileInfoList from '../../components/Profile/ProfileInfoList/ProfileInfoList';
-import IconButtonDanger from '../../components/Buttons/IconButtonDanger/IconButtonDanger';
-import Disclaimer from '../../components/Disclaimer/Disclaimer';
-
+import deleteprofile from 'assets/img/icons/deleteprofile.svg';
+import CreateProfileForm from 'components/Profile/CreateProfileForm/CreateProfileForm';
+import ProfileTable from 'components/Profile/ProfileTable/ProfileTable';
+import ProfileInfoList from 'components/Profile/ProfileInfoList/ProfileInfoList';
+import IconButtonDanger from 'components/Shared/Buttons/IconButtonDanger/IconButtonDanger';
+import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
+import { handleDeleteAccount } from 'service/profile';
+import { UserContext } from 'contexts/UserContext';
+import { ProfileContext } from 'contexts/ProfileContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Profile() {
-	const { userProfile, setIsLoggedin, user } = useContext(DataContext);
+	const { user } = useContext(UserContext);
+	const { setIsLoggedin } = useContext(AuthContext);
+	const { userProfile } = useContext(ProfileContext);
+
 	const [showEditForm, setShowEditForm] = useState(
 		userProfile.title === undefined
 	);
-	
-	const [showError, setShowError] = useState(false);
+
+	const [isGuest, setIsGuest] = useState(false);
 
 	useEffect(() => {
 		userProfile.title === undefined
 			? setShowEditForm(true)
 			: setShowEditForm(false);
 	}, [userProfile]);
-
-	const history = useHistory();
 
 	const expTableProps = {
 		type: 'experience',
@@ -41,16 +42,19 @@ export default function Profile() {
 	};
 
 	return (
-		<div className='profile-page'>
-			<h1 className='profile-page__title'>Profile</h1>
+		<div className={Styles.profilePage}>
+			<h1 className={Styles.title}>Profile</h1>
 
-			<div className='profile-page__content'>
-				<h2 className='profile-page__content__form-title'>
-					{!showEditForm ? 'Profile information:' : 'Create a profile:'}
+			<div className={Styles.content}>
+				<h2 className={Styles.formTitle}>
+					{showEditForm ? 'Create a profile:' : 'Profile information:'}
 				</h2>
 
 				{showEditForm ? (
-					<CreateProfileForm setShowEditForm={setShowEditForm} />
+					<CreateProfileForm
+						setShowEditForm={setShowEditForm}
+						showEditForm={showEditForm}
+					/>
 				) : (
 					<ProfileInfoList setShowEditForm={setShowEditForm} />
 				)}
@@ -58,20 +62,22 @@ export default function Profile() {
 				<ProfileTable info={expTableProps} />
 				<ProfileTable info={eduTableProps} />
 
-				<IconButtonDanger
-					onClick={() => {
-						user.name === 'Guest' ?
-						setShowError(true) :
-						handleDeleteAccount(setIsLoggedin, history);
-					}}
-					
-					icon={deleteprofile}
-					text='Delete my account!'
-					filled
-				/>
-				{showError &&
-				<Disclaimer err='Sorry, guests are not allowed to delete their accounts for others to use it.'/>
-				}
+				<div className={Styles.btnContainer}>
+					<IconButtonDanger
+						onClick={() => {
+							user.name === 'Guest'
+								? setIsGuest(true)
+								: handleDeleteAccount(setIsLoggedin);
+						}}
+						icon={deleteprofile}
+						text='Delete my account!'
+						filled
+					/>
+				</div>
+
+				{isGuest && (
+					<Disclaimer err='Sorry, guests are not allowed to delete their accounts for others to use it.' />
+				)}
 			</div>
 		</div>
 	);

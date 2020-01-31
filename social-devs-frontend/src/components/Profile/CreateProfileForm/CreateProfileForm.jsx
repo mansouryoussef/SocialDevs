@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
-import './CreateProfileFormStyles.scss';
-import Button from '../../Buttons/Button/Button';
-import Axios from 'axios';
-import { DataContext } from '../../../contexts/DataContext';
-import { getUserProfile } from '../../../service/profile';
+import Styles from './CreateProfileForm.module.scss';
+import Button from 'components/Shared/Buttons/Button/Button';
+import { handleCreateProfile } from 'service/profile';
+import FormField from './FormField/FormField';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function CreateProfileForm({ setShowEditForm }) {
-	const { userProfile, setUserProfile } = useContext(DataContext);
+	const { userProfile, setUserProfile } = useContext(ProfileContext);
+
 	const [errMsg, setErrMsg] = useState('');
 
 	const [profileFields, setProfileFields] = useState({
@@ -24,7 +25,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 		setProfileFields({ ...profileFields, [e.target.name]: e.target.value });
 	};
 
-	// destructure profile fields
+	// Destructure profile fields
 	const {
 		title,
 		location,
@@ -36,129 +37,91 @@ export default function CreateProfileForm({ setShowEditForm }) {
 		bio
 	} = profileFields;
 
-	const handleCreateProfile = async () => {
-		try {
-			const config = {
-				headers: {
-					'x-auth-token': window.localStorage.getItem('userToken'),
-					'Content-Type': 'application/json'
-				}
-			};
-
-			const body = JSON.stringify(profileFields);
-
-			const res = await Axios.post('/api/profile', body, config);
-			setUserProfile(res.data);
-			getUserProfile(setUserProfile);
-
-			setShowEditForm(false);
-		} catch (error) {
-			setErrMsg(error.response.data.errors[0].msg);
-		}
-	};
-
 	return (
-		<form className='profile-page__content__create-profile-form'>
-			<div className='profile-page__content__create-profile-form__input-container'>
-				<label>Title*</label>
+		<form className={Styles.createProfileForm}>
+			<FormField
+				name='title'
+				value={title}
+				placeholder='Front-end developer'
+				required
+				onChange={e => handleChange(e)}
+			/>
 
-				<input
-					value={title}
-					onChange={e => handleChange(e)}
-					name='title'
-					type='text'
-					placeholder='Front-end developer'
+			<FormField
+				name='skills'
+				value={skills}
+				placeholder='Javascript,css,html'
+				required
+				onChange={e => handleChange(e)}
+			/>
+
+			<FormField
+				name='location'
+				value={location}
+				placeholder='City, Country'
+				onChange={e => handleChange(e)}
+			/>
+
+			<FormField
+				name='website'
+				value={website}
+				placeholder='https://example.com'
+				onChange={e => handleChange(e)}
+			/>
+
+			<FormField
+				name='githubusername'
+				value={githubusername}
+				placeholder='https://github.com/username'
+				onChange={e => handleChange(e)}
+			/>
+
+			<FormField
+				name='linkedin'
+				value={linkedin}
+				placeholder='https://linkedin.com/in/someone/'
+				onChange={e => handleChange(e)}
+			/>
+
+			<FormField
+				name='twitter'
+				value={twitter}
+				placeholder='twitter.com/Twitter'
+				onChange={e => handleChange(e)}
+			/>
+
+			<FormField
+				name='bio'
+				value={bio}
+				placeholder='I run after rabbits...'
+				textarea
+				onChange={e => handleChange(e)}
+			/>
+
+			<p className={Styles.errorMsg}>{errMsg}</p>
+
+			<div className={Styles.btnsContainer}>
+				<Button
+					text='Cancel'
+					onClick={event => {
+						setShowEditForm(false);
+					}}
+				/>
+
+				<Button
+					text='Save'
+					filled
+					onClick={event => {
+						handleCreateProfile(
+							profileFields,
+							setUserProfile,
+							setShowEditForm,
+							setErrMsg,
+							event
+						);
+					}}
 				/>
 			</div>
-
-			<div className='profile-page__content__create-profile-form__input-container'>
-				<label>Skills*</label>
-				<input
-					id='skills'
-					value={skills}
-					onChange={e => handleChange(e)}
-					name='skills'
-					type='text'
-					type='text'
-					placeholder='Javascript,css,html'
-				/>
-			</div>
-
-			<div className='profile-page__content__create-profile-form__input-container'>
-				<label>Location</label>
-
-				<input
-					id='location'
-					value={location}
-					onChange={e => handleChange(e)}
-					name='location'
-					type='text'
-					placeholder='City, Country'
-				/>
-			</div>
-
-			<div className='profile-page__content__create-profile-form__input-container'>
-				<label>Website</label>
-				<input
-					id='website'
-					value={website}
-					onChange={e => handleChange(e)}
-					name='website'
-					type='text'
-					placeholder='https://example.com'
-				/>
-			</div>
-
-			<div className='profile-page__content__create-profile-form__input-container'>
-				<label>Github</label>
-				<input
-					id='github'
-					value={githubusername}
-					onChange={e => handleChange(e)}
-					name='githubusername'
-					type='text'
-					placeholder='https://github.com/username'
-				/>
-			</div>
-
-			<div className='profile-page__content__create-profile-form__input-container'>
-				<label>Linkedin</label>
-				<input
-					id='linkedin'
-					value={linkedin}
-					onChange={e => handleChange(e)}
-					name='linkedin'
-					type='text'
-					placeholder='https://linkedin.com/in/someone/'
-				/>
-			</div>
-
-			<div className='profile-page__content__create-profile-form__input-container'>
-				<label>Twitter</label>
-				<input
-					id='twitter'
-					value={twitter}
-					onChange={e => handleChange(e)}
-					name='twitter'
-					type='text'
-					placeholder='twitter.com/Twitter'
-				/>
-			</div>
-
-			<div className='profile-page__content__create-profile-form__textarea-container'>
-				<label>Bio</label>
-				<textarea
-					id='bio'
-					value={bio}
-					onChange={e => handleChange(e)}
-					name='bio'
-					placeholder='I run after rabbits...'
-				/>
-			</div>
-			<p className='profile-page__content__create-profile-form__msg'>
-				{errMsg}
-			</p>
-			<Button text='Save' onClick={handleCreateProfile} filled />
 		</form>
 	);
 }

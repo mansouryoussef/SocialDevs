@@ -1,35 +1,23 @@
 import React, { useContext } from 'react';
-import './UsersStyles.scss';
-import { DataContext } from '../../contexts/DataContext';
-import UserCard from '../../components/UserCard/UserCard';
-import Disclaimer from '../../components/Disclaimer/Disclaimer';
+import Styles from './Users.module.scss';
+import Disclaimer from 'components/Shared/Disclaimer/Disclaimer';
+import UserList from '../../components/User/UserList/UserList';
+import { ProfileContext } from '../../contexts/ProfileContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Users() {
-	const { profiles, userProfile, isLoggedin } = useContext(DataContext);
+	const { profiles, userProfile } = useContext(ProfileContext);
+	const { isLoggedin } = useContext(AuthContext);
 
 	return (
-		<div className='users-page'>
-			<h1 className='users-page__title'>Users</h1>
+		<div className={Styles.usersPage}>
+			<h1 className={Styles.title}>Users</h1>
 
-			<div className='users-page__users-container'>
-				{profiles.map(profile => {
-					const { user, skills, location, title } = profile;
+			<UserList profiles={profiles} />
 
-					return (
-						<UserCard
-							key={user._id}
-							name={user.name.split(' ')[0]}
-							title={title}
-							location={location}
-							skills={skills}
-							userId={user._id}
-						/>
-					);
-				})}
-				{!userProfile.title && isLoggedin && (
-					<Disclaimer err='Your account will be added when you create a profile.' />
-				)}
-			</div>
+			{!userProfile.title && isLoggedin && (
+				<Disclaimer err='Your account will be added when you create a profile.' />
+			)}
 		</div>
 	);
 }

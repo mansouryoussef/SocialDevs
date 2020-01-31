@@ -1,0 +1,65 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+$width: $space-2 * 3.5;
+$height: $space-2 * 0.4;
+$background: var(--color-primary);
+
+#burgerContainer {
+	position: absolute;
+	right: $space-5;
+	top: $space-6;
+	padding: $space-2 * 1.2 0;
+	display: none;
+	z-index: 3;
+	cursor: pointer;
+
+	@include sm {
+		display: inline-block;
+	}
+
+	span {
+		position: relative;
+		display: block;
+		width: $width;
+		height: $height;
+		background: $background;
+		transition: all 0.2s ease-in-out;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			background: $background;
+			width: $width;
+			height: $height;
+			transition: all 0.2s ease-in-out;
+		}
+
+		&:before {
+			top: -$space-2;
+		}
+
+		&:after {
+			top: $space-2;
+		}
+	}
+
+	&.active {
+		position: fixed;
+
+		span {
+			background: transparent;
+
+			&:before {
+				transform: rotate(45deg) translate(0.8rem, 0.6rem);
+				background: #fff;
+			}
+
+			&:after {
+				transform: rotate(-45deg) translate(0.8rem, -0.6rem);
+				background: #fff;
+			}
+		}
+	}
+}

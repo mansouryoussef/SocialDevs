@@ -1,0 +1,20 @@
+@import '../../../../assets/sass/variables';
+
+.skills {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: $font-sm;
+	font-weight: 300;
+
+	.skill {
+		display: flex;
+		align-items: center;
+		margin: 0 $space-2;
+
+		span {
+			font-size: $font-xs;
+			margin-right: $space-1 * 0.5;
+			color: var(--color-primary);
+		}
+	}
+}

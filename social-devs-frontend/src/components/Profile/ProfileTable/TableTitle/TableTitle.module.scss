@@ -1,0 +1,20 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+.tableTitleContainer {
+	display: flex;
+	align-items: center;
+	margin-bottom: $space-4;
+
+	.title {
+		font-weight: 300;
+
+		@include custom(500) {
+			font-size: $font-lg;
+		}
+	}
+
+	button {
+		margin: $space-2;
+	}
+}

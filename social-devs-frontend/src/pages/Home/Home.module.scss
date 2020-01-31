@@ -1,0 +1,84 @@
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
+
+.homePage {
+	position: relative;
+	width: 100vw;
+
+	.section {
+		padding: $space-4 $space-5 * 2;
+		height: 100vh;
+
+		@include xl {
+			padding: $space-2 $space-5;
+		}
+
+		.starterNav {
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+			align-items: center;
+			max-width: $space-2 * 170;
+			margin: 0 auto;
+
+			button {
+				@include btn(#fff, 1.4);
+			}
+		}
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			max-width: $space-2 * 170;
+			margin: 0 auto;
+			margin-top: 14vh;
+
+			@include lg {
+				align-items: center;
+				text-align: center;
+				margin-top: 11vh;
+			}
+
+			.header {
+				h1,
+				h2 {
+					font-size: $font-xl;
+
+					@include md {
+						font-size: $font-lg;
+					}
+
+					@include xs {
+						font-size: $font-md;
+					}
+				}
+			}
+
+			h2 {
+				font-weight: 300;
+			}
+
+			.btnsContainer {
+				display: flex;
+				align-items: center;
+				margin-top: $space-5;
+				flex-wrap: wrap;
+
+				button {
+					margin-right: $space-2;
+					font-size: $font-md;
+				}
+
+				@include lg {
+					justify-content: center;
+				}
+
+				@include md {
+					justify-content: center;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,78 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/mixins';
+@import '../../../../assets/sass/variables';
+
+.commentCardContainer {
+	@include wideCard;
+	padding: $space-3 $space-5;
+	align-items: center;
+	justify-content: center;
+
+	@include md {
+		justify-content: flex-start;
+		align-items: flex-start;
+		padding: $space-4;
+	}
+
+	.imgNameContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-right: $space-7;
+
+		@include md {
+			margin-right: $space-4;
+		}
+
+		.img {
+			height: $space-7;
+		}
+
+		.name {
+			text-align: center;
+			font-size: $font-sm;
+
+			@include sm {
+				font-size: $font-xs;
+			}
+		}
+	}
+
+	.bodyContainer {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.text {
+			font-size: $font-sm;
+			position: relative;
+			padding-bottom: $space-2;
+			margin-bottom: $space-1;
+
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 1px;
+				background-color: rgb(221, 220, 220);
+			}
+
+			@include xs {
+				font-size: $font-xs;
+			}
+		}
+
+		.dateBtnContainer {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+
+			span {
+				font-weight: 500;
+				color: var(--color-gray);
+			}
+		}
+	}
+}

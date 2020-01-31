@@ -1,0 +1,41 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+.infoRowContainer {
+	td {
+		border: 1px solid var(--color-light-gray);
+		font-weight: 300;
+		font-size: $font-sm;
+		padding: $space-2 $space-1;
+
+		span {
+			white-space: nowrap;
+			@include md {
+				display: block;
+			}
+		}
+
+		@include sm {
+			button {
+				span {
+					display: none;
+				}
+
+				img {
+					margin-right: 0;
+				}
+			}
+		}
+
+		@include sm {
+			font-size: $font-xs;
+		}
+	}
+
+	td:last-child {
+		border: none;
+		text-align: start;
+		padding: 0;
+		width: fit-content;
+	}
+}

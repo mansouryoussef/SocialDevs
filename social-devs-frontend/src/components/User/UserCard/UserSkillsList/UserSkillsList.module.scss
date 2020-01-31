@@ -1,0 +1,25 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+.skillsContainer {
+	margin-left: auto;
+	font-size: $font-sm;
+	color: var(--color-dark-gray);
+	font-weight: 300;
+
+	@include custom(400) {
+		display: none;
+	}
+
+	.skill {
+		display: flex;
+		align-items: center;
+
+		span {
+			color: var(--color-primary);
+			font-size: $font-xs;
+			margin: $space-1 $space-1 0 0;
+			font-weight: 500;
+		}
+	}
+}

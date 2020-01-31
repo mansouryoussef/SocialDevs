@@ -1,0 +1,14 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/variables';
+
+.userListContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100vw;
+	padding: $space-6 $space-4 0 $space-4;
+
+	@include md {
+		padding-top: $space-4;
+	}
+}

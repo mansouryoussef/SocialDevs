@@ -9,23 +9,15 @@
 	background-color: transparent;
 	border: 1px solid $color;
 	font-weight: 300;
-	font-size: $space-5 * $size;
-	padding: $space-1 * $size $space-3 * $size;
+	font-size: $font-sm * $size;
+	padding: $space-1 * $size $space-2 * $size;
 	border-radius: $space-1;
 	cursor: pointer;
-
-	&#filled {
-		background-color: $color;
-		color: #fff;
-	}
-
-	&-large {
-	}
 }
 
 @mixin titleUnderline {
 	position: relative;
-	margin: 3rem 0;
+	margin: $space-5 0;
 
 	&::after {
 		content: '';
@@ -33,66 +25,45 @@
 		bottom: 0;
 		left: 0;
 		height: 3px;
-		width: 4rem;
+		width: $space-6;
 		background-color: var(--color-primary);
 	}
 }
 
 @mixin wideCard {
 	display: flex;
-	max-width: 80rem;
+	max-width: $space-7 * 16;
 	width: 100%;
-	margin-bottom: 3rem;
-	padding: 3rem 5rem;
-	border-radius: 1.25rem;
+	margin-bottom: $space-5;
+	padding: $space-5 $space-7;
+	border-radius: $base-unit * 2.5;
 	box-shadow: var(--shadow-light);
 	align-items: center;
 
 	@include sm {
-		padding: 1rem 3rem;
+		padding: $space-2 $space-5;
 	}
 }
-// @mixin tableCell($pad: 1.5rem) {
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// 	min-width: 24%;
-// 	max-width: 24%;
-// 	padding: $pad;
-// }
 
-// @mixin circleImg($size: 14rem) {
-// 	min-width: $size;
-// 	max-width: $size;
-// 	height: $size;
-// 	position: relative;
-// 	overflow: hidden;
-// 	border-radius: 50%;
+@mixin tableEditRow {
+	td {
+		padding: 0;
+	}
 
-// 	@if $size >= 8 {
-// 		@include md {
-// 			min-width: $size - 3;
-// 			max-width: $size - 3;
-// 			height: $size - 3;
-// 		}
+	input {
+		height: 100%;
+		width: 100%;
+		outline: none;
+		font-size: $font-sm;
+		text-align: center;
 
-// 		@include sm {
-// 			min-width: $size - 4;
-// 			max-width: $size - 4;
-// 			height: $size - 4;
-// 		}
-// 	} @else {
-// 		@include sm {
-// 			min-width: $size - 1;
-// 			max-width: $size - 1;
-// 			height: $size - 1;
-// 		}
-// 	}
+		&::placeholder {
+			text-align: center;
+			font-size: $font-sm;
+		}
 
-// 	img {
-// 		display: inline;
-// 		margin: 0 auto;
-// 		margin-top: -25%;
-// 		width: 100%;
-// 	}
-// }
+		&:focus {
+			border: 1px solid var(--color-primary);
+		}
+	}
+}

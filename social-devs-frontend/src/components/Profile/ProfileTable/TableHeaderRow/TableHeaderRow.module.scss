@@ -1,0 +1,19 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+.tableHeaderRow {
+	td {
+		background-color: var(--color-primary-transparent);
+
+		@include sm {
+			font-size: $font-sm;
+		}
+		@include xs {
+			font-size: $font-xs;
+		}
+	}
+
+	td:last-child {
+		background-color: transparent;
+	}
+}

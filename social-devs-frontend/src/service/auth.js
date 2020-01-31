@@ -1,18 +1,42 @@
-import { createAuthHeader, getUserToken } from './api';
-import Axios from 'axios';
+import { createAuthHeader, getUserToken, signupUser } from './api';
+// user token import with alias: 'token'
+import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
+
+// Handler: Signup in process
+export const handleSignup = async (
+	newUser,
+	setIsLoggedin,
+	history,
+	setErrorMsg
+) => {
+	try {
+		const headers = createAuthHeader(token);
+
+		const body = JSON.stringify(newUser);
+
+		const res = await signupUser(body, { ...headers });
+
+		window.localStorage.setItem('userToken', res.data.token);
+
+		setIsLoggedin(true);
+		history.push('/feed');
+		window.location.reload();
+	} catch (error) {
+		if (error.response.data !== undefined) {
+			setErrorMsg(error.response.data.errors[0].msg);
+		}
+		console.log(error);
+	}
+};
 
 // Handler: Sign out process
 export const handleSignout = (setIsLoggedin, history) => {
-	// Remove token from local storage
 	window.localStorage.removeItem('userToken');
 
-	// Is loggedin to false
 	setIsLoggedin(false);
 
-	// RedihandleTogglerect user to login page
 	history.push('/login');
 
-	// Reload page
 	window.location.reload();
 };
 
@@ -20,7 +44,6 @@ export const handleSignout = (setIsLoggedin, history) => {
 export const handleLogin = async (
 	e,
 	loginData,
-	getInitialData,
 	setIsLoggedin,
 	history,
 	setErrorMsg
@@ -36,9 +59,9 @@ export const handleLogin = async (
 		console.log(res.data);
 		window.localStorage.setItem('userToken', res.data.token);
 
-		getInitialData();
 		setIsLoggedin(true);
 		history.push('/feed');
+		window.location.reload();
 	} catch (error) {
 		console.log(error);
 		setErrorMsg(error.response.data.errors[0].msg);

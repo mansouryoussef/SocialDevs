@@ -1,0 +1,83 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/variables';
+
+.postcardContainer {
+	@include wideCard;
+
+	@include md {
+		justify-content: flex-start;
+		align-items: center;
+		padding: $space-4;
+	}
+
+	.imgNameContainer {
+		margin-right: $space-7;
+
+		@include md {
+			margin-right: $space-5;
+		}
+
+		.img {
+			height: $space-5 * 3;
+
+			@include md {
+				height: $space-2 * 7;
+			}
+		}
+
+		.name {
+			text-align: center;
+			font-size: $font-md;
+		}
+	}
+
+	.bodyContainer {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.postText {
+			font-size: $font-sm;
+			border-bottom: 1px solid rgb(206, 206, 206);
+			padding-bottom: $space-2;
+
+			@include xs {
+				font-size: $font-xs;
+			}
+		}
+
+		.date {
+			margin: $space-1 * 0.5 0 $space-4 0;
+			color: rgb(100, 100, 100);
+			font-size: $font-xs;
+		}
+
+		.btnsContainer {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			width: fit-content;
+
+			.regularBtnsContainer {
+				display: flex;
+
+				button {
+					margin-right: $space-2;
+
+					@include sm {
+						font-size: $font-xs;
+
+						span {
+							display: none;
+						}
+
+						img {
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

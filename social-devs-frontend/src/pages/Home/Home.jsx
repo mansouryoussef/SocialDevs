@@ -1,45 +1,46 @@
 import React from 'react';
-import './HomeStyles.scss';
+import Styles from './Home.module.scss';
 import { Link } from 'react-router-dom';
 
-import Logo from '../../components/Logo/Logo';
-import hero from '../../assets/img/icons/hero.svg';
-import Button from '../../components/Buttons/Button/Button';
-import ButtonWhite from '../../components/Buttons/ButtonWhite/ButtonWhite';
-import AutoLogin from '../../components/AutoLogin/AutoLogin';
-import Hero from '../../components/Hero/Hero';
+import Logo from 'components/Layout/NavBar/Logo/Logo';
+import Button from 'components/Shared/Buttons/Button/Button';
+import ButtonWhite from 'components/Shared/Buttons/ButtonWhite/ButtonWhite';
+import AutoLogin from 'components/Shared/FormCard/AutoLogin/AutoLogin';
+import Hero from 'components/Layout/Hero/Hero';
+import ClipBackgound from '../../components/Layout/ClipBackgound/ClipBackgound';
 
 export default function Home() {
 	return (
-		<main className='home-page'>
-			{/* // @TODO consider making the clip an own component */}
-			<div className='home-page__clip'></div>
-			<section className='home-page__container'>
-				<nav className='home-page__container__nav'>
+		<main className={Styles.homePage}>
+			<ClipBackgound />
+
+			<section className={Styles.section}>
+				<nav className={Styles.starterNav}>
 					<Logo />
+
 					<Link className='Link' to='/users'>
 						<ButtonWhite text='View users' />
 					</Link>
 				</nav>
 
-				<div className='home-page__container__content'>
-					<div className='home-page__container__content__header'>
+				<div className={Styles.content}>
+					<div className={Styles.header}>
 						<h1>Connecting developers</h1>
 						<h2>All over the world</h2>
 					</div>
 
-					<div className='home-page__container__content__btns'>
+					<div className={Styles.btnsContainer}>
 						<Link to='/signup' className='Link'>
 							<Button text='Sign up' filled />
 						</Link>
+
 						<Link to='/login' className='Link'>
 							<Button text='Log in' />
 						</Link>
+
 						<AutoLogin />
 					</div>
 
-					{/* // @TODO consider making the hero an own component. For real! */}
-					{/* <img src={hero} alt='hero' /> */}
 					<Hero />
 				</div>
 			</section>

@@ -1,19 +1,18 @@
 // DB connection
 
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+const mongoURI = process.env.MONGO_URI;
 
 const connectDB = async () => {
 	try {
-		await mongoose.connect(db, {
+		await mongoose.connect(mongoURI, {
 			useUnifiedTopology: true,
 			useCreateIndex: true,
 			useNewUrlParser: true,
 			useFindAndModify: false
 		});
 
-		console.log('Connected to Mongo Atlas');
+		// console.log('Connected to Mongo Atlas');
 	} catch (e) {
 		console.error(e.message);
 

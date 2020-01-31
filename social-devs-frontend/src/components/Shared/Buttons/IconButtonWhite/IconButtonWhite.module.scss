@@ -1,0 +1,18 @@
+@import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/mixins';
+
+.iconButtonWhiteContainer {
+	@include btn(#fff);
+	padding: $space-1 $space-2;
+	color: #fff;
+
+	.icon {
+		margin-right: $space-2;
+		height: $space-3;
+	}
+}
+
+#filled {
+	background-color: #fff;
+	color: var(--color-primary);
+}

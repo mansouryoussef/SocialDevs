@@ -1,0 +1,42 @@
+@import '../../assets/sass/breakpoints';
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/variables';
+
+.profilePage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.title {
+		@include titleUnderline;
+	}
+
+	.content {
+		width: 100%;
+		padding: 0 10vw;
+		margin: $space-6 * 2 0;
+
+		@include lg {
+			padding: 0 6vw;
+		}
+
+		@include md {
+			padding: 0 4vw;
+			margin: 8vh 0;
+		}
+
+		.formTitle {
+			font-weight: 300;
+			margin-bottom: $space-4;
+			position: relative;
+			width: fit-content;
+
+			@include md {
+				font-size: $font-md;
+			}
+		}
+		.btnContainer {
+			margin-bottom: $space-4;
+		}
+	}
+}

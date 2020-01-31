@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
-import './UserStyles.scss';
-import person from '../../assets/img/person.jpg';
-import userDefaultImg from '../../assets/img/icons/user.svg';
-import { DataContext } from '../../contexts/DataContext';
-import { format } from 'date-fns';
-import uuid from 'uuid';
+import Styles from './UserPage.module.scss';
+import UserHeader from 'components/User/UserHeader/UserHeader';
+import UserInfoCard from 'components/User/UserInfoCard/UserInfoCard';
+import UserOccupationCard from 'components/User/UserOccupationCard/UserOccupationCard';
+import { ProfileContext } from 'contexts/ProfileContext';
 
 export default function User({ match }) {
-	const { profiles } = useContext(DataContext);
+	const { profiles } = useContext(ProfileContext);
 	const [profile, setProfile] = useState([]);
 
 	useEffect(() => {
@@ -20,155 +19,20 @@ export default function User({ match }) {
 		}
 	}, [profiles]);
 
-	const {
-		twitter,
-		linkedin,
-		website,
-		skills,
-		location,
-		bio,
-		title,
-		githubusername,
-		experience,
-		education
-	} = profile;
+	const { experience, education } = profile;
 
-	const links = {
-		twitter,
-		website,
-		linkedin,
-		githubusername
-	};
-
-	// @TODO the template here is abit too long, consider refactoring it into multiple smaller componenets. for example a generic component to display skills or bio.
 	return (
 		<>
 			{profile.length !== 0 && (
-				<div className='user-page'>
-					<div className='user-page__content'>
-						<div className='user-page__content__header'>
-							<div className='user-page__content__header__img-cropper'>
-								<img src={userDefaultImg} alt="User's img" />
-							</div>
-
-							<h2 className='user-page__content__header__name'>
-								{profile.user.name}
-							</h2>
-
-							<p className='user-page__content__header__title'>{title}</p>
-
-							<p className='user-page__content__header__location'>{location}</p>
-
-							<div className='user-page__content__header__socialLinks'>
-								{!!links &&
-									Object.entries(links).map(([icon, url]) => {
-										if (url !== undefined)
-											return (
-												<a key={url} href={url} target='_blank'>
-													<img
-														src={require(`../../assets/img/icons/${icon}.png`)}
-														alt='Github'
-														className='user-page__content__header__socialLinks__link'
-													/>
-												</a>
-											);
-									})}
-							</div>
-						</div>
-
-						<div className='user-page__content__bio-skill'>
-							<h2 className='user-page__content__bio-skill__bio-title'>Bio</h2>
-
-							<p className='user-page__content__bio-skill__bio-text'>{bio}</p>
-
-							<div className='divider'></div>
-
-							<h2 className='user-page__content__bio-skill__skills-title'>
-								Skills
-							</h2>
-
-							<div className='user-page__content__bio-skill__skills'>
-								{skills.map(skill => {
-									return (
-										<span
-											className='user-page__content__bio-skill__skills__skill'
-											key={uuid()}>
-											<span>{'</> '}</span> {skill}
-										</span>
-									);
-								})}
-							</div>
-						</div>
+				<div className={Styles.userPage}>
+					<div className={Styles.userPageContent}>
+						<UserHeader profile={profile} />
+						<UserInfoCard profile={profile} />
 
 						{(experience.length !== 0 || education.length !== 0) && (
-							<div className='user-page__content__exp-edu-container'>
-								<div className='user-page__content__exp-edu-container__card'>
-									<h1 className='user-page__content__exp-edu-container__card__title'>
-										Experience
-									</h1>
-									{experience.map((item, i, array) => {
-										const from = format(new Date(item.from), 'dd.MM.yyyy');
-										const to =
-											item.to === null
-												? 'Present'
-												: format(new Date(item.to), 'dd-MM-yyyy');
-
-										return (
-											<div key={uuid()}>
-												<p className='user-page__content__exp-edu-container__card__profession'>
-													{item.title}
-												</p>
-
-												<p className='user-page__content__exp-edu-container__card__company'>
-													{item.company}
-												</p>
-
-												<p className='user-page__content__exp-edu-container__card__time'>
-													{from} - {to ? to : 'Present'}
-												</p>
-
-												{array.length - 1 !== i && (
-													<div className='divider'></div>
-												)}
-											</div>
-										);
-									})}
-								</div>
-
-								<div className='user-page__content__exp-edu-container__card'>
-									<h1 className='user-page__content__exp-edu-container__card__title'>
-										Education
-									</h1>
-
-									{education.map((item, i, array) => {
-										const from = format(new Date(item.from), 'dd.MM.yyyy');
-
-										const to =
-											item.to === null
-												? 'Present'
-												: format(new Date(item.to), 'dd-MM-yyyy');
-
-										return (
-											<div key={uuid()}>
-												<p className='user-page__content__exp-edu-container__card__school'>
-													{item.school}
-												</p>
-
-												<p className='user-page__content__exp-edu-container__card__degree'>
-													{item.degree}
-												</p>
-
-												<p className='user-page__content__exp-edu-container__card__time'>
-													{from} - {to}
-												</p>
-
-												{array.length - 1 !== i && (
-													<div className='divider'></div>
-												)}
-											</div>
-										);
-									})}
-								</div>
+							<div className={Styles.cardsContainer}>
+								<UserOccupationCard dataArray={experience} title='Experience' />
+								<UserOccupationCard dataArray={education} title='Education' />
 							</div>
 						)}
 					</div>

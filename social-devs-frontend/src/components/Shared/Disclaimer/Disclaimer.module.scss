@@ -1,0 +1,31 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/variables';
+
+.disclaimerContainer {
+	display: flex;
+	align-items: center;
+	background-color: var(--color-danger);
+	padding: $space-1 $space-2;
+	border: 1px solid var(--color-danger);
+	width: fit-content;
+	border-radius: $space-1 * 0.4;
+
+	img {
+		height: $space-2 * 2.5;
+		margin-right: $space-2;
+
+		@include sm {
+			display: none;
+		}
+	}
+
+	p {
+		font-size: $font-sm;
+		color: white;
+		font-weight: 500;
+
+		@include xs {
+			font-size: $font-xs;
+		}
+	}
+}

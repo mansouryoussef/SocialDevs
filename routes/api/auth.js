@@ -2,7 +2,6 @@
 
 const express = require('express');
 const router = express.Router();
-const config = require('config');
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -15,7 +14,8 @@ const User = require('../../models/User'); // User model
 // @access  Public
 router.get('/', auth, async (req, res) => {
 	try {
-		// find the user by the sent id by auth middleware then remove password field
+		// find the user by the id the auth middleware provides.
+		// remove password field.
 		const user = await User.findById(req.user.id).select('-password');
 
 		// send back the user object
@@ -28,7 +28,7 @@ router.get('/', auth, async (req, res) => {
 	}
 });
 
-// @route    POST api/auth
+// @route   POST api/auth
 // @desc    Login user and get token
 // @access  Public
 router.post(
@@ -42,8 +42,7 @@ router.post(
 			.isEmail(),
 		check('password', 'Password is required!') // check if password is not empty
 			.not()
-			.isEmpty(),
-		check('password', 'Password is required').exists() // check if email exists,
+			.isEmpty()
 	],
 
 	async (req, res) => {
@@ -60,18 +59,15 @@ router.post(
 		const { email, password } = req.body;
 
 		try {
-			// Check if user doesn't exist
+			// Find user by email
 			let user = await User.findOne({ email });
 
 			// If there is no user
 			if (!user) {
-				// send status 400 and errors array with error msg
 				return res
 					.status(400)
 					.json({ errors: [{ msg: 'Wrong email or password!' }] });
 			}
-
-			// Compare passweords
 
 			// compare entered password with the found user's hashed password
 			const isMatch = await bcrypt.compare(password, user.password);
@@ -83,8 +79,6 @@ router.post(
 					.json({ errors: [{ msg: 'Wrong email or password!' }] }); // don't specify which is wrong
 			}
 
-			// Return the json web token
-
 			// Get payload with user id
 			const payload = {
 				user: {
@@ -92,12 +86,14 @@ router.post(
 				}
 			};
 
+			// Get JWT secret from env
+			const jwtSecret = process.env.JWT_SECRET;
+
 			// sign a token
 			jwt.sign(
 				payload,
-				config.get('jwtSecret'), // secret
-				{ expiresIn: 3600000 }, // expiration
-				// callback with err OR token
+				jwtSecret,
+
 				(err, token) => {
 					if (err) throw err; // check for err
 					res.json({ token }); // send token

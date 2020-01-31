@@ -1,0 +1,95 @@
+@import '../../../../../assets/sass/breakpoints';
+@import '../../../../../assets/sass/mixins';
+@import '../../../../../assets/sass/variables';
+
+.listItemsContainer {
+	transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+	@include sm {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		right: 0;
+		flex-direction: column;
+		height: 0;
+		width: 100vw;
+		background-color: var(--color-primary);
+		z-index: 2;
+		opacity: 0;
+		pointer-events: none;
+		overflow: hidden;
+
+		&#active {
+			height: 100vh;
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+
+	ul {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@include sm {
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			height: 70%;
+		}
+
+		li {
+			display: flex;
+			align-items: center;
+			margin-left: $space-4;
+			cursor: pointer;
+
+			span {
+				font-size: $font-sm * 1.2;
+				color: var(--color-primary);
+				cursor: pointer;
+				position: relative;
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 0;
+					height: 2px;
+					background-color: var(--color-primary);
+					transition: 0.2s width;
+				}
+
+				&:hover {
+					&::after {
+						width: 100%;
+					}
+				}
+
+				@include sm {
+					color: white;
+					font-size: $font-lg;
+					margin-left: 0;
+				}
+			}
+
+			img {
+				height: $space-3;
+				margin-right: $space-1;
+
+				@include sm {
+					margin-right: $space-2;
+					height: $base-unit * 5;
+					margin-bottom: -$space-2 * 0.2;
+				}
+			}
+
+			.icon-button-container {
+				margin: 0;
+			}
+		}
+	}
+}

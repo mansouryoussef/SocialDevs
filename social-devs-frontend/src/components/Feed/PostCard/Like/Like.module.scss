@@ -1,0 +1,18 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+.likeBtn {
+	height: fit-content;
+	margin-right: $space-3;
+	cursor: pointer;
+
+	@include xs {
+		margin-top: $space-2;
+	}
+
+	img {
+		@include md {
+			height: $space-2 * 2.5;
+		}
+	}
+}

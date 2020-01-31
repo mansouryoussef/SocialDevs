@@ -1,0 +1,46 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+.itemContainer {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-bottom: $space-1 * 1.5;
+
+	&:last-child {
+		align-items: flex-start;
+	}
+
+	@include xs {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.itemTitle {
+		min-width: 20%;
+		text-align: end;
+		margin-right: $space-2;
+		font-weight: 500;
+		font-size: $font-md;
+
+		@include sm {
+			min-width: auto;
+		}
+	}
+	.itemInfo,
+	.itemInfoOutlined {
+		@include xs {
+			margin-left: 8vw;
+		}
+	}
+	.itemInfoOutlined {
+		border-left: 1px solid var(--color-light-gray);
+		border-bottom: 1px solid var(--color-light-gray);
+		max-width: $space-7 * 7;
+		padding: $space-2;
+
+		@include xs {
+			margin-left: 8vw;
+		}
+	}
+}

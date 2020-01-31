@@ -1,0 +1,25 @@
+@import '../../../assets/sass/variables';
+
+.userInfoCard {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	background-color: var(--color-primary-transparent);
+	margin-bottom: $space-3;
+	padding: $space-5;
+	border-radius: $space-1;
+
+	.bioTitle,
+	.skillsTitle {
+		color: var(--color-primary);
+		margin-bottom: $space-1 * 1.5;
+	}
+
+	.divider {
+		width: 100%;
+		margin: $space-5 0;
+		height: 1px;
+		background-color: silver;
+	}
+}

@@ -1,0 +1,37 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/variables';
+
+.footerContainer {
+	width: 100vw;
+	padding: $space-2 $space-2 * 7;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	background-color: var(--color-primary);
+	color: white;
+	margin-top: auto;
+
+	@include sm {
+		padding: $space-2 $space-4;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.footerItem {
+		font-size: $font-sm;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		h3 {
+			margin-right: $base-unit * 0.5;
+			font-size: inherit;
+			white-space: nowrap;
+		}
+
+		p {
+			font-size: inherit;
+			white-space: nowrap;
+		}
+	}
+}

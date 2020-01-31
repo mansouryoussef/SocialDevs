@@ -1,0 +1,19 @@
+@import '../../../../assets/sass/breakpoints';
+@import '../../../../assets/sass/variables';
+
+.navContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: $space-1 $space-7 0 $space-7;
+	border-top: 3px solid var(--color-primary);
+	width: 100vw;
+
+	button {
+		margin-left: $space-2;
+	}
+
+	@include lg {
+		padding: $space-1 $space-4 0 $space-4;
+	}
+}

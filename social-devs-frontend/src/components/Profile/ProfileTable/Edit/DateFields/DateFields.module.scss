@@ -1,0 +1,11 @@
+@import '../../../../../assets/sass/variables';
+
+.dateFields {
+	width: 100%;
+
+	input {
+		padding: $space-1;
+		text-align: center;
+		width: 100%;
+	}
+}

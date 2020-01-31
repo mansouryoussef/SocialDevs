@@ -1,0 +1,35 @@
+@import '../../../assets/sass/breakpoints';
+@import '../../../assets/sass/variables';
+
+.occupationCard {
+	padding: $space-4;
+	border: 1px solid var(--color-light-gray);
+	width: 49%;
+	border-radius: $space-1;
+	height: fit-content;
+
+	@include sm {
+		width: 100%;
+		padding: 8vw;
+		margin-bottom: $space-3;
+	}
+
+	.title {
+		margin-bottom: $space-2;
+		color: var(--color-primary);
+
+		@include sm {
+			margin-bottom: $space-4;
+		}
+	}
+	.subtitle {
+		font-weight: 500;
+	}
+
+	.divider {
+		width: 100%;
+		margin: $space-4 0;
+		height: 1px;
+		background-color: var(--color-light-gray);
+	}
+}

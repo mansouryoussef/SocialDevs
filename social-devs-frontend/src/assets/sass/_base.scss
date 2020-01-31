@@ -1,4 +1,5 @@
 @import './breakpoints';
+@import './variables';
 
 // global parent element
 :root {
@@ -11,6 +12,8 @@
 	--color-success: #0ec536;
 	--color-black: #090809;
 	--color-light-gray: rgb(224, 224, 224);
+	--color-gray: rgb(116, 116, 116);
+	--color-dark-gray: rgb(54, 54, 54);
 	--shadow-light: 0px 0px 20px 0px rgb(211, 211, 211);
 	--shadow: 0px 0px 20px 0px rgb(175, 175, 175);
 }
@@ -60,7 +63,7 @@ ul {
 
 .divider {
 	width: 100%;
-	margin: 3rem auto;
+	margin: $space-5 auto;
 	height: 1px;
 	background-color: rgb(192, 192, 192);
 }

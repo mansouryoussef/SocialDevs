@@ -5,25 +5,22 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const request = require('request');
-const config = require('config');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
 
 // @route   GET api/profile/me
-// @desc    Get current users profile
+// @desc    Get current user's profile
 // @access  Private
 router.get('/me', auth, async (req, res) => {
 	try {
 		// Get profile
 		const profile = await Profile.findOne({
 			user: req.user.id // Find one by users id retured from auth
-		}).populate('user', ['name', 'avatar']); // add new fields name and avatar from user
+		}).populate('user', ['name']); // add new name field
 
-		// No profile
 		if (!profile) {
-			// Err
 			return res.status(400).json({ msg: 'There is no profile for this user' });
 		}
 
@@ -59,7 +56,6 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		// Pull everything out of the body
 		const {
 			company,
 			website,
@@ -72,7 +68,6 @@ router.post(
 			linkedin
 		} = req.body;
 
-		// Build profile object
 		const profileFields = {};
 
 		profileFields.user = req.user.id;
@@ -103,7 +98,7 @@ router.post(
 					{ $set: profileFields },
 					{ new: true }
 				);
-				return res.json(profile);
+				return res.status(200).json(profile);
 			}
 
 			// Create profile from Profile model
@@ -111,7 +106,7 @@ router.post(
 
 			await profile.save(); // save profile
 
-			res.json(profile); // send back the profile
+			res.status(201).json(profile); // send back the profile
 		} catch (err) {
 			console.error(err);
 			res.send('Server error');
@@ -372,11 +367,7 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
 router.get('/github/:username', async (req, res) => {
 	try {
 		const options = {
-			uri: `https://api.github.com/users/${
-				req.params.username
-			}/repos?per_page=5&sort=created:asc&client_id=${config.get(
-				'githubClientId'
-			)}&client_secret=${config.get('githubSecret')}`,
+			uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET}`,
 			method: 'GET',
 			headers: { 'user-agent': 'node.js' }
 		};

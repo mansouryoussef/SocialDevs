@@ -1,0 +1,10 @@
+@import '../../../../assets/sass//mixins';
+
+.buttonContainer {
+	@include btn(var(--color-primary));
+}
+
+#filled {
+	background-color: var(--color-primary);
+	color: #fff;
+}

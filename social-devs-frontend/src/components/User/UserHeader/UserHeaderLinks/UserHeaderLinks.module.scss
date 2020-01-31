@@ -1,0 +1,23 @@
+@import '../../../../assets/sass/variables';
+
+.userHeaderSocialLinks {
+	display: flex;
+	width: fit-content;
+	margin-top: $space-3;
+
+	.userHeaderLink {
+		margin: 0 0.2rem;
+		cursor: pointer;
+		opacity: 0.7;
+		transition: opacity 0.3s, transform 0.2s;
+
+		&:hover {
+			opacity: 1;
+			transform: scale(1.08);
+		}
+
+		img {
+			height: $space-5;
+		}
+	}
+}
