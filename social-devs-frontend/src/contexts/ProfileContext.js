@@ -2,11 +2,13 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
 import { handleGetUserProfile, handleGetAllProfiles } from '../service/profile';
 import { LoadingContext } from './LoadingContext';
+import { AuthContext } from './AuthContext';
 
 export const ProfileContext = createContext();
 
 export function ProfileContextProvider({ children }) {
 	const { setIsLoading } = useContext(LoadingContext);
+	const { isLoggedin } = useContext(AuthContext);
 
 	const [profiles, setProfiles] = useState([]);
 	const [userProfile, setUserProfile] = useState({});
@@ -25,7 +27,7 @@ export function ProfileContextProvider({ children }) {
 		} catch (error) {
 			console.log(error);
 		}
-	}, []);
+	}, [isLoggedin]);
 
 	return (
 		<ProfileContext.Provider

@@ -10,11 +10,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
 		<Route
 			{...rest}
 			render={props =>
-				isLoggedin === true ? (
-					<Component {...props} />
-				) : (
-					<Redirect to='/login' />
-				)
+				isLoggedin === true ? <Component {...props} /> : <Redirect to='/' />
 			}
 		/>
 	);

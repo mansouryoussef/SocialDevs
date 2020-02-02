@@ -35,7 +35,13 @@ const App = ({ location }) => {
 						exact
 						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Home />)}
 					/>
-					<Route exact path='/login' component={Login} />
+
+					<Route
+						exact
+						path='/login'
+						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Login />)}
+					/>
+
 					<Route exact path='/signup' component={Signup} />
 					<Route path='/users' exact component={Users} />
 					<Route path='/user/:user_id' exact component={User} />

@@ -37,33 +37,16 @@ export const handleSignout = (setIsLoggedin, history) => {
 
 	history.push('/login');
 
-	window.location.reload();
+	// window.location.reload();
 };
 
 // Handler: Log in process
-export const handleLogin = async (
-	e,
-	loginData,
-	setIsLoggedin,
-	history,
-	setErrorMsg
-) => {
-	e.preventDefault();
+export const handleLogin = async loginData => {
+	const headers = createAuthHeader();
 
-	try {
-		const headers = createAuthHeader();
+	const body = JSON.stringify(loginData);
 
-		const body = JSON.stringify(loginData);
+	const res = await getUserToken(body, headers);
 
-		const res = await getUserToken(body, headers);
-		console.log(res.data);
-		window.localStorage.setItem('socialDevsUserToken', res.data.token);
-
-		setIsLoggedin(true);
-		history.push('/feed');
-		window.location.reload();
-	} catch (error) {
-		console.log(error);
-		setErrorMsg(error.response.data.errors[0].msg);
-	}
+	window.localStorage.setItem('socialDevsUserToken', res.data.token);
 };

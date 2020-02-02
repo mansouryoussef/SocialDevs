@@ -24,6 +24,7 @@ export const handleGetAllProfiles = async (setProfiles, setIsLoading) => {
 		setIsLoading(false);
 	} catch (error) {
 		console.log(error);
+		setIsLoading(false);
 	}
 };
 
@@ -105,11 +106,6 @@ export const handleAddExp = async (
 		const headers = createAuthHeader(token);
 		const body = JSON.stringify(fields);
 
-		console.log('Exp:');
-		console.log('Body:', body);
-		console.log('Fields:', fields);
-		console.log('Headers:', headers);
-
 		const res = await addProfileExperience(body, { ...headers });
 
 		setUserProfile(res.data);
@@ -132,10 +128,6 @@ export const handleAddEdu = async (
 
 		const body = JSON.stringify(fields);
 
-		console.log('Edu:');
-		console.log('Body:', body);
-		console.log('Fields:', fields);
-		console.log('Headers:', headers);
 		const res = await addProfileEducation(body, { ...headers });
 
 		setUserProfile(res.data);

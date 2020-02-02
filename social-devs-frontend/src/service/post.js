@@ -15,14 +15,16 @@ import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
 //  Handler: fetches user profile data
 export const handleGetAllPosts = async (setPosts, setIsLoading) => {
 	try {
+		setIsLoading(true);
 		const headers = createAuthHeader(token);
 
 		const res = await getAllPosts({ ...headers });
 
 		setPosts(res.data);
-		setIsLoading(false);
+		// setIsLoading(false);
 	} catch (error) {
 		console.log(error);
+		// setIsLoading(false);
 	}
 };
 

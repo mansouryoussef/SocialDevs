@@ -1,25 +1,27 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Styles from './AutoLogin.module.scss';
 import { handleLogin } from 'service/auth';
-import { useHistory } from 'react-router-dom';
-import { AuthContext } from 'contexts/AuthContext';
 
-export default function AutoLogin({ setErrorMsg }) {
-	let history = useHistory();
-
-	const { setIsLoggedin } = useContext(AuthContext);
-
+export default function AutoLogin() {
 	const loginData = {
 		email: 'demo@guest.fi',
 		password: '123456'
 	};
 
+	const handleSubmit = async e => {
+		e.preventDefault();
+
+		try {
+			await handleLogin(loginData);
+
+			window.location.reload();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
-		<span
-			onClick={e => {
-				handleLogin(e, loginData, setIsLoggedin, history, setErrorMsg);
-			}}
-			className={Styles.autoLogin}>
+		<span onClick={handleSubmit} className={Styles.autoLogin}>
 			Auto Login as a guest.
 		</span>
 	);

@@ -7,11 +7,13 @@ import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardFiel
 import { useHistory } from 'react-router-dom';
 import { handleLogin } from 'service/auth';
 import { AuthContext } from '../../contexts/AuthContext';
+import { LoadingContext } from '../../contexts/LoadingContext';
 
 export default function Login() {
 	let history = useHistory();
 
 	const { setIsLoggedin } = useContext(AuthContext);
+	const { setIsLoading } = useContext(LoadingContext);
 
 	const [loginData, setLoginData] = useState({
 		email: '',
@@ -26,12 +28,23 @@ export default function Login() {
 		setLoginData({ ...loginData, [e.target.name]: e.target.value });
 	};
 
+	const handleSubmit = async e => {
+		e.preventDefault();
+
+		try {
+			await handleLogin(loginData);
+
+			window.location.reload();
+		} catch (error) {
+			console.log(error);
+			setErrorMsg(error.response.data.errors[0].msg);
+		}
+	};
+
 	return (
 		<div className={Styles.loginPage}>
 			<FormCard
-				handleSubmit={e => {
-					handleLogin(e, loginData, setIsLoggedin, history, setErrorMsg);
-				}}
+				handleSubmit={handleSubmit}
 				login
 				errorMsg={errorMsg}
 				setErrorMsg={setErrorMsg}>
