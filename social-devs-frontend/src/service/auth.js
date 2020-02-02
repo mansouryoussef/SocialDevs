@@ -16,7 +16,7 @@ export const handleSignup = async (
 
 		const res = await signupUser(body, { ...headers });
 
-		window.localStorage.setItem('userToken', res.data.token);
+		window.localStorage.setItem('socialDevsUserToken', res.data.token);
 
 		setIsLoggedin(true);
 		history.push('/feed');
@@ -31,7 +31,7 @@ export const handleSignup = async (
 
 // Handler: Sign out process
 export const handleSignout = (setIsLoggedin, history) => {
-	window.localStorage.removeItem('userToken');
+	window.localStorage.removeItem('socialDevsUserToken');
 
 	setIsLoggedin(false);
 
@@ -57,7 +57,7 @@ export const handleLogin = async (
 
 		const res = await getUserToken(body, headers);
 		console.log(res.data);
-		window.localStorage.setItem('userToken', res.data.token);
+		window.localStorage.setItem('socialDevsUserToken', res.data.token);
 
 		setIsLoggedin(true);
 		history.push('/feed');

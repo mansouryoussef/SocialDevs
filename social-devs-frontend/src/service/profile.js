@@ -153,7 +153,7 @@ export const handleDeleteAccount = async setIsLoggedin => {
 
 		await deleteAccount({ ...headers });
 
-		window.localStorage.removeItem('userToken');
+		window.localStorage.removeItem('socialDevsUserToken');
 
 		setIsLoggedin(false);
 		window.location.reload();
