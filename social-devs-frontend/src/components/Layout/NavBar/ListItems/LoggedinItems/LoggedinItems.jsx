@@ -6,7 +6,7 @@ import IconButton from 'components/Shared/Buttons/IconButton/IconButton';
 import IconButtonWhite from 'components/Shared/Buttons/IconButtonWhite/IconButtonWhite';
 import { Link, useHistory } from 'react-router-dom';
 
-import { handleSignout } from 'service/auth';
+// import { handleSignout } from 'service/auth';
 
 import profile from 'assets/img/icons/profile.svg';
 import profileWhite from 'assets/img/icons/profileWhite.svg';
@@ -19,9 +19,19 @@ import signoutWhite from 'assets/img/icons/signoutWhite.svg';
 
 export default function LoggedinItems({ setIsLoggedin }) {
 	let history = useHistory();
+
 	const [open, setOpen] = useState(false);
+
 	const handleToggle = () => {
 		setOpen(false);
+	};
+
+	const handleSignout = () => {
+		window.localStorage.removeItem('socialDevsUserToken');
+
+		setIsLoggedin(false);
+
+		window.location.reload();
 	};
 
 	return (
@@ -53,7 +63,7 @@ export default function LoggedinItems({ setIsLoggedin }) {
 					<li>
 						<Link
 							onClick={() => {
-								handleSignout(setIsLoggedin, history);
+								handleSignout();
 								handleToggle();
 							}}
 							to='/login'

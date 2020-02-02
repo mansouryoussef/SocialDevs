@@ -1,20 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Styles from './Login.module.scss';
 
 import FormCard from 'components/Shared/FormCard/FormCard';
 import FormCardField from 'components/Shared/FormCard/FormCardField/FormCardField';
 
-import { useHistory } from 'react-router-dom';
 import { handleLogin } from 'service/auth';
-import { AuthContext } from '../../contexts/AuthContext';
-import { LoadingContext } from '../../contexts/LoadingContext';
 
 export default function Login() {
-	let history = useHistory();
-
-	const { setIsLoggedin } = useContext(AuthContext);
-	const { setIsLoading } = useContext(LoadingContext);
-
 	const [loginData, setLoginData] = useState({
 		email: '',
 		password: ''

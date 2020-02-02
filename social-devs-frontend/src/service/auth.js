@@ -29,17 +29,6 @@ export const handleSignup = async (
 	}
 };
 
-// Handler: Sign out process
-export const handleSignout = (setIsLoggedin, history) => {
-	window.localStorage.removeItem('socialDevsUserToken');
-
-	setIsLoggedin(false);
-
-	history.push('/login');
-
-	// window.location.reload();
-};
-
 // Handler: Log in process
 export const handleLogin = async loginData => {
 	const headers = createAuthHeader();
