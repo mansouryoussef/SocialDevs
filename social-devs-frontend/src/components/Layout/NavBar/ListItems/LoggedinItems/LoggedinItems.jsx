@@ -4,7 +4,7 @@ import Styles from './LoggedinItems.module.scss';
 import Burger from '../../Burger/Burger';
 import IconButton from 'components/Shared/Buttons/IconButton/IconButton';
 import IconButtonWhite from 'components/Shared/Buttons/IconButtonWhite/IconButtonWhite';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // import { handleSignout } from 'service/auth';
 
@@ -18,8 +18,6 @@ import signout from 'assets/img/icons/signout.svg';
 import signoutWhite from 'assets/img/icons/signoutWhite.svg';
 
 export default function LoggedinItems({ setIsLoggedin }) {
-	let history = useHistory();
-
 	const [open, setOpen] = useState(false);
 
 	const handleToggle = () => {

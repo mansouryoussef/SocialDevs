@@ -44,7 +44,7 @@
 			.header {
 				h1,
 				h2 {
-					font-size: $font-xl;
+					font-size: $font-xl * 1.3;
 
 					@include md {
 						font-size: $font-lg;
