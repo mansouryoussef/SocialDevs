@@ -73,7 +73,8 @@ export const handleCreateComment = async (
 	postId,
 	getAllPosts,
 	setPosts,
-	setCommentText
+	setCommentText,
+	setIsLoading
 ) => {
 	try {
 		const headers = createAuthHeader(token);
@@ -82,9 +83,10 @@ export const handleCreateComment = async (
 			text: commentText
 		};
 
-		await createComment(postId, body, { ...headers });
+		const res = await createComment(postId, body, { ...headers });
 
-		getAllPosts(setPosts);
+		window.location.reload(); // Quick fix <- REFACTOR
+		console.log(res.data);
 
 		setCommentText('');
 	} catch (error) {
@@ -93,13 +95,14 @@ export const handleCreateComment = async (
 };
 
 //  Handler: deletes post comment
-export const handleDeleteComment = async (postId, commentId, setPosts) => {
+export const handleDeleteComment = async (postId, commentId) => {
 	try {
 		const headers = createAuthHeader(token);
 
 		await deleteComment({ ...headers }, postId, commentId);
 
-		handleGetAllPosts(setPosts);
+		// handleGetAllPosts(setPosts);
+		window.location.reload(); // Quick fix <- REFACTOR
 	} catch (error) {
 		console.error(error);
 	}

@@ -38,7 +38,7 @@ export default function CommentCard({
 
 					{commentOwnerId === user._id && (
 						<ButtonDanger
-							onClick={() => handleDeleteComment(postId, commentId, setPosts)}
+							onClick={() => handleDeleteComment(postId, commentId)}
 							text='Delete'
 							filled
 						/>
