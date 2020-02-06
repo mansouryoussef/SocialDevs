@@ -19,7 +19,9 @@ export default function FormCard({
 
 			<div className={Styles.inputFieldsContainer}>{children}</div>
 
-			<span className={Styles.errorMsg}>{errorMsg}</span>
+			<span id='auth_form_error' className={Styles.errorMsg}>
+				{errorMsg}
+			</span>
 
 			<div className={Styles.btnContainer}>
 				<Link className='Link' to='/profile'>
@@ -27,6 +29,7 @@ export default function FormCard({
 						onClick={handleSubmit}
 						text={login ? 'Log in' : 'Sign up'}
 						filled
+						data-test-id='form-submit-button'
 					/>
 				</Link>
 

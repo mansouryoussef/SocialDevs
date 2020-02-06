@@ -29,7 +29,7 @@ export default function Login() {
 			window.location.reload();
 		} catch (error) {
 			console.log(error);
-			setErrorMsg(error.response.data.errors[0].msg);
+			error.response.data && setErrorMsg(error.response.data.errors[0].msg);
 		}
 	};
 
