@@ -6,6 +6,7 @@ import { handleDeleteComment } from 'service/post';
 import defaultUserImg from 'assets/img/icons/user.svg';
 import { PostContext } from 'contexts/PostContext';
 import { UserContext } from 'contexts/UserContext';
+import { LoadingContext } from '../../../../contexts/LoadingContext';
 
 export default function CommentCard({
 	commentOwnerId,
@@ -16,6 +17,7 @@ export default function CommentCard({
 	postId
 }) {
 	const { setPosts } = useContext(PostContext);
+	const { setIsLoading } = useContext(LoadingContext);
 	const { user } = useContext(UserContext);
 
 	return (
@@ -38,7 +40,9 @@ export default function CommentCard({
 
 					{commentOwnerId === user._id && (
 						<ButtonDanger
-							onClick={() => handleDeleteComment(postId, commentId)}
+							onClick={() =>
+								handleDeleteComment(postId, commentId, setPosts, setIsLoading)
+							}
 							text='Delete'
 							filled
 						/>

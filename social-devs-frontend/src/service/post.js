@@ -15,7 +15,8 @@ import { LOCAL_STORAGE_USER_TOKEN as token } from '../constants';
 //  Handler: fetches user profile data
 export const handleGetAllPosts = async (setPosts, setIsLoading) => {
 	try {
-		setIsLoading(true);
+		setIsLoading && setIsLoading(true);
+
 		const headers = createAuthHeader(token);
 
 		const res = await getAllPosts({ ...headers });
@@ -71,10 +72,8 @@ export const handleDeletePost = async (postId, setPosts, history) => {
 export const handleCreateComment = async (
 	commentText,
 	postId,
-	getAllPosts,
 	setPosts,
-	setCommentText,
-	setIsLoading
+	setCommentText
 ) => {
 	try {
 		const headers = createAuthHeader(token);
@@ -83,10 +82,9 @@ export const handleCreateComment = async (
 			text: commentText
 		};
 
-		const res = await createComment(postId, body, { ...headers });
+		await createComment(postId, body, { ...headers });
 
-		window.location.reload(); // Quick fix <- REFACTOR
-		console.log(res.data);
+		handleGetAllPosts(setPosts);
 
 		setCommentText('');
 	} catch (error) {
@@ -95,14 +93,13 @@ export const handleCreateComment = async (
 };
 
 //  Handler: deletes post comment
-export const handleDeleteComment = async (postId, commentId) => {
+export const handleDeleteComment = async (postId, commentId, setPosts) => {
 	try {
 		const headers = createAuthHeader(token);
 
 		await deleteComment({ ...headers }, postId, commentId);
 
-		// handleGetAllPosts(setPosts);
-		window.location.reload(); // Quick fix <- REFACTOR
+		handleGetAllPosts(setPosts);
 	} catch (error) {
 		console.error(error);
 	}

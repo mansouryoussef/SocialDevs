@@ -4,11 +4,8 @@ import CommentCard from './CommentCard/CommentCard';
 import { format } from 'date-fns';
 import { firstName } from 'service/helpers';
 import UUID from 'uuid';
-import { findPostById } from '../../../service/post';
 
-export default function CommentList({ posts, postId }) {
-	const foundPost = findPostById(posts, postId);
-
+export default function CommentList({ foundPost, postId }) {
 	const headerText = foundPost.some(post => post.comments.length === 0)
 		? 'No comments yet.'
 		: 'All comments:';

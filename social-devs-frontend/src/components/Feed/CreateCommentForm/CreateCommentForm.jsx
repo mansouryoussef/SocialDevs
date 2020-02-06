@@ -22,13 +22,7 @@ export default function CreateCommentForm({ postId, setPosts }) {
 
 			<Button
 				onClick={() =>
-					handleCreateComment(
-						commentText,
-						postId,
-						handleGetAllPosts,
-						setPosts,
-						setCommentText
-					)
+					handleCreateComment(commentText, postId, setPosts, setCommentText)
 				}
 				text='Comment it!'
 				filled

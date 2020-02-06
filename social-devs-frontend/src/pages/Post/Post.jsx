@@ -5,11 +5,14 @@ import CreateCommentForm from 'components/Feed/CreateCommentForm/CreateCommentFo
 import CurrentPost from 'components/Feed/CurrentPost/CurrentPost';
 import CommentList from 'components/Feed/CommentList/CommentList';
 import { PostContext } from 'contexts/PostContext';
+import { findPostById } from '../../service/post';
 
 export default function Post({ match }) {
 	const { posts, setPosts } = useContext(PostContext);
 
 	const postId = match.params.post_id;
+
+	const foundPost = findPostById(posts, postId);
 
 	return (
 		<div className={Styles.postPage}>
@@ -20,7 +23,7 @@ export default function Post({ match }) {
 
 				<div className={Styles.divider}></div>
 
-				<CommentList posts={posts} postId={postId} />
+				<CommentList foundPost={foundPost} postId={postId} />
 			</div>
 		</div>
 	);
