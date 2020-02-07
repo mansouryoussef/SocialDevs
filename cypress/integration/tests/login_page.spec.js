@@ -2,7 +2,7 @@
 
 context('Login page', () => {
 	before(() => {
-		cy.visit('localhost:3000/');
+		cy.visit('/');
 		cy.contains('Log in').click();
 	});
 
@@ -72,6 +72,7 @@ context('Login page', () => {
 			cy.get("input[name='email']")
 				.clear()
 				.type('demo@guest.fi');
+
 			cy.get("input[name='password']")
 				.clear()
 				.type('123456');

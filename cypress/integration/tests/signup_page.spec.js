@@ -1,6 +1,6 @@
 context('Signup page', () => {
 	before(() => {
-		cy.visit('localhost:3000/signup');
+		cy.visit('/signup');
 	});
 
 	context('Validation', () => {
@@ -122,7 +122,7 @@ context('Signup page', () => {
 		});
 
 		it('Should auto login user', () => {
-			cy.visit('localhost:3000/signup');
+			cy.visit('/signup');
 
 			cy.contains('Auto Login as a guest.').click();
 
