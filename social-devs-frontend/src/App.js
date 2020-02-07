@@ -17,6 +17,7 @@ import Spinner from 'components/Shared/Spinner/Spinner';
 import Nav from 'components/Layout/NavBar/Nav/Nav';
 import { AuthContext } from './contexts/AuthContext';
 import { LoadingContext } from './contexts/LoadingContext';
+import PublicRoute from './components/Shared/PublicRoute/PublicRoute';
 
 const App = ({ location }) => {
 	const { isLoggedin } = useContext(AuthContext);
@@ -36,15 +37,11 @@ const App = ({ location }) => {
 						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Home />)}
 					/>
 
-					<Route
-						exact
-						path='/login'
-						render={() => (isLoggedin ? <Redirect to='/feed' /> : <Login />)}
-					/>
-
-					<Route exact path='/signup' component={Signup} />
 					<Route path='/users' exact component={Users} />
 					<Route path='/user/:user_id' exact component={User} />
+
+					<PublicRoute path='/login' component={Login} />
+					<PublicRoute path='/signup' component={Signup} />
 					<PrivateRoute path='/feed' component={Feed} />
 					<PrivateRoute path='/profile' component={Profile} />
 					<PrivateRoute path='/post/:post_id' component={Post} />
