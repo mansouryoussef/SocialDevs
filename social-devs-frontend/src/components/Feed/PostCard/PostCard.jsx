@@ -29,7 +29,7 @@ export default function PostCard({
 	const isPostOwner = useMemo(() => user._id === postUserId, [user]);
 
 	return (
-		<div className={Styles.postcardContainer}>
+		<div data-cy='post_card' className={Styles.postcardContainer}>
 			<div className={Styles.imgNameContainer}>
 				<img
 					src={defaultUserImg}

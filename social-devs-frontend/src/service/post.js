@@ -59,7 +59,7 @@ export const handleDeletePost = async (postId, setPosts, history) => {
 		const headers = createAuthHeader(token);
 
 		const res = await deletePost(postId, { ...headers });
-		console.log(res.data);
+
 		setPosts(res.data);
 
 		history.push('/feed');

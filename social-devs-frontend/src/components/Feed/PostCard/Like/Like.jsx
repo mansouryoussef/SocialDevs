@@ -21,6 +21,7 @@ export default function Like({ likes, postId, user }) {
 					}
 					src={like}
 					alt='Liked'
+					data-cy='unlike_post_btn'
 				/>
 			) : (
 				<img
@@ -28,6 +29,7 @@ export default function Like({ likes, postId, user }) {
 					onClick={() =>
 						handleLike(postId, likes, setLiked, setLikesCount, likesCount)
 					}
+					data-cy='like_post_btn'
 					alt='Not liked'
 				/>
 			)}

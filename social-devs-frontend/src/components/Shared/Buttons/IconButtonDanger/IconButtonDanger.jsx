@@ -6,7 +6,8 @@ export default function IconButtonDanger({ text, filled, icon, onClick }) {
 		<button
 			className={Styles.iconButtonDangerContainer}
 			id={filled ? Styles.filled : ''}
-			onClick={onClick}>
+			onClick={onClick}
+			data-cy='delete_post_btn'>
 			<img src={icon} alt='button icon' />
 
 			<span>{text}</span>
