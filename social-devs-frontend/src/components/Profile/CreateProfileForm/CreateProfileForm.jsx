@@ -25,7 +25,6 @@ export default function CreateProfileForm({ setShowEditForm }) {
 		setProfileFields({ ...profileFields, [e.target.name]: e.target.value });
 	};
 
-	// Destructure profile fields
 	const {
 		title,
 		location,
@@ -38,7 +37,7 @@ export default function CreateProfileForm({ setShowEditForm }) {
 	} = profileFields;
 
 	return (
-		<form className={Styles.createProfileForm}>
+		<form data-cy='create_profile_form' className={Styles.createProfileForm}>
 			<FormField
 				name='title'
 				value={title}

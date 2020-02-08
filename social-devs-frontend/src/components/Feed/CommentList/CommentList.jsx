@@ -6,13 +6,15 @@ import { firstName } from 'service/helpers';
 import UUID from 'uuid';
 
 export default function CommentList({ foundPost, postId }) {
-	const headerText = foundPost.some(post => post.comments.length === 0)
+	const commentNote = foundPost.some(post => post.comments.length === 0)
 		? 'No comments yet.'
 		: 'All comments:';
 
 	return (
 		<div className={Styles.commentListContainer}>
-			<p className={Styles.headerText}>{headerText}</p>
+			<p data-cy='comment_note' className={Styles.commentNote}>
+				{commentNote}
+			</p>
 
 			{foundPost.map(post => {
 				const { comments } = post;

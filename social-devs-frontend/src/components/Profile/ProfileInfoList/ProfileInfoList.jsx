@@ -20,7 +20,9 @@ export default function ProfileInfoList({ setShowEditForm }) {
 	} = userProfile;
 
 	return (
-		<div className={Styles.profileInfoListContainer}>
+		<div
+			className={Styles.profileInfoListContainer}
+			data-cy='profile_info_list'>
 			<ProfileInfoItem label='Title:' info={title} />
 
 			<ProfileInfoItem label='Skills:' info={createSkillsStr(skills)} />

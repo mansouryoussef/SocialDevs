@@ -7,7 +7,7 @@ import UserSkillsList from './UserSkillsList/UserSkillsList';
 
 export default function UserCard({ name, title, location, skills, userId }) {
 	return (
-		<div className={Styles.userCardContainer}>
+		<div data-cy='user_card' className={Styles.userCardContainer}>
 			<img src={user} className={Styles.userImg} alt="User's img" />
 
 			<div className={Styles.userInfo}>

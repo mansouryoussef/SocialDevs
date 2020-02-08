@@ -7,7 +7,7 @@ export default function Logo() {
 	return (
 		<div className={Styles.logoContainer}>
 			<Link to='/' className='Link'>
-				<img src={logo} alt='Website logo' />
+				<img data-cy='logo' src={logo} alt='Website logo' />
 			</Link>
 
 			<p>Social Devs</p>

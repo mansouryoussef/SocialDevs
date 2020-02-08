@@ -33,7 +33,7 @@ export default function Like({ likes, postId, user }) {
 					alt='Not liked'
 				/>
 			)}
-			{likesCount}
+			<span data-cy='likes_count'>{likesCount}</span>
 		</div>
 	);
 }

@@ -51,7 +51,7 @@ export default function PostCard({
 					<div className={Styles.regularBtnsContainer}>
 						{!inPost && (
 							<Link className='Link' to={`/post/${id}`}>
-								<Button text='Comments' />
+								<Button cypress={'comments_btn'} text='Comments' />
 							</Link>
 						)}
 

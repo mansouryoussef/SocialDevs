@@ -21,7 +21,7 @@ export default function CommentCard({
 	const { user } = useContext(UserContext);
 
 	return (
-		<div className={Styles.commentCardContainer}>
+		<div data-cy='comment_card' className={Styles.commentCardContainer}>
 			<div className={Styles.imgNameContainer}>
 				<img
 					className={Styles.img}
@@ -29,11 +29,15 @@ export default function CommentCard({
 					alt='user default img'
 				/>
 
-				<h2 className={Styles.name}>{name}</h2>
+				<h2 data-cy='name' className={Styles.name}>
+					{name}
+				</h2>
 			</div>
 
 			<div className={Styles.bodyContainer}>
-				<p className={Styles.text}>{text}</p>
+				<p data-cy='comment_text' className={Styles.text}>
+					{text}
+				</p>
 
 				<span className={Styles.dateBtnContainer}>
 					<span>Commented on: {date}</span>
