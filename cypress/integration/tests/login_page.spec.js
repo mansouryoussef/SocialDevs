@@ -1,5 +1,3 @@
-// <reference types="Cypress" />
-
 context('Login page', () => {
 	before(() => {
 		cy.visit('/');

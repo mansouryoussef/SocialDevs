@@ -1,6 +1,7 @@
 context('Signup page', () => {
 	before(() => {
-		cy.visit('/signup');
+		cy.visit('/');
+		cy.contains('Sign up').click();
 	});
 
 	context('Validation', () => {
