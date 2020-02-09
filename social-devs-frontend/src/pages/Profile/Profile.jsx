@@ -59,8 +59,8 @@ export default function Profile() {
 					<ProfileInfoList setShowEditForm={setShowEditForm} />
 				)}
 
-				<ProfileTable info={expTableProps} />
-				<ProfileTable info={eduTableProps} />
+				<ProfileTable cypress='exp_table' info={expTableProps} />
+				<ProfileTable cypress='edu_table' info={eduTableProps} />
 
 				<div className={Styles.btnContainer}>
 					<IconButtonDanger
