@@ -117,6 +117,7 @@ export const handleLike = async (
 		const headers = createAuthHeader(token);
 
 		const res = await likePost(postId, { ...headers });
+
 		likes.push(res.data[0]);
 
 		setLiked(true);
@@ -129,6 +130,8 @@ export const handleLike = async (
 //  Handler: unlike post
 export const handleUnlike = async (
 	postId,
+	likes,
+	user,
 	setLiked,
 	setLikesCount,
 	likesCount
@@ -136,9 +139,16 @@ export const handleUnlike = async (
 	try {
 		const headers = createAuthHeader(token);
 
-		await unlikePost(postId, { ...headers });
+		const res = await unlikePost(postId, { ...headers });
+
+		if (res.data.length === 0) {
+			likes.pop();
+		} else {
+			likes = likes.filter(like => like.user !== user._id);
+		}
 
 		setLiked(false);
+
 		setLikesCount(likesCount - 1);
 	} catch (error) {
 		console.log(error);
