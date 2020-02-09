@@ -9,7 +9,7 @@ export default function DateFields({ from, to, handleChange }) {
 				name='from'
 				value={from}
 				handleChange={e => handleChange(e)}
-				placeholder='From: DD-MM-YY'
+				placeholder='From: MM-DD-YY'
 				tr
 			/>
 
@@ -17,7 +17,7 @@ export default function DateFields({ from, to, handleChange }) {
 				name='to'
 				value={to}
 				handleChange={e => handleChange(e)}
-				placeholder='To: DD-MM-YY'
+				placeholder='To: MM-DD-YY'
 				tr
 			/>
 		</table>

@@ -14,7 +14,7 @@ export default function FormField({
 	const label = `${capitalize(name)}${required ? '*' : ''}`;
 
 	return textarea ? (
-		<div className={Styles.textareaContainer}>
+		<div data-cy='form_field' className={Styles.textareaContainer}>
 			<label>{label}</label>
 			<textarea
 				value={value}
@@ -24,8 +24,9 @@ export default function FormField({
 			/>
 		</div>
 	) : (
-		<div className={Styles.formFieldContainer}>
+		<div data-cy='form_field' className={Styles.formFieldContainer}>
 			<label>{label}</label>
+
 			<input
 				value={value}
 				onChange={e => onChange(e)}

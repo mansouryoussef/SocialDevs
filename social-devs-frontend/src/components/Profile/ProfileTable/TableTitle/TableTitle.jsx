@@ -10,7 +10,7 @@ export default function TableTitle({
 	errorMsg
 }) {
 	return (
-		<div className={Styles.tableTitleContainer}>
+		<div data-cy='profile_table_title' className={Styles.tableTitleContainer}>
 			<h2 className={Styles.title}>{title}</h2>
 
 			<Button text={editingTable ? 'Cancel' : 'Add'} onClick={handleToggle} />

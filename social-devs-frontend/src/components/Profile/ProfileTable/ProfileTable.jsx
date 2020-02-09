@@ -8,7 +8,7 @@ import TableTitle from './TableTitle/TableTitle';
 import { handleDeleteEdu, handleDeleteExp } from 'service/profile';
 import { ProfileContext } from 'contexts/ProfileContext';
 
-export default function ProfileTable({ info }) {
+export default function ProfileTable({ info, cypress }) {
 	const [addingExp, setAddingExp] = useState(false);
 	const [addingEdu, setAddingEdu] = useState(false);
 
@@ -27,7 +27,7 @@ export default function ProfileTable({ info }) {
 	};
 
 	return (
-		<Fragment>
+		<Fragment data-cy={cypress}>
 			{type === 'experience' ? (
 				<TableTitle
 					title='Experience'

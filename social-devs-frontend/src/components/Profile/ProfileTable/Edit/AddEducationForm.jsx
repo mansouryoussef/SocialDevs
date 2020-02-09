@@ -23,7 +23,7 @@ export default function AddEducationForm({ setAddingEdu, setError }) {
 	const { school, degree, from, to } = eduFields;
 
 	return (
-		<tr>
+		<tr data-cy='add_edu_form'>
 			<TableInputField
 				name='school'
 				value={school}

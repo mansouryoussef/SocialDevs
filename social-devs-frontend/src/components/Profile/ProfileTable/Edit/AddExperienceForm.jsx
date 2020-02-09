@@ -17,8 +17,6 @@ export default function AddExperienceForm({ setAddingExp, setError }) {
 	});
 
 	const handleChange = e => {
-		console.log('Name:', e.target.name);
-		console.log('Value:', e.target.value);
 		setExpFields({ ...expFields, [e.target.name]: e.target.value });
 	};
 
@@ -26,7 +24,7 @@ export default function AddExperienceForm({ setAddingExp, setError }) {
 	const { company, title, from, to } = expFields;
 
 	return (
-		<tr>
+		<tr data-cy='add_exp_form'>
 			<TableInputField
 				name='company'
 				value={company}
