@@ -3,73 +3,74 @@ context('Porfile Page', () => {
 		cy.login();
 		cy.visit('/profile');
 	});
-	// it('Should have the title "Profile"', () => {
-	// 	cy.get('h1')
-	// 		.contains('Profile')
-	// 		.should('be.visible');
-	// });
 
-	// context('Profile information', () => {
-	// 	it('Should have "Profile information:" text', () => {
-	// 		cy.get('h2')
-	// 			.contains('Profile information:')
-	// 			.should('be.visible');
-	// 	});
+	it('Should have the title "Profile"', () => {
+		cy.get('h1')
+			.contains('Profile')
+			.should('be.visible');
+	});
 
-	// 	it('Should not have "Create a profile:" text', () => {
-	// 		cy.get('h2')
-	// 			.contains('Create a profile:')
-	// 			.should('not.exist');
-	// 	});
-	// 	it('Should have all information items', () => {
-	// 		cy.get('[data-cy=profile_info_list]')
-	// 			.children()
-	// 			.should('have.length', 9);
+	context('Profile information', () => {
+		it('Should have "Profile information:" text', () => {
+			cy.get('h2')
+				.contains('Profile information:')
+				.should('be.visible');
+		});
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Title:')
-	// 			.parent()
-	// 			.should('contain', 'Great Title');
+		it('Should not have "Create a profile:" text', () => {
+			cy.get('h2')
+				.contains('Create a profile:')
+				.should('not.exist');
+		});
+		it('Should have all information items', () => {
+			cy.get('[data-cy=profile_info_list]')
+				.children()
+				.should('have.length', 9);
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Skills:')
-	// 			.parent()
-	// 			.should('contain', 'Awesome Skill, Another Awesome Skill');
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Title:')
+				.parent()
+				.should('contain', 'Great Title');
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Location:')
-	// 			.parent()
-	// 			.should('contain', 'Helsinki, Finland');
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Skills:')
+				.parent()
+				.should('contain', 'Awesome Skill, Another Awesome Skill');
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Website:')
-	// 			.parent()
-	// 			.should('contain', 'https://youssef.fi');
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Location:')
+				.parent()
+				.should('contain', 'Helsinki, Finland');
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Github:')
-	// 			.parent()
-	// 			.should('contain', 'https://github.com/mansouryoussef');
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Website:')
+				.parent()
+				.should('contain', 'https://youssef.fi');
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Linkedin:')
-	// 			.parent()
-	// 			.should(
-	// 				'contain',
-	// 				'https://www.linkedin.com/in/youssef-mansour-760b27157/'
-	// 			);
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Github:')
+				.parent()
+				.should('contain', 'https://github.com/mansouryoussef');
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Twitter:')
-	// 			.parent()
-	// 			.should('contain', 'https://twitter.com');
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Linkedin:')
+				.parent()
+				.should(
+					'contain',
+					'https://www.linkedin.com/in/youssef-mansour-760b27157/'
+				);
 
-	// 		cy.get('[data-cy=profile_info_item]')
-	// 			.contains('Bio:')
-	// 			.parent()
-	// 			.should('contain', "Hello, I'm here to checkout the app!");
-	// 	});
-	// });
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Twitter:')
+				.parent()
+				.should('contain', 'https://twitter.com');
+
+			cy.get('[data-cy=profile_info_item]')
+				.contains('Bio:')
+				.parent()
+				.should('contain', "Hello, I'm here to checkout the app!");
+		});
+	});
 
 	context('Create profile form', () => {
 		it('Should show form and remove list when "Edit info" is clicked', () => {
