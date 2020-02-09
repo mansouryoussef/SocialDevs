@@ -6,10 +6,12 @@ import { handleLike, handleUnlike } from 'service/post';
 
 export default function Like({ likes, postId, user }) {
 	const [likesCount, setLikesCount] = useState(likes.length);
+
 	const likedByUser = useMemo(
 		() => likes.find(like => like.user === user._id),
 		[likes]
 	);
+
 	const [liked, setLiked] = useState(likedByUser);
 
 	return (
@@ -17,7 +19,14 @@ export default function Like({ likes, postId, user }) {
 			{liked ? (
 				<img
 					onClick={() =>
-						handleUnlike(postId, setLiked, setLikesCount, likesCount)
+						handleUnlike(
+							postId,
+							likes,
+							user,
+							setLiked,
+							setLikesCount,
+							likesCount
+						)
 					}
 					src={like}
 					alt='Liked'
