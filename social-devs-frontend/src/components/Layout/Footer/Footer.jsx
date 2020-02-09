@@ -6,10 +6,12 @@ export default function Footer() {
 		<div className={Styles.footerContainer}>
 			<div className={Styles.footerItem}>
 				<h3>Designed and developed by: </h3>
-				<p>Youssef Mansour</p>
+				<a className='Link' href='https://youssef.fi'>
+					<p>Youssef Mansour</p>
+				</a>
 			</div>
 			<div className={Styles.footerItem}>
-				<p>© 2019</p>
+				<p>© 2020</p>
 			</div>
 		</div>
 	);
