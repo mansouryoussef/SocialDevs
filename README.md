@@ -27,7 +27,7 @@ This app has an authentication system with backend validation where you can log 
 
 Users can see other user's profiles, modify only their data like deleting their posts and comments. Also, users can delete their accounts and access certain pages only if they are authenticated.
 
-All 7 pages of the app are end to end tested using Cypress, a running demo of all E2E tests can be found at ( 2:41 ) of the video demo published [here](https://youtu.be/x2-WNjZy73A). More tests will be written daily.
+All 7 pages of the app are end to end tested using Cypress, a running demo of all E2E tests can be found at ( 2:36 ) of the video demo published [here]https://youtu.be/10gVdS_DVFs). More tests will be written daily.
 
 #### Live demo:
 
@@ -35,7 +35,7 @@ Check out the implementation live demo [here](https://socialdevs.com/).
 
 #### Video demo:
 
-Check out the published video demo [here](https://youtu.be/x2-WNjZy73A).
+Check out the published video demo [here](https://youtu.be/10gVdS_DVFs).
 
 <!-- ## How to run app on your system?
 
