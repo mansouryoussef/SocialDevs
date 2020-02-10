@@ -23,6 +23,10 @@
 		flex-wrap: wrap;
 		justify-content: center;
 
+		a:hover {
+			text-decoration: underline;
+		}
+
 		h3 {
 			margin-right: $base-unit * 0.5;
 			font-size: inherit;
